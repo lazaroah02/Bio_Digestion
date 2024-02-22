@@ -6,4 +6,5 @@ urlpatterns = [
     #path('register/', include('dj_rest_auth.registration.urls')),
     path('auth/', include('dj_rest_auth.urls')),
     path('projects/', include('projects.urls')),
+    path('users/', include('users.urls')),
 ]
