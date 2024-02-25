@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import AuthenticationContext from "../../context/authenticationContext";
+import AuthenticationContext from "../../contexts/authenticationContext";
 import { Link } from "react-router-dom";
 import "./index.css";
 
@@ -14,15 +14,7 @@ function ProtectedRoute({ children }) {
   }, [auth]);
 
   return showChildren ? (
-    auth.infoUser?.is_staff?children:
-    <section className="protected-route-page">
-      <article>
-        <header>No tienes los permisos necesarios para acceder a esta pagina</header>
-        <div>
-          <Link to = "/">Inicio</Link>
-        </div>
-      </article>
-    </section>
+    children
   ) : (
     <section className="protected-route-page">
       <article>

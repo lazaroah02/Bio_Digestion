@@ -9,7 +9,6 @@ export function login({username, pass}){
         body: JSON.stringify({username: username, password: pass})
     })
     .then(res => {
-        console.log(res)
         return res.json()
     })
     .then(data => {

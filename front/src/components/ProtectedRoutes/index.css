@@ -1,0 +1,58 @@
+.protected-route-page{
+    min-height: 100vh;
+    width: 100%;
+    background-image: url('../../assets/login-aside-background.webp');
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.protected-route-page article{
+    width: 80%;
+    max-width: 400px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    padding: 15px;
+    border-radius: 5px;
+    font-family: Outfit-Regular;
+    gap:10px;
+    backdrop-filter: blur(5px);
+    color: black;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+.protected-route-page div{
+    border-radius: 10px;
+    background: #0BB50B;
+    height: 50px;
+    flex-shrink: 0;
+    margin-top: 30px;
+    border: 0;
+    color: #FFF;
+    font-family: Outfit-Bold;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.protected-route-page div a{
+    text-decoration: none;
+}
+
+.protected-route-page a{
+    color: white!important;
+}

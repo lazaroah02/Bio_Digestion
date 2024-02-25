@@ -27,7 +27,6 @@ export function AuthenticationContextProvider({ children }) {
             return callback('ok')
         })
         .catch(error => {
-            console.log("aa")
             return callback(error)
         })
         .finally(()=> setLoading(false))

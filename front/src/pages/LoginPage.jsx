@@ -3,25 +3,22 @@ import FullLogo from "../assets/logos/full-logo.svg";
 import Logo from "../assets/logos/logo.svg";
 import { useContext } from "react";
 import AuthenticationContext from "../contexts/authenticationContext";
-import {useNavigate} from 'react-router-dom'
 import Loader from '../components/Loader'
 
 function LoginPage() {
   const { handleLogin, loading } = useContext(AuthenticationContext);
-  const navigate = useNavigate()
 
   function handleSubmit(e) {
-    console.log("ee")
     e.preventDefault();
     handleLogin({
       username: e.target["username"].value,
-      password: e.target["password"].value,
+      pass: e.target["password"].value,
       callback: (success) => {
         if(success == "ok") {
-            navigate("/dashboard/projects")
+            history.back()
         }
         else{
-            console.log(success)
+          console.log(success)
         }
       }
     });
