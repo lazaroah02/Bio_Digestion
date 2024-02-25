@@ -136,3 +136,8 @@ STATIC_URL = '/static/'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+#configuration for dj_rest_auth
+REST_AUTH_SERIALIZERS = {
+    'USER_DETAILS_SERIALIZER':'users.serializers.UserProfileSerializer',
+}

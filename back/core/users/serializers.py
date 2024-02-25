@@ -12,7 +12,7 @@ class UserManagmentSerializer(serializers.ModelSerializer):
     is_active = serializers.BooleanField(initial = True)
     class Meta:
         model = User
-        fields = ['id','username','email', "password", 'is_staff', 'is_active']
+        fields = ['id','username','email', "first_name", "last_name", "password", 'is_staff', 'is_active']
     
     def get_fields(self):
         fields = super().get_fields()
@@ -48,3 +48,9 @@ def validate_password(password):
     UserAttributeSimilarityValidator().validate(password = password)
     CommonPasswordValidator().validate(password = password)
     NumericPasswordValidator().validate(password = password)    
+    return password
+
+class UserProfileSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ["id", "username", "email", "first_name", "last_name", "is_staff", "is_active"]
