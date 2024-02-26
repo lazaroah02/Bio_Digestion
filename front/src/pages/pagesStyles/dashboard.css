@@ -12,7 +12,7 @@
 }
 .dashboard .sidebar-desktop-mode-container{
     width: 20%;
-    height: 92%;
+    height: 100%;
     background-color: #fff;
     padding-top: 40px;
     border-radius: 15px;
@@ -20,7 +20,7 @@
 
 .dashboard main{
     width: 78%;
-    height: 97.3%;
+    height: 100%;
     background-color: white;
     overflow-y: auto;
     padding: 10px;
@@ -42,7 +42,6 @@
 .dashboard-sidebar{
     height: 100%;
     background-color: white;
-    padding-top: 10px;
 }
 
 .dashboard-sidebar .p-sidebar-close{

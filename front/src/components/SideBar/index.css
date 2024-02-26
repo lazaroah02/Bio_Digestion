@@ -75,14 +75,14 @@
 .sidebar section li span:hover{
     transform: translateX(30px)
 }
-.sidebar section footer{
+.sidebar footer{
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
     margin-top: 100px;
 }
-.sidebar section footer button{
+.sidebar footer button{
     border-radius: 10px;
     background: rgba(136, 136, 136, 0.16);
     border: 0;

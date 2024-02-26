@@ -108,10 +108,10 @@ function SideBar() {
             </span>
           </li>
         </ul>
-        <footer>
-            <button type = "button" onClick={() => handleLogout(() => navigate("/bye"))}>Cerrar Sesión</button>
-        </footer>
       </section>
+      <footer>
+          <button type = "button" onClick={() => handleLogout(() => navigate("/bye"))}>Cerrar Sesión</button>
+      </footer>
     </article>
   );
 }

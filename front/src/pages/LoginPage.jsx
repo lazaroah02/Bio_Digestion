@@ -4,9 +4,11 @@ import Logo from "../assets/logos/logo.svg";
 import { useContext } from "react";
 import AuthenticationContext from "../contexts/authenticationContext";
 import Loader from '../components/Loader'
+import {useToast} from "../hooks/useToast";
 
 function LoginPage() {
   const { handleLogin, loading } = useContext(AuthenticationContext);
+  const {toast, showToast} = useToast()
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -18,7 +20,11 @@ function LoginPage() {
             history.back()
         }
         else{
-          console.log(success)
+          showToast({
+            severity:"error",
+            summary:"Error",
+            detail: success.toString(),
+          })
         }
       }
     });
@@ -26,6 +32,7 @@ function LoginPage() {
 
   return (
     <section className="login-page">
+      {toast()}
       <article>
         <header>
           <div>
