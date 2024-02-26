@@ -1,0 +1,105 @@
+.sidebar{
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    border-radius: 15px;
+}
+
+/*header*/
+.sidebar header {
+    padding-left: 10px;
+}
+.sidebar header img{
+    width: 200px;
+    height: auto;
+    flex-shrink: 0;
+    margin:0;
+}
+.sidebar header div{
+    margin-left:20px;
+    color: #000;
+    font-family: Outfit-Regular;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    opacity: 0.5;
+}
+
+/*section*/
+.sidebar section {
+    width: 100%;
+    height: auto;
+}
+.sidebar section ul{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    padding-left: 15px;
+    display: flex;
+    flex-direction: column;
+    gap:30px;
+    margin-top: 60px;
+}
+.sidebar section li{
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap:20px;
+}
+.sidebar section li aside{
+    width: 5px;
+    background: #02C502;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    transition: all 0.1s linear;
+}
+
+.sidebar section li span{
+    color: #565454;
+    font-family: Outfit-Regular;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap:10px;
+    cursor: pointer;
+    transition: transform 0.2s linear;
+}
+.sidebar section li span:hover{
+    transform: translateX(30px)
+}
+.sidebar section footer{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 100px;
+}
+.sidebar section footer button{
+    border-radius: 10px;
+    background: rgba(136, 136, 136, 0.16);
+    border: 0;
+    width: 210px;
+    height: 50px;
+    flex-shrink: 0;
+    color: #585858;
+    font-family: Outfit-Regular;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.sidebar-hidden-element{
+    opacity: 0;
+}
+
+.sidebar-active-path{
+    color: #02C502!important;
+}
