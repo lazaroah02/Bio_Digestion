@@ -7,9 +7,11 @@ import GraphicIcon from "../../icons/GraphicIcon";
 import DocIcon from "../../icons/DocIcon";
 import UserIcon from "../../icons/UserIcon";
 import { useLocation, useNavigate } from "react-router-dom";
+import { useConfirmDialog } from "../../hooks/useConfirmDialog";
 
 function SideBar() {
   const { auth, handleLogout } = useContext(AuthenticationContext);
+  const {confirmDialog, showConfirm} = useConfirmDialog()
   const { pathname } = useLocation();
   const navigate = useNavigate()
 
@@ -17,8 +19,13 @@ function SideBar() {
     return pathname.includes(path);
   }
 
+  function logout(){
+    handleLogout(() => navigate("/bye"))
+  }
+
   return (
     <article className="sidebar">
+      {confirmDialog(logout)}
       <header>
         <img alt="logo Bio Digestion" src={LogoFullGreen} />
         <div>Hola, {auth.username} admin</div>
@@ -110,7 +117,7 @@ function SideBar() {
         </ul>
       </section>
       <footer>
-          <button type = "button" onClick={() => handleLogout(() => navigate("/bye"))}>Cerrar Sesión</button>
+          <button type = "button" onClick={() => showConfirm(true)}>Cerrar Sesión</button>
       </footer>
     </article>
   );
