@@ -47,10 +47,11 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    gap:20px;
+    gap:30px;
 }
 .sidebar section li aside{
     width: 5px;
+    height: 30px;
     background: #02C502;
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;

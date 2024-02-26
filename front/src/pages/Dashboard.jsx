@@ -1,16 +1,23 @@
 import {Sidebar} from 'primereact/sidebar'
 import SideBar from '../components/SideBar'
+import MenuIcon from '../icons/MenuIcon'
 import {useState} from 'react'
 import './pagesStyles/dashboard.css'
 
 function Dashboard({children}) {
-    const [showSidebar, setShowSidebar] = useState(true)
+    const [showSidebar, setShowSidebar] = useState(false)
     return ( 
         <section className = "dashboard">
-            <aside>
+            <aside className = "sidebar-desktop-mode-container">
                 <SideBar/>
             </aside>
-            <main>{children}</main>
+            <Sidebar visible = {showSidebar} onHide={() => setShowSidebar(false)} className = "dashboard-sidebar">
+                <SideBar/>
+            </Sidebar>
+            <main>
+                <button className = "show-sidebar-button" onClick={() => setShowSidebar(true)}><MenuIcon/></button>
+                {children}
+            </main>
         </section>
      );
 }
