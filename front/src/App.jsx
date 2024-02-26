@@ -12,6 +12,7 @@ import OnlyAdminsPage from "./components/ProtectedRoutes/OnlyAdminsPage";
 import Dashboard from "./pages/Dashboard";
 import Bye from "./pages/Bye";
 import UsersManagement from "./pages/UsersManagement";
+import ProjectsManagement from "./pages/Projects";
 import { QueryFiltersContextProvider } from "./contexts/filtersContext";
 import "primereact/resources/themes/lara-light-cyan/theme.css";
 
@@ -28,7 +29,7 @@ function App() {
                 element={
                   <ProtectedRoute>
                     <Dashboard>
-                      <>Projects</>
+                      <ProjectsManagement/>
                     </Dashboard>
                   </ProtectedRoute>
                 }

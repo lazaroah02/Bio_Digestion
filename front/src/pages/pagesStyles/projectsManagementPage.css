@@ -1,0 +1,55 @@
+.projects-management-page{
+    width: 100%;
+    height: 100%;
+    background-color:transparent;
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    grid-template-rows: auto;
+    gap:10px;
+}
+
+.projects-management-page article{
+    width: 100%;
+    height: 100%;
+    border-radius: 15px;
+    background: #F5F5F5;
+    box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.25);
+
+}
+
+.projects-management-page aside{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap:10px;
+}
+
+.projects-management-page aside div{
+    width: 100%;
+    height: 40%;
+    border-radius: 20px;
+    background: #F5F5F5;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+.projects-management-page aside section{
+    width: 100%;
+    height: 60%;
+    border-radius: 15px;
+    opacity: 0.8;
+    background: #F5F5F5;
+    box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.25);
+}
+
+@media (max-width:1300px) {
+    .projects-management-page{
+        grid-template-columns: 1fr;
+    }
+    .projects-management-page article{
+        border-radius: 0;
+    }
+    .projects-management-page aside{
+        display: none;
+    }
+}
