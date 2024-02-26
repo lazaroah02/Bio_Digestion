@@ -11,60 +11,63 @@ import ProtectedRoute from "./components/ProtectedRoutes/ProtectedRoute";
 import OnlyAdminsPage from "./components/ProtectedRoutes/OnlyAdminsPage";
 import Dashboard from "./pages/Dashboard";
 import Bye from "./pages/Bye";
+import UsersManagement from "./pages/UsersManagement";
+import { QueryFiltersContextProvider } from "./contexts/filtersContext";
 import "primereact/resources/themes/lara-light-cyan/theme.css";
 
 function App() {
   return (
     <PrimeReactProvider>
-
       <Router>
-        <AuthenticationContextProvider>
-          <Routes>
-            <Route path="/" element={<Navigate to="/dashboard/projects" />} />
-            <Route
-              path="/dashboard/projects"
-              element={
-                <ProtectedRoute>
-                  <Dashboard>
-                    <>Projects</>
-                  </Dashboard>
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path="/dashboard/graphics"
-              element={
-                <ProtectedRoute>
-                  <Dashboard>
-                    <>Graphics</>
-                  </Dashboard>
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path="/dashboard/info"
-              element={
-                <ProtectedRoute>
-                  <Dashboard>
-                    <>Info</>
-                  </Dashboard>
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path="/dashboard/users"
-              element={
-                <OnlyAdminsPage>
-                  <Dashboard>
-                    <>Users</>
-                  </Dashboard>
-                </OnlyAdminsPage>
-              }
-            />
-            <Route path="/login" element={<LoginPage />} />
-            <Route path="/bye" element={<Bye />} />
-          </Routes>
-        </AuthenticationContextProvider>
+        <QueryFiltersContextProvider>
+          <AuthenticationContextProvider>
+            <Routes>
+              <Route path="/" element={<Navigate to="/dashboard/projects" />} />
+              <Route
+                path="/dashboard/projects"
+                element={
+                  <ProtectedRoute>
+                    <Dashboard>
+                      <>Projects</>
+                    </Dashboard>
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/dashboard/graphics"
+                element={
+                  <ProtectedRoute>
+                    <Dashboard>
+                      <>Graphics</>
+                    </Dashboard>
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/dashboard/info"
+                element={
+                  <ProtectedRoute>
+                    <Dashboard>
+                      <>Info</>
+                    </Dashboard>
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/dashboard/users"
+                element={
+                  <OnlyAdminsPage>
+                    <Dashboard>
+                      <UsersManagement/>
+                    </Dashboard>
+                  </OnlyAdminsPage>
+                }
+              />
+              <Route path="/login" element={<LoginPage />} />
+              <Route path="/bye" element={<Bye />} />
+            </Routes>
+          </AuthenticationContextProvider>
+        </QueryFiltersContextProvider>
       </Router>
     </PrimeReactProvider>
   );
