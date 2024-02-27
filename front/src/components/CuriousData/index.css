@@ -1,0 +1,68 @@
+.datos-curiosos-component{
+    width:100%;
+    height:100%;
+    display: flex;
+    flex-direction: column;
+    align-items: space-between;
+    justify-content:center;
+}
+
+.datos-curiosos-component header{
+    height: 10%;
+    text-align: center;
+    color: rgba(0, 0, 0, 0.71);
+    font-family: Outfit-Regular;
+    font-size: 23px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    padding-top: 20px;
+}
+
+.datos-curiosos-component section{
+    width: 100%;
+    height: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap:15px;
+}
+.curious-data-card{
+    width: 90%;
+    height: 40%;
+    border-radius: 10px;
+    background-color: white;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    padding-left: 20px;
+    padding-top: 30px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    color: #515151;
+    font-family: Outfit-Regular;
+    font-size: 17px;
+    opacity: 0.8;
+    position: relative;
+}
+
+.curious-data-card div{
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+    fill: #CFEEE4;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25) inset;
+    border-radius: 100%;
+    position: absolute;
+    top:10px;
+}
+
+.curious-data-card div:first-child{
+    left: 10px;
+}
+.curious-data-card div:last-child{
+    right: 10px;
+}

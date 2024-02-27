@@ -2,6 +2,7 @@ import { useManageProjects } from "../hooks/useManageProjects.jsx";
 import "./pagesStyles/projectsManagementPage.css";
 import RandomImagesSlider from "../components/RandomImagesSlider/index.jsx";
 import { useIsMobileMode } from "../hooks/useIsMobileMode.jsx";
+import CuriousData from "../components/CuriousData/index.jsx";
 
 function ProjectsManagement() {
   const { projects, loadingProjects } = useManageProjects();
@@ -11,7 +12,9 @@ function ProjectsManagement() {
       <article></article>
       <aside>
         <div>{!mobileMode ? <RandomImagesSlider /> : null}</div>
-        <section></section>
+        <section>
+        {!mobileMode ? <CuriousData /> : null}
+        </section>
       </aside>
     </section>
   );
