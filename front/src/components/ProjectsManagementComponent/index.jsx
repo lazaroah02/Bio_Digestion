@@ -1,6 +1,6 @@
 import ProjectsList from "./ProjectsList.jsx";
 import { useManageProjects } from "../../hooks/useManageProjects.jsx";
-import AddProject from "./AddProject.jsx";
+import AddProject from "./AddProject/index.jsx";
 import { useState } from "react";
 import { useToast } from "../../hooks/useToast.jsx";
 import { useConfirmDialog } from "../../hooks/useConfirmDialog.jsx";

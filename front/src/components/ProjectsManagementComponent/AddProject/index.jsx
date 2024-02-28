@@ -1,7 +1,7 @@
 import { Dialog } from "primereact/dialog";
-import { InputText } from "primereact/inputtext";
 import { useState } from "react";
-import {useToast} from '../../hooks/useToast'
+import {useToast} from '../../../hooks/useToast'
+import './index.css'
 
 function AddProject({createProject, className}) {
     const [show, setShow] = useState(false)
@@ -38,14 +38,17 @@ function AddProject({createProject, className}) {
         position="center"
         draggable={false}
         resizable={false}
-        style={{ width: "90vw", maxWidth: "850px" }}
-        header = "Agregar Proyecto"
-        contentClassName=""
+        style={{maxWidth: "90vw" }}
+        header = "Crear Nuevo Proyecto"
+        className="create-project-dialog"
+        headerClassName="create-project-dialog-header"
       >
-        <form action = "" onSubmit={(e) => handleCreateProject(e)}>
-            <label htmlFor = "name">Nombre</label>
-            <InputText id = "name" type = "text"/>
-            <button>Agregar</button>
+        <form className = "create-project-form" action = "" onSubmit={(e) => handleCreateProject(e)}>
+            <input id = "name" type = "text" placeholder = "Escribe el nombre del proyecto"/>
+            <div>
+              <button type = "button" onClick={() => setShow(false)}>Cancelar</button>
+              <button>Crear</button>
+            </div>
         </form>
       </Dialog>
     </>
