@@ -11,3 +11,4 @@ class ProjectsManagment(ModelViewSet):
     
     def get_queryset(self):
         return Project.objects.filter(user = self.request.user)
+    
