@@ -6,15 +6,18 @@ export function createProject({name, user, token}){
             Authorization: `Token ${token}`,
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify({name:name, use:user})
+        body: JSON.stringify({name:name, user:user})
     })
     .then(res => {
         if(res.status == 201){
             return res.json()
-            .then(data => {return data})
+            .then(data => {
+                return data
+            })
 
         }
         else{
+            console.log(res)
             throw new Error('Error al crear el proyecto')
         }
     })

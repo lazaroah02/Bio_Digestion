@@ -2,6 +2,7 @@ import {useState, useEffect, useContext} from 'react'
 import {getProjects} from '../services/ProjectsManagement/getProjects'
 import {createProject} from '../services/ProjectsManagement/createProject'
 import AuthenticationContext from '../contexts/authenticationContext'
+import { deleteProjects } from '../services/ProjectsManagement/deleteProjects'
 
 export function useManageProjects() {
     const [projects, setProjects] = useState([])
@@ -37,5 +38,25 @@ export function useManageProjects() {
         .finally(() => setloadingProjects(false))
     }
 
-    return ({projects, loadingProjects, handleCreateProject});
+    //delete projects
+    function handleDeleteProjects({projects, callback}){
+        setloadingProjects(true)
+        deleteProjects({projects:projects, token:auth.token})
+        .then(() => {
+            removeDeletedProjects(projects)
+            return callback({status:200, message:"Operación exitosa"})
+        })
+        .catch(error => {
+            return callback(error)
+        })
+        .finally(() => {
+            setloadingProjects(false)
+        })
+    }
+
+    function removeDeletedProjects(projectsToDelete){
+        setProjects(projects.filter(project => !projectsToDelete.includes(project.id)))
+    }
+
+    return ({projects, loadingProjects, handleCreateProject, handleDeleteProjects});
 }

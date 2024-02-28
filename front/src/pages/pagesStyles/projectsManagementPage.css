@@ -16,6 +16,7 @@
     box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.25);
     padding: 10px;
     padding-top:50px;
+    overflow-y: auto;
 }
 
 .random-images-curious-data-container{
