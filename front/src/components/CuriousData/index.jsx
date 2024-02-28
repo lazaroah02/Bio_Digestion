@@ -17,7 +17,7 @@ function CuriousData() {
     }
 
     return ( 
-        <article className = "datos-curiosos-component">
+        <article className = "curious-data-component">
             <header>
                 Datos Curiosos
             </header>

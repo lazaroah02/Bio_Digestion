@@ -9,10 +9,10 @@ function ProjectsManagement() {
   const { mobileMode } = useIsMobileMode({ mobileWidth: 1300 });
   return (
     <section className="projects-management-page">
-      <article></article>
-      <aside>
-        <div>{!mobileMode ? <RandomImagesSlider /> : null}</div>
-        <section>
+      <article className = "projects-container"></article>
+      <aside className = "random-images-curious-data-container">
+        <div className = "random-images">{!mobileMode ? <RandomImagesSlider /> : null}</div>
+        <section className = "curious-data-container">
         {!mobileMode ? <CuriousData /> : null}
         </section>
       </aside>
