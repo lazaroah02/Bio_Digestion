@@ -1,9 +1,9 @@
 import { Dialog } from "primereact/dialog";
 import { InputText } from "primereact/inputtext";
 import { useState } from "react";
-import {useToast} from '../../../hooks/useToast'
+import {useToast} from '../../hooks/useToast'
 
-function AddProject({createProject}) {
+function AddProject({createProject, className}) {
     const [show, setShow] = useState(false)
     const {toast, showToast} = useToast()
 
@@ -31,7 +31,7 @@ function AddProject({createProject}) {
   return (
     <>
       {toast()}
-      <button onClick={() => setShow(true)}>Agregar Proyecto</button>
+      <button className = {className} onClick={() => setShow(true)}>Crear Proyecto <span>+</span></button>
       <Dialog
         visible={show}
         onHide={() => setShow(false)}
