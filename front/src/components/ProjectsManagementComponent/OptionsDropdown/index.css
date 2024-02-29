@@ -1,0 +1,49 @@
+.projects-managment-options-dropdown-container{
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.projects-managment-options-dropdown{
+    height: 100%;
+    width: 10px;
+    border: 0;
+    outline: none;
+    box-shadow: none;
+    top: 35px;
+    right: 200px;
+}
+.projects-managment-options-dropdown svg{
+    display: none;
+}
+
+.start-projects-deletion-button{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 50px;
+    border: 0;
+    background-color: transparent;
+    
+    color: rgba(0, 0, 0, 0.6);
+    font-family: Outfit-Regular;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+@media (max-width:1300px) {
+    .projects-managment-options-dropdown{
+        right: -35px;
+        right: -35px;
+    }
+}
+
+@media (max-width:500px) {
+    .options-icon{
+        height: 18px;
+    }
+}

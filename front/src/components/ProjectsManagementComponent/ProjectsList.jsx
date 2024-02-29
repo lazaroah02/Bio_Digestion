@@ -14,19 +14,7 @@ function ProjectsList({projects, setSelectedProjects, selectedProjects, deleting
     >
       {deletingProjects?<Column selectionMode="multiple" headerStyle={{ width: "3rem" }}></Column>:null}
       <Column
-        field="id"
-        header="ID"
-        body={(project) => {
-          return (
-            <div className="table-project-field-container">
-              <span>{project.id}</span>
-            </div>
-          );
-        }}
-      ></Column>
-      <Column
         field="name"
-        header="Nombre"
         body={(project) => {
           return (
             <div className="table-project-field-container">
@@ -37,7 +25,6 @@ function ProjectsList({projects, setSelectedProjects, selectedProjects, deleting
       ></Column>
       <Column
         field="created_at"
-        header="Fecha"
         body={(project) => {
           return (
             <div className="table-project-field-container">

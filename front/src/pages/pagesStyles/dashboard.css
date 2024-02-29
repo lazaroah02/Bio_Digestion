@@ -29,14 +29,13 @@
 .show-sidebar-button{
     height: 35px;
     position: absolute;
-    top: 10px;
+    top: 20px;
     left: 10px;
-    border: 1px solid #06e606;
     border-radius:5px;
     padding: 5px;
-    background-color: #02C502;
-    color: white;
+    background-color: transparent;
     z-index: 1;
+    border: 0;
 }
 
 /*sidebar mobile*/
@@ -46,11 +45,12 @@
 }
 
 .dashboard-sidebar .p-sidebar-close{
-    border: 1px solid #06e606;
+    position: absolute;
+    right: 10px;
+    top: 10px;
     border-radius:100%;
     padding: 5px;
-    background-color: #02C502;
-    color: white;
+    color: rgba(0, 0, 0, 0.8);
 }
 
 
@@ -84,7 +84,6 @@
 
 @media (max-width:500px) {
     .dashboard-sidebar{
-        width: 100%;
         padding-right: 10px;
     }
 }

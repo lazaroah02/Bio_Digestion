@@ -4,19 +4,23 @@ import AddProject from "./AddProject/index.jsx";
 import { useState } from "react";
 import { useToast } from "../../hooks/useToast.jsx";
 import { useConfirmDialog } from "../../hooks/useConfirmDialog.jsx";
+import Loader from '../Loader'
+import TrashIcon from "../../icons/TrashIcon.jsx";
 import "./index.css";
+import OptionsDropdown from "./OptionsDropdown/index.jsx";
 
 function ProjectsManagement() {
   const [selectedProjects, setSelectedProjects] = useState([]);
+  const [deletingProjects, setDeletingProjects] = useState(false);
+  const { toast, showToast } = useToast();
+  const { confirmDialog, showConfirm } = useConfirmDialog();
+
   const {
     projects,
     loadingProjects,
     handleCreateProject,
     handleDeleteProjects,
   } = useManageProjects();
-  const [deletingProjects, setDeletingProjects] = useState(false);
-  const { toast, showToast } = useToast();
-  const { confirmDialog, showConfirm } = useConfirmDialog();
 
   function deleteProjects() {
     if (selectedProjects.length == 0) {
@@ -37,6 +41,7 @@ function ProjectsManagement() {
               summary: "Éxito",
               detail: success.message,
             });
+            setDeletingProjects(false)
           } else {
             showToast({
               severity: "error",
@@ -51,13 +56,22 @@ function ProjectsManagement() {
 
   return (
     <article className="projects-managment-component">
+      {loadingProjects?
+        <section className = "projects-managment-loader-container">
+          <div>
+            <Loader/>
+          </div>
+        </section>
+      :null}
       {projects.length > 0 ? (
         <>
           {toast()}
           {confirmDialog(deleteProjects)}
-          <header>
-            Proyectos
-            <button onClick={() => setDeletingProjects(true)}>A</button>
+          <header className = "projects-list-header">
+            <span>
+              Proyectos
+            </span>
+            <OptionsDropdown setDeletingProjects={setDeletingProjects}/>
           </header>
           <ProjectsList
             projects={projects}
@@ -65,17 +79,26 @@ function ProjectsManagement() {
             setSelectedProjects={setSelectedProjects}
             deletingProjects={deletingProjects}
           />
-          <button onClick={() => showConfirm(true)}>Delete Projects</button>
         </>
       ) : <div className = "no-projects-message">No hay projectos aún</div>}
-      <AddProject
-            createProject={handleCreateProject}
-            className={
-              projects.length == 0
-                ? "add-project-button position-center"
-                : "add-project-button position-normal"
-            }
-          />
+      {deletingProjects?
+            <section className = "confirm-deletion-buttons-container">
+              <button onClick={() => setDeletingProjects(false)}><span>Cancelar</span></button>
+              <button onClick={() => showConfirm(true)}>{selectedProjects.length == 0?
+              <span>Selecciona para eliminar</span>
+              :<span>Eliminar</span>
+            } <TrashIcon width="20px" color = {"#EC0000"}/></button>
+            </section>
+          :
+          <AddProject
+                createProject={handleCreateProject}
+                className={
+                  projects.length == 0
+                    ? "add-project-button position-center"
+                    : "add-project-button position-normal"
+                }
+              />
+          }
     </article>
   );
 }

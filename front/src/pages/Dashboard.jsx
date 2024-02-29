@@ -15,7 +15,7 @@ function Dashboard({children}) {
                 <SideBar/>
             </Sidebar>
             <main>
-                <button type='button' className = "show-sidebar-button" onClick={() => setShowSidebar(true)}><MenuIcon/></button>
+                <button type='button' className = "show-sidebar-button" onClick={() => setShowSidebar(true)}><MenuIcon color = {'rgba(0, 0, 0, 0.8)'}/></button>
                 {children}
             </main>
         </section>
