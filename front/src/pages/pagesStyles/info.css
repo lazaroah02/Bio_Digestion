@@ -3,6 +3,7 @@
     height: 100%;
     background-color:white;
     padding: 50px;
+    overflow-y: auto;
 }
 
 
@@ -45,10 +46,78 @@
 }
 
 /*biogas production process*/
+.biogas-production-process-section{
+    width: 90%;
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+}
 
+.biogas-production-process-section header{
+    color: #02C502;
+    font-family: Outfit-Regular;
+    font-size: 35px;
+    font-weight: 400;
+}
+
+.biogas-production-process-section p{
+    color: rgba(0, 0, 0, 0.7);
+    font-family: Outfit-Regular;
+    font-size: 20px;
+    font-weight: 400;
+}
+
+.biogas-production-process-section section{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap:10px;
+}
+.biogas-production-process-section section img{
+    width: 33%;
+}
+
+/*Biogas elements*/
+.biogas-elements-section{
+    margin-top:50px;
+}
+
+.biogas-elements-section header{
+    color: #02C502;
+    font-family: Outfit-Regular;
+    font-size: 35px;
+    font-weight: 400;
+}
+
+.biogas-elements-section p{
+    color: rgba(0, 0, 0, 0.7);
+    font-family: Outfit-Regular;
+    font-size: 20px;
+    font-weight: 400;
+}
+
+/*Biogas vantages*/
+.biogas-vantages{
+    margin-top:50px;
+}
+
+.biogas-vantages header{
+    color: #02C502;
+    font-family: Outfit-Regular;
+    font-size: 35px;
+    font-weight: 400;
+}
+
+.biogas-vantages p{
+    color: rgba(0, 0, 0, 0.7);
+    font-family: Outfit-Regular;
+    font-size: 20px;
+    font-weight: 400;
+}
 
 /*Tablet*/
 @media (min-width: 700px) and (max-width: 900px) {
+    /*what is biogas */
     .what-is-biogas-section{
         width: 95%;
     }
@@ -61,6 +130,9 @@
     .what-is-biogas-section section p{
         font-size:19px;
     }
+
+    /*biogas production process*/  
+
 }
 
 /*Mobile*/
@@ -75,12 +147,25 @@
 
     .what-is-biogas-section section {
         gap:10px;
-        align-items: center;
     }
-    .what-is-biogas-section section header{
-        font-size: 30px;
+
+    /*biogas production process*/
+    .biogas-production-process-section{
+        width: 95%;
     }
-    .what-is-biogas-section section p{
-        font-size:19px;
+
+    .biogas-production-process-section section{
+        flex-direction: column;
+    }
+    .biogas-production-process-section section img{
+        width: 100%;
+        max-width: 300px;
+    }
+
+    .info-page header{
+        font-size: 25px;
+    }
+    .info-page p{
+        font-size:18px;
     }
 }
