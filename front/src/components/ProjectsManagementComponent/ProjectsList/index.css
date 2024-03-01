@@ -13,14 +13,24 @@
 
 .projects-list-datatable td{
     border: 0;
-    max-width: 50%;
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow:ellipsis;
 }
 
 .project-name-datatable-field{
     margin-right: auto;
+    border: 0;
+    max-width: 50%;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+}
+
+.project-name-datatable-field span{
+    max-width: 75%;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow:ellipsis;
 }
 
 .projects-list-datatable th{
@@ -41,7 +51,7 @@
     font-weight: 500;
 }
 
-@media (max-width:500px) {
+@media (max-width:650px) {
     .projects-list-datatable td{
         max-width: 150px;
     }

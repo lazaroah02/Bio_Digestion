@@ -1,6 +1,7 @@
 import { DataTable } from "primereact/datatable";
 import { Column } from "primereact/column";
 import {formatDate} from '../../../utils/formatDate'
+import EditIcon from '../../../icons/EditIcon'
 import './index.css'
 
 function ProjectsList({projects, setSelectedProjects, selectedProjects, deletingProjects}) {
@@ -22,7 +23,7 @@ function ProjectsList({projects, setSelectedProjects, selectedProjects, deleting
         className="project-name-datatable-field"
         body={(project) => {
           return (
-              project.name
+              <><EditIcon width="18"/><span>{project.name}</span></>
           );
         }}
       ></Column>
