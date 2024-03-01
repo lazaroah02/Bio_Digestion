@@ -9,6 +9,7 @@ import { PrimeReactProvider } from 'primereact/api';
 import LoginPage from "./pages/LoginPage";
 import ProtectedRoute from "./components/ProtectedRoutes/ProtectedRoute";
 import OnlyAdminsPage from "./components/ProtectedRoutes/OnlyAdminsPage";
+import Info from "./pages/Info";
 import Dashboard from "./pages/Dashboard";
 import Bye from "./pages/Bye";
 import UsersManagement from "./pages/UsersManagement";
@@ -49,7 +50,7 @@ function App() {
                 element={
                   <ProtectedRoute>
                     <Dashboard>
-                      <>Info</>
+                      <Info/>
                     </Dashboard>
                   </ProtectedRoute>
                 }
