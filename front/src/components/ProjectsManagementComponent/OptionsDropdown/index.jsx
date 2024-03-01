@@ -4,7 +4,7 @@ import TrashIcon from '../../../icons/TrashIcon.jsx';
 import { useRef } from 'react';
 import './index.css'
 
-function OptionsDropdown({setDeletingProjects}) {
+function OptionsDropdown({setDeletingProjects, content = "Eliminar Proyecto"}) {
     const dropdownRef = useRef(null)
     const options = [
         {
@@ -12,7 +12,7 @@ function OptionsDropdown({setDeletingProjects}) {
             <button className="start-projects-deletion-button" onClick = {() => {
               setDeletingProjects(true)
               }}>
-              <span>Eliminar Proyecto</span>
+              <span>{content}</span>
               <TrashIcon color = {'rgba(0, 0, 0, 0.9)'} width = {'20px'}/>
             </button>
           ),

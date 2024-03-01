@@ -10,9 +10,12 @@ class UserManagmentSerializer(serializers.ModelSerializer):
     username = serializers.CharField(required = True)
     password = serializers.CharField(write_only = True)
     is_active = serializers.BooleanField(initial = True)
+    last_login = serializers.DateTimeField(read_only = True)
+    date_joined = serializers.DateTimeField(read_only = True)
+    
     class Meta:
         model = User
-        fields = ['id','username','email', "first_name", "last_name", "password", 'is_staff', 'is_active']
+        fields = ['id','username','email', "first_name", "last_name", "password", 'is_staff', 'is_active', 'last_login', 'date_joined']
     
     def get_fields(self):
         fields = super().get_fields()

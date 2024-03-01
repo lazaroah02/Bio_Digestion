@@ -1,0 +1,30 @@
+.users-list-datatable td{
+    border:0;
+}
+
+.username-datatable-field{
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+    gap:10px;
+}
+
+.username-datatable-field span{
+    max-width: 150px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+
+/*user action buttos*/
+.user-list-action-buttons{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap:20px;
+}
+
+.user-list-action-buttons svg{
+    cursor: pointer;
+}
