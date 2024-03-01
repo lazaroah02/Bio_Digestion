@@ -1,0 +1,51 @@
+.projects-list-datatable tr{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    background-color: transparent;
+
+    color: #000;
+    font-family: Outfit-Regular;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.projects-list-datatable td{
+    border: 0;
+    max-width: 50%;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow:ellipsis;
+}
+
+.project-name-datatable-field{
+    margin-right: auto;
+}
+
+.projects-list-datatable th{
+    border: 0;
+    background-color: transparent;
+}
+
+.projects-list-datatable .p-row-odd {
+    background: rgba(217, 217, 217, 0.4)!important;
+}
+
+.projects-list-datatable .p-column-title{
+    position: absolute;
+    left: 70px;
+    color: #000;
+    font-family: Outfit-Regular;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+@media (max-width:500px) {
+    .projects-list-datatable td{
+        max-width: 150px;
+    }
+    .projects-list-datatable tr{
+        font-size: 16px;
+    }
+}

@@ -1,4 +1,4 @@
-import ProjectsList from "./ProjectsList.jsx";
+import ProjectsList from "./ProjectsList";
 import { useManageProjects } from "../../hooks/useManageProjects.jsx";
 import AddProject from "./AddProject/index.jsx";
 import { useState } from "react";
