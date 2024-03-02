@@ -8,6 +8,8 @@ import TrashIcon from "../icons/TrashIcon";
 import CreateUser from "../components/UsersManagementComponents/CreateUser";
 import { useToast } from "../hooks/useToast";
 import { useConfirmDialog } from "../hooks/useConfirmDialog";
+import {useIsMobileMode} from '../hooks/useIsMobileMode'
+import UserGrid from '../components/UsersManagementComponents/UserGrid'
 
 function UsersManagement() {
   const { users, loadingUsers } = useManageUsers();
@@ -15,6 +17,7 @@ function UsersManagement() {
   const [deletingUsers, setDeletingUsers] = useState(false);
   const {toast, showToast} = useToast()
   const {confirmDialog, showConfirm} = useConfirmDialog()
+  const {mobileMode} = useIsMobileMode({mobileWidth: 900})
 
   function deleteUsers(){
     
@@ -38,12 +41,16 @@ function UsersManagement() {
           content={"Eliminar Usuario"}
         />
       </header>
-      <UserList
-        users={users}
-        selectedUsers={selectedUsers}
-        setSelectedUsers={setSelectedUsers}
-        deletingUsers={deletingUsers}
-      />
+      {!mobileMode?
+        <UserList
+          users={users}
+          selectedUsers={selectedUsers}
+          setSelectedUsers={setSelectedUsers}
+          deletingUsers={deletingUsers}
+        />
+        :
+        <UserGrid users = {users}/>
+      }
       {deletingUsers ? (
         <section className="confirm-deletion-buttons-container">
           <button onClick={() => setDeletingUsers(false)}>
