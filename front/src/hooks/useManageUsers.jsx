@@ -40,6 +40,9 @@ export function useManageUsers() {
 
     //delete users
     function handleDeleteUsers({users, callback}){
+        if(users.includes(auth.infoUser.id)){
+            return callback({status:400, message:"No puedes borrar tu propio usuario"})
+        }
         setloadingUsers(true)
         deleteUsers({users:users, token:auth.token})
         .then(() => {

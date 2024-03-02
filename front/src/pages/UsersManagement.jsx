@@ -12,7 +12,7 @@ import {useIsMobileMode} from '../hooks/useIsMobileMode'
 import UserGrid from '../components/UsersManagementComponents/UserGrid'
 
 function UsersManagement() {
-  const { users, loadingUsers } = useManageUsers();
+  const { users, loadingUsers, handleDeleteUsers } = useManageUsers();
   const [selectedUsers, setSelectedUsers] = useState([]);
   const [deletingUsers, setDeletingUsers] = useState(false);
   const {toast, showToast} = useToast()
@@ -20,7 +20,30 @@ function UsersManagement() {
   const {mobileMode} = useIsMobileMode({mobileWidth: 900})
 
   function deleteUsers(){
-    
+    if (selectedUsers.length == 0) {
+      showToast({
+        severity: "error",
+        summary: "Error",
+        detail: "Debes seleccionar algun usuario",
+      });
+    } else {
+      handleDeleteUsers({users: selectedUsers.map(user => user.id), callback: (success) => {
+          if (success.status == 200) {
+            showToast({
+              severity: "success",
+              summary: "Éxito",
+              detail: success.message,
+            });
+            setDeletingUsers(false)
+          } else {
+            showToast({
+              severity: "error",
+              summary: "Error",
+              detail: success.message,
+            });
+          }
+      }})
+    }
   }
 
   return (
