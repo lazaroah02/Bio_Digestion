@@ -22,6 +22,7 @@ function ProjectsManagement() {
     handleDeleteProjects,
   } = useManageProjects();
 
+  //delete projects
   function deleteProjects() {
     if (selectedProjects.length == 0) {
       showToast({

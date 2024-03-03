@@ -7,7 +7,7 @@ import XIcon from '../../../icons/XIcon'
 import ActionButtons from './ActionButtons'
 import './index.css'
 
-function UsersList({ users, selectedUsers, setSelectedUsers, deletingUsers }) {
+function UsersList({ users, selectedUsers, setSelectedUsers, deletingUsers, changePassword }) {
   return (
     <DataTable
       value={users}
@@ -75,7 +75,7 @@ function UsersList({ users, selectedUsers, setSelectedUsers, deletingUsers }) {
         header = "Acciones"
         body={(user) => {
           return (
-              <ActionButtons/>
+              <ActionButtons user={user} changePassword={changePassword}/>
           );
         }}
       ></Column>

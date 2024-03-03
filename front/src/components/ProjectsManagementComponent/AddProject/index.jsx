@@ -5,26 +5,23 @@ import './index.css'
 
 function AddProject({createProject, className}) {
     const [show, setShow] = useState(false)
-    const {toast, showToast} = useToast()
+    const {toast, showErrorMessage, showSuccessMessage} = useToast()
+    const [loading, setLoading] = useState(false)
 
+    //create project
     function handleCreateProject(e){
         e.preventDefault()
+        setLoading(true)
         let name = e.target["name"].value
         createProject({name:name, callback: (success) => {
             if(success.status == 201){
-                showToast({
-                    severity: "success",
-                    summary: "Éxito",
-                    detail: success.message,
-                })
+                showSuccessMessage(success.message)
                 setShow(false)
+                setLoading(false)
             }
             else{
-                showToast({
-                    severity: "error",
-                    summary: "Error",
-                    detail: success.message,
-                })
+              showErrorMessage(success.message)
+              setLoading(false)
             }
         }})
     }
@@ -44,10 +41,10 @@ function AddProject({createProject, className}) {
         headerClassName="create-project-dialog-header"
       >
         <form className = "create-project-form" action = "" onSubmit={(e) => handleCreateProject(e)}>
-            <input id = "name" type = "text" placeholder = "Escribe el nombre del proyecto"/>
+            <input id = "name" type = "text" placeholder = "Escribe el nombre del proyecto" required = {true}/>
             <div>
               <button type = "button" onClick={() => setShow(false)}>Cancelar</button>
-              <button>Crear</button>
+              <button>{loading?'Creando ...':'Crear'}</button>
             </div>
         </form>
       </Dialog>

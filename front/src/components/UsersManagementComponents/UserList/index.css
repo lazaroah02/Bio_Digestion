@@ -28,3 +28,10 @@
 .user-list-action-buttons svg{
     cursor: pointer;
 }
+
+.user-list-action-buttons button{
+    border:0;
+    background-color: transparent;
+    margin:0;
+    padding:0;
+}

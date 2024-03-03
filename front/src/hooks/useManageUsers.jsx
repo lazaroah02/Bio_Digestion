@@ -3,6 +3,7 @@ import AuthenticationContext from '../contexts/authenticationContext'
 import {getUsers} from '../services/UsersManagement/getUsers'
 import {createUser} from '../services/UsersManagement/createUser'
 import { deleteUsers } from '../services/UsersManagement/deleteUsers'
+import {changePassword} from '../services/UsersManagement/changePassword'
 
 export function useManageUsers() {
     const [users, setUsers] = useState([])
@@ -33,7 +34,7 @@ export function useManageUsers() {
             return callback({status:201, message:"Usuario creado correctamente"})
         })
         .catch(error => {
-            return callback(error)
+            return callback({status:400, message:error.message})
         })
         .finally(() => setloadingUsers(false))
     }
@@ -50,7 +51,7 @@ export function useManageUsers() {
             return callback({status:200, message:"Operación exitosa"})
         })
         .catch(error => {
-            return callback(error)
+            return callback({status:400, message:error.message})
         })
         .finally(() => {
             setloadingUsers(false)
@@ -61,5 +62,16 @@ export function useManageUsers() {
         setUsers(users.filter(user => !usersToDelete.includes(user.id)))
     }
 
-    return ({users, loadingUsers, handleCreateUser, handleDeleteUsers});
+    //change password
+    function handleChangePassword({userId, newPassword, callback}){
+        changePassword({userId:userId, newPassword:newPassword, token:auth.token})
+        .then(() => {
+            return callback({status:200, message:"Contraseña cambiada exitosamente"})
+        })
+        .catch(err => {
+            return callback({status:400, message:err.message})
+        })
+    }
+
+    return ({users, loadingUsers, handleCreateUser, handleDeleteUsers, handleChangePassword});
 }

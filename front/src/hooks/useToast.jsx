@@ -18,10 +18,28 @@ export function useToast() {
         });
       };
 
+      //show success message
+      function showSuccessMessage(message){
+        showToast({
+          severity: "success",
+          summary: "Éxito",
+          detail: message,
+        });
+      }
+
+      //show error message
+      function showErrorMessage(message){
+        showToast({
+          severity: "error",
+          summary: "Error",
+          detail: message,
+        });
+      }
+
      function toast(){
         return <Toast ref={toastRef} position="bottom-center" />
      } 
 
-    return ({toast, showToast});
+    return ({toast, showToast, showSuccessMessage, showErrorMessage});
 }
 

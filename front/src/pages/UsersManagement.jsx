@@ -12,38 +12,37 @@ import {useIsMobileMode} from '../hooks/useIsMobileMode'
 import UserGrid from '../components/UsersManagementComponents/UserGrid'
 
 function UsersManagement() {
-  const { users, loadingUsers, handleDeleteUsers } = useManageUsers();
+  const { users, loadingUsers, handleDeleteUsers, handleChangePassword } = useManageUsers();
   const [selectedUsers, setSelectedUsers] = useState([]);
   const [deletingUsers, setDeletingUsers] = useState(false);
-  const {toast, showToast} = useToast()
+  const {toast, showErrorMessage, showSuccessMessage} = useToast()
   const {confirmDialog, showConfirm} = useConfirmDialog()
   const {mobileMode} = useIsMobileMode({mobileWidth: 900})
 
+  //delete users
   function deleteUsers(){
     if (selectedUsers.length == 0) {
-      showToast({
-        severity: "error",
-        summary: "Error",
-        detail: "Debes seleccionar algun usuario",
-      });
-    } else {
-      handleDeleteUsers({users: selectedUsers.map(user => user.id), callback: (success) => {
-          if (success.status == 200) {
-            showToast({
-              severity: "success",
-              summary: "Éxito",
-              detail: success.message,
-            });
-            setDeletingUsers(false)
-          } else {
-            showToast({
-              severity: "error",
-              summary: "Error",
-              detail: success.message,
-            });
-          }
-      }})
+      return showErrorMessage("Debes seleccionar algun usuario")
     }
+    handleDeleteUsers({users: selectedUsers.map(user => user.id), callback: (success) => {
+        if (success.status != 200) {
+          return showErrorMessage(success.message)
+        } 
+        showSuccessMessage(success.message)
+        setDeletingUsers(false) 
+    }})
+  }
+  
+
+  //change password
+  function changePassword({newPassword, userId, changePasswordModalCallback}){
+    handleChangePassword({userId: userId, newPassword: newPassword, callback:(success) => {
+      if(success.status != 200) {
+        return showErrorMessage(success.message)
+      }
+      showSuccessMessage(success.message)
+      changePasswordModalCallback()
+    }})
   }
 
   return (
@@ -70,6 +69,7 @@ function UsersManagement() {
           selectedUsers={selectedUsers}
           setSelectedUsers={setSelectedUsers}
           deletingUsers={deletingUsers}
+          changePassword={changePassword}
         />
         :
         <UserGrid users = {users}/>

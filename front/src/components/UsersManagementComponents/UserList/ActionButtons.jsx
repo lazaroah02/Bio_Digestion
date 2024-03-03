@@ -1,11 +1,11 @@
 import EditIcon from '../../../icons/EditIcon'
-import LockIcon from '../../../icons/LockIcon'
+import ChangePasswordModal from '../ChangePasswordModal';
 
-function ActionButtons() {
+function ActionButtons({user, changePassword}) {
     return ( 
         <section className = "user-list-action-buttons">
-            <EditIcon color = "rgba(0, 0, 0, 0.7)"/>
-            <LockIcon color = "rgba(0, 0, 0, 0.7)"/>
+            <button><EditIcon color = "rgba(0, 0, 0, 0.7)"/></button>
+            <ChangePasswordModal userId={user.id} changePassword={changePassword}/>
         </section>
      );
 }

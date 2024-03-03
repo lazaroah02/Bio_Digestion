@@ -24,7 +24,6 @@ export function useManageProjects() {
 
     //create project
     function handleCreateProject({name, callback}){
-        setloadingProjects(true)
         createProject({name:name, user:auth.infoUser.username, token:auth.token})
         .then(data => {
             let projectsCopy = [...projects]
@@ -35,7 +34,6 @@ export function useManageProjects() {
         .catch(error => {
             return callback(error)
         })
-        .finally(() => setloadingProjects(false))
     }
 
     //delete projects
