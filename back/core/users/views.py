@@ -16,7 +16,7 @@ User = get_user_model()
 class UserManagment(viewsets.ModelViewSet):
     permission_classes = [IsAuthenticated, IsAdminUser]
     serializer_class = UserManagmentSerializer
-    queryset = User.objects.all()  
+    queryset = User.objects.all().order_by('-id')  
     filter_backends = [filters.SearchFilter, DjangoFilterBackend, filters.OrderingFilter]
     filterset_fields = ['id', "is_active", "is_staff"] 
     search_fields = ["username", "email"]

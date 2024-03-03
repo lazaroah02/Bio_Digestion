@@ -1,12 +1,12 @@
 import { USERS_MANAGEMENT_URL } from "../../settings"
-export function createUser({name, user, token}){
+export function createUser({info, token}){
     return fetch(USERS_MANAGEMENT_URL, {
         method: 'POST',
         headers: {
             Authorization: `Token ${token}`,
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify({name:name, user:user})
+        body: JSON.stringify(info)
     })
     .then(res => {
         if(res.status == 201){
@@ -14,7 +14,6 @@ export function createUser({name, user, token}){
             .then(data => {
                 return data
             })
-
         }
         else{
             throw new Error('Error al crear el usuario')

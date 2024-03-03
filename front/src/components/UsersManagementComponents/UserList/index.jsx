@@ -18,6 +18,7 @@ function UsersList({ users, selectedUsers, setSelectedUsers, deletingUsers, chan
       size="normal"
       className="users-list-datatable"
       stripedRows={true}
+      scrollable scrollHeight="73vh"
     >
       {deletingUsers ? <Column selectionMode="multiple"></Column> : null}
 

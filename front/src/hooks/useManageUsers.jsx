@@ -24,9 +24,8 @@ export function useManageUsers() {
     },[])
 
     //create user
-    function handleCreateUser({name, callback}){
-        setloadingUsers(true)
-        createUser({name:name, user:auth.infoUser.username, token:auth.token})
+    function handleCreateUser({info, callback}){
+        createUser({info:info, token:auth.token})
         .then(data => {
             let usersCopy = [...users]
             usersCopy.splice(0, 0, data)
@@ -36,7 +35,6 @@ export function useManageUsers() {
         .catch(error => {
             return callback({status:400, message:error.message})
         })
-        .finally(() => setloadingUsers(false))
     }
 
     //delete users

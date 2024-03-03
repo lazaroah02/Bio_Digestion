@@ -12,7 +12,7 @@ import {useIsMobileMode} from '../hooks/useIsMobileMode'
 import UserGrid from '../components/UsersManagementComponents/UserGrid'
 
 function UsersManagement() {
-  const { users, loadingUsers, handleDeleteUsers, handleChangePassword } = useManageUsers();
+  const { users, loadingUsers, handleDeleteUsers, handleChangePassword, handleCreateUser } = useManageUsers();
   const [selectedUsers, setSelectedUsers] = useState([]);
   const [deletingUsers, setDeletingUsers] = useState(false);
   const {toast, showErrorMessage, showSuccessMessage} = useToast()
@@ -89,7 +89,8 @@ function UsersManagement() {
           </button>
         </section>
       ) : (
-        <CreateUser            
+        <CreateUser   
+          createUser = {handleCreateUser}         
         />
       )}
     </section>

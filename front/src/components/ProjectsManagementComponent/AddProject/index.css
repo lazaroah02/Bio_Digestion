@@ -32,7 +32,7 @@
 .position-normal{
     position: absolute;
     left: 50%;
-    bottom:10px;
+    bottom:0px;
     transform: translate(-50%, -50%);
 }
 
