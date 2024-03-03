@@ -26,7 +26,7 @@ export function useManageUsers() {
     //create user
     function handleCreateUser({info, callback}){
         createUser({info:info, token:auth.token})
-        .then(data => {
+        .then((data) => {
             let usersCopy = [...users]
             usersCopy.splice(0, 0, data)
             setUsers(usersCopy)

@@ -2,6 +2,7 @@ import './index.css'
 import {useState} from 'react'
 import {createUserObjectToAPI} from '../../../utils/normalizeUserFormInfo'
 import {useToast} from '../../../hooks/useToast'
+import {validatePassword} from '../../../utils/validatePassword'
 
 function UserForm({setShow, createUser}) {
     const [loading, setLoading] = useState(false)
@@ -10,6 +11,10 @@ function UserForm({setShow, createUser}) {
     function handleCreateUser(e){
         e.preventDefault();
         setLoading(true)
+        let passValidation = validatePassword(e.target["password"].value)
+        if(passValidation !== 'ok'){
+            return showErrorMessage(passValidation)
+        }
         let formInfo = createUserObjectToAPI({
             username: e.target["username"].value,
             email: e.target["email"].value,

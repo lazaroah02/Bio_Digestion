@@ -16,7 +16,6 @@ function CreateUser({createUser}) {
                 resizable={false}
                 style={{maxWidth: "93vw", width:'500px' }}
                 header = "Crear Nuevo Usuario"
-                scrollable scrollHeight="400px"
             >
                 <UserForm setShow={setShow} createUser={createUser}/>
             </Dialog>

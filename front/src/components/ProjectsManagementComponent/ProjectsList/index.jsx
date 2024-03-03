@@ -15,7 +15,8 @@ function ProjectsList({projects, setSelectedProjects, selectedProjects, deleting
       size="normal"
       className = "projects-list-datatable"
       stripedRows = {true}
-      scrollable scrollHeight="70vh"
+      scrollable 
+      scrollHeight={"70vh"}
     >
       {deletingProjects?<Column selectionMode="multiple"></Column>:null}
       <Column
