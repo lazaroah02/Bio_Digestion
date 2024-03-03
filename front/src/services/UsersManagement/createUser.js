@@ -16,7 +16,13 @@ export function createUser({info, token}){
             })
         }
         else{
-            throw new Error('Error al crear el usuario')
+            return res.json()
+            .then(err => {
+                if(err.username){
+                    throw new Error('Existe un usuario con el mismo nombre de usuario')
+                }
+                throw new Error('Error al crear el usuario')
+            })
         }
     })
 }

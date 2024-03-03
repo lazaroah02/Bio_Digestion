@@ -2,12 +2,13 @@ from django.forms import ValidationError
 from rest_framework import serializers
 from django.contrib.auth import get_user_model
 from django.contrib.auth.hashers import make_password
+from rest_framework.validators import UniqueValidator
 from django.contrib.auth.password_validation import MinimumLengthValidator, UserAttributeSimilarityValidator, CommonPasswordValidator, NumericPasswordValidator
 
 User = get_user_model()
 
 class UserManagmentSerializer(serializers.ModelSerializer):
-    username = serializers.CharField(required = True)
+    username = serializers.SlugField(validators=[UniqueValidator(queryset=User.objects.all())])
     password = serializers.CharField(write_only = True)
     is_active = serializers.BooleanField(initial = True)
     last_login = serializers.DateTimeField(read_only = True)

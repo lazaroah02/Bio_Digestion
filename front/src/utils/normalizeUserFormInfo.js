@@ -39,3 +39,16 @@ export function createUserObjectToAPI({
         is_active: isActive 
     }
 }
+
+//user form initial values
+export function userFormInitialValues(){
+    return {
+        username: "",
+        email: "",
+        firstName: "",
+        lastName: "",
+        password: "",
+        isStaff: false,
+        isActive: true 
+    }
+}

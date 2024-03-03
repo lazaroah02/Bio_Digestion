@@ -1,10 +1,10 @@
 import './index.css'
 import {useState} from 'react'
-import {createUserObjectToAPI} from '../../../utils/normalizeUserFormInfo'
+import {createUserObjectToAPI, userFormInitialValues} from '../../../utils/normalizeUserFormInfo'
 import {useToast} from '../../../hooks/useToast'
 import {validatePassword} from '../../../utils/validatePassword'
 
-function UserForm({setShow, createUser}) {
+function UserForm({setShow, createUser, userFormProps = {values:userFormInitialValues(), creating:true}}) {
     const [loading, setLoading] = useState(false)
     const {toast, showErrorMessage, showSuccessMessage} = useToast()
 
@@ -42,36 +42,39 @@ function UserForm({setShow, createUser}) {
                 {/*username*/}
                 <div>
                     <label htmlFor="username">Nombre de Usuario <strong>*</strong></label>
-                    <input id = "username" type="text" required = {true}/>
+                    <input id = "username" type="text" required = {true} defaultValue={userFormProps.values.username}/>
                 </div>
                 {/*email*/}
                 <div>
                     <label htmlFor="email">Correo</label>
-                    <input id = "email" type="text" />
+                    <input id = "email" type="text" defaultValue={userFormProps.values.email}/>
                 </div>
                 {/*first_name*/}
                 <div>
                     <label htmlFor="firstName">Nombre</label>
-                    <input id = "firstName" type="text" />
+                    <input id = "firstName" type="text" defaultValue={userFormProps.values.firstName}/>
                 </div>
                 {/*last_name*/}
                 <div>
                     <label htmlFor="lastName">Apellidos</label>
-                    <input id = "lastName" type="text"/>
+                    <input id = "lastName" type="text" defaultValue={userFormProps.values.lastName}/>
                 </div>
                 {/*password*/}
-                <div>
-                    <label htmlFor="password">Contraseña <strong>*</strong></label>
-                    <input id = "password" type="password" required = {true}/>
-                </div>
+                {userFormProps.creating?
+                    <div>
+                        <label htmlFor="password">Contraseña <strong>*</strong></label>
+                        <input id = "password" type="password" required = {true} />
+                    </div>
+                    :null
+                }
                 {/*is_staff*/}
                 <span>
-                    <input id = "isStaff" type="checkbox" />
+                    <input id = "isStaff" type="checkbox" defaultChecked = {userFormProps.values.isStaff}/>
                     <label htmlFor="isStaff">Es Admin</label>
                 </span>
                 {/*is_active*/}
                 <span>
-                    <input id = "isActive" type="checkbox"/>
+                    <input id = "isActive" type="checkbox" defaultChecked = {userFormProps.values.isActive}/>
                     <label htmlFor="isActive">Activo</label>
                 </span>
                 <section className = "user-form-buttons-container">
