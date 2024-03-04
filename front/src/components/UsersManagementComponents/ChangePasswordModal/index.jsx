@@ -33,7 +33,7 @@ function ChangePasswordModal({userId, changePassword}) {
 
     return ( 
         <>
-            <button type = " button" onClick={() => setShow(true)}><LockIcon color = "rgba(0, 0, 0, 0.7)" /></button>
+            <button title = "cambiar contraseña" type = " button" onClick={() => setShow(true)}><LockIcon color = "rgba(0, 0, 0, 0.7)" /></button>
             {toast()}
             <Dialog
                 visible={show}

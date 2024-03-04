@@ -1,54 +1,70 @@
-//function to use allways the same reference of user properties 
+//function to use allways the same reference of user properties
 export function userInfo({
-    username = "",
-    email = "",
-    firstName = "",
-    lastName = "",
-    password = "",
-    isStaff = false,
-    isActive = true
-}){
-    return {
-        username: username,
-        email: email,
-        firstName: firstName,
-        lastName: lastName,
-        password: password,
-        isStaff: isStaff,
-        isActive: isActive 
-    }
+  id = "",
+  username = "",
+  email = "",
+  first_name = "",
+  last_name = "",
+  password = "",
+  is_staff = false,
+  is_active = true,
+}) {
+  return {
+    id:id,
+    username: username,
+    email: email,
+    firstName: first_name,
+    lastName: last_name,
+    password: password,
+    isStaff: is_staff,
+    isActive: is_active,
+  };
 }
 
 //function to create the user object to send to the api
 export function createUserObjectToAPI({
+  values: {
+    id = "",
     username = "",
     email = "",
     firstName = "",
     lastName = "",
-    password = "",
+    password = null,
     isStaff = false,
-    isActive = true
-}){
-    return {
+    isActive = true,
+  },
+  creating = true,
+}) {
+  return creating
+    ? {
         username: username,
         email: email,
         first_name: firstName,
         last_name: lastName,
         password: password,
         is_staff: isStaff,
-        is_active: isActive 
-    }
+        is_active: isActive,
+      }
+    : {
+        id:id,
+        username: username,
+        email: email,
+        first_name: firstName,
+        last_name: lastName,
+        is_staff: isStaff,
+        is_active: isActive,
+      };
 }
 
 //user form initial values
-export function userFormInitialValues(){
-    return {
-        username: "",
-        email: "",
-        firstName: "",
-        lastName: "",
-        password: "",
-        isStaff: false,
-        isActive: true 
-    }
+export function userFormInitialValues() {
+  return {
+    username: "",
+    email: "",
+    firstName: "",
+    lastName: "",
+    password: "",
+    isStaff: false,
+    isActive: true,
+  };
 }

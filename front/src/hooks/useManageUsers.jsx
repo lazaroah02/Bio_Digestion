@@ -3,6 +3,7 @@ import AuthenticationContext from '../contexts/authenticationContext'
 import {getUsers} from '../services/UsersManagement/getUsers'
 import {createUser} from '../services/UsersManagement/createUser'
 import { deleteUsers } from '../services/UsersManagement/deleteUsers'
+import {editUser} from '../services/UsersManagement/editUser'
 import {changePassword} from '../services/UsersManagement/changePassword'
 
 export function useManageUsers() {
@@ -37,6 +38,18 @@ export function useManageUsers() {
         })
     }
 
+    //edit user
+    function handleEditUser({info, callback}){
+        editUser({info:info, token:auth.token})
+        .then((data) => {
+            updateInfoUserUpdated(info)
+            return callback({status:201, message:"Usuario editado correctamente"})
+        })
+        .catch(error => {
+            return callback({status:400, message:error.message})
+        })
+    }
+
     //delete users
     function handleDeleteUsers({users, callback}){
         if(users.includes(auth.infoUser.id)){
@@ -60,6 +73,17 @@ export function useManageUsers() {
         setUsers(users.filter(user => !usersToDelete.includes(user.id)))
     }
 
+    function updateInfoUserUpdated(newInfo){
+        let usersCopy = [...users]
+        for(let i = 0; i < usersCopy.length; i++){
+            if(users[i].id === newInfo.id){
+                usersCopy.splice(i, 1, newInfo)
+                break
+            }
+        }
+        setUsers(usersCopy)
+    }
+
     //change password
     function handleChangePassword({userId, newPassword, callback}){
         changePassword({userId:userId, newPassword:newPassword, token:auth.token})
@@ -71,5 +95,5 @@ export function useManageUsers() {
         })
     }
 
-    return ({users, loadingUsers, handleCreateUser, handleDeleteUsers, handleChangePassword});
+    return ({users, loadingUsers, handleCreateUser, handleDeleteUsers, handleChangePassword, handleEditUser});
 }

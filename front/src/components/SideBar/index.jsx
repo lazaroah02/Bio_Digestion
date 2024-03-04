@@ -28,7 +28,7 @@ function SideBar() {
       {confirmDialog(logout)}
       <header>
         <img alt="logo Bio Digestion" src={LogoFullGreen} />
-        <div>Hola, {auth.username} admin</div>
+        <div>Hola, {auth.infoUser?.username}</div>
       </header>
       <section>
         <ul>

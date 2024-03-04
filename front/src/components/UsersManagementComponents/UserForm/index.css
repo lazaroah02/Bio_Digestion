@@ -17,6 +17,14 @@
     align-items: center;
 }
 
+.user-form label{
+    font-family: Outfit-Regular;
+}
+
+.user-form strong{
+    color:red;
+}
+
 .user-form span input{
     height: auto;
 }

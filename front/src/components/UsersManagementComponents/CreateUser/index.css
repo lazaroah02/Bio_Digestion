@@ -21,3 +21,7 @@
     right: 50px;
     bottom:30px;
 }
+
+.create-user-button span{
+    font-size:30px
+}

@@ -7,7 +7,7 @@ function CreateUser({createUser}) {
     const [show, setShow] = useState(false)
     return ( 
         <>
-            <button className = "create-user-button" onClick={() => setShow(true)}>Create</button>
+            <button className = "create-user-button" onClick={() => setShow(true)}>Registrar Usuario <span>+</span></button>
             <Dialog
                 visible={show}
                 onHide={() => setShow(false)}
