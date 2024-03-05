@@ -4,7 +4,7 @@ import {createUserObjectToAPI, userFormInitialValues} from '../../../utils/norma
 import {useToast} from '../../../hooks/useToast'
 import {validatePassword} from '../../../utils/validatePassword'
 
-function UserForm({setShow, createUser, editUser, userFormProps = {values:userFormInitialValues(), creating:true}}) {
+function UserForm({setShow, createUser, editUser, userFormProps = {values:userFormInitialValues(), creating:true, disabled:false}}) {
     const [loading, setLoading] = useState(false)
     const {toast, showErrorMessage, showSuccessMessage} = useToast()
 
@@ -68,44 +68,44 @@ function UserForm({setShow, createUser, editUser, userFormProps = {values:userFo
                 {/*username*/}
                 <div>
                     <label htmlFor="username">Nombre de Usuario <strong>*</strong></label>
-                    <input id = "username" type="text" required = {true} defaultValue={userFormProps.values.username}/>
+                    <input id = "username" type="text" required = {true} defaultValue={userFormProps.values.username} disabled = {userFormProps.disabled}/>
                 </div>
                 {/*email*/}
                 <div>
                     <label htmlFor="email">Correo</label>
-                    <input id = "email" type="email" defaultValue={userFormProps.values.email}/>
+                    <input id = "email" type="email" defaultValue={userFormProps.values.email} disabled = {userFormProps.disabled}/>
                 </div>
                 {/*first_name*/}
                 <div>
                     <label htmlFor="firstName">Nombre</label>
-                    <input id = "firstName" type="text" defaultValue={userFormProps.values.firstName}/>
+                    <input id = "firstName" type="text" defaultValue={userFormProps.values.firstName} disabled = {userFormProps.disabled}/>
                 </div>
                 {/*last_name*/}
                 <div>
                     <label htmlFor="lastName">Apellidos</label>
-                    <input id = "lastName" type="text" defaultValue={userFormProps.values.lastName}/>
+                    <input id = "lastName" type="text" defaultValue={userFormProps.values.lastName} disabled = {userFormProps.disabled}/>
                 </div>
                 {/*password*/}
                 {userFormProps.creating?
                     <div>
                         <label htmlFor="password">Contraseña <strong>*</strong></label>
-                        <input id = "password" type="password" required = {true} />
+                        <input id = "password" type="password" required = {true} disabled = {userFormProps.disabled}/>
                     </div>
                     :null
                 }
                 {/*is_staff*/}
                 <span>
-                    <input id = "isStaff" type="checkbox" defaultChecked = {userFormProps.values.isStaff}/>
+                    <input id = "isStaff" type="checkbox" defaultChecked = {userFormProps.values.isStaff} disabled = {userFormProps.disabled}/>
                     <label htmlFor="isStaff">Es Admin</label>
                 </span>
                 {/*is_active*/}
                 <span>
-                    <input id = "isActive" type="checkbox" defaultChecked = {userFormProps.values.isActive}/>
+                    <input id = "isActive" type="checkbox" defaultChecked = {userFormProps.values.isActive} disabled = {userFormProps.disabled}/>
                     <label htmlFor="isActive">Activo</label>
                 </span>
                 <section className = "user-form-buttons-container">
                     <button type = 'button' onClick = {() => setShow(false)}>Cancelar</button>
-                    <button>{loading?'Enviando ...':'Enviar'}</button>
+                    {!userFormProps.disabled?<button>{loading?'Enviando ...':'Enviar'}</button>:null}
                 </section>
             </form>
         </>
