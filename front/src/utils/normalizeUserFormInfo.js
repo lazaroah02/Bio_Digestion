@@ -8,6 +8,8 @@ export function userInfo({
   password = "",
   is_staff = false,
   is_active = true,
+  last_login = null,
+  date_joined = null,
 }) {
   return {
     id:id,
@@ -18,6 +20,8 @@ export function userInfo({
     password: password,
     isStaff: is_staff,
     isActive: is_active,
+    lastLogin:last_login,
+    dateJoined:date_joined,
   };
 }
 

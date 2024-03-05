@@ -5,6 +5,7 @@ import {formatDateWithTime} from '../../../utils/formatDate'
 import CheckIcon from '../../../icons/CheckIcon'
 import XIcon from '../../../icons/XIcon'
 import ActionButtons from './ActionButtons'
+import { userInfo } from '../../../utils/normalizeUserFormInfo';
 import './index.css'
 
 function UsersList({ users, selectedUsers, setSelectedUsers, deletingUsers, changePassword, editUser }) {
@@ -76,7 +77,7 @@ function UsersList({ users, selectedUsers, setSelectedUsers, deletingUsers, chan
         header = "Acciones"
         body={(user) => {
           return (
-              <ActionButtons user={user} changePassword={changePassword} editUser={editUser}/>
+              <ActionButtons user={userInfo(user)} changePassword={changePassword} editUser={editUser}/>
           );
         }}
       ></Column>
