@@ -12,7 +12,7 @@ function Dashboard({children}) {
                 <SideBar/>
             </aside>
             <Sidebar visible = {showSidebar} onHide={() => setShowSidebar(false)} className = "dashboard-sidebar">
-                <SideBar/>
+                <SideBar closeSideBar={() => setShowSidebar(false)}/>
             </Sidebar>
             <main>
                 <button type='button' className = "show-sidebar-button" onClick={() => setShowSidebar(true)}><MenuIcon color = {'rgba(0, 0, 0, 0.8)'}/></button>

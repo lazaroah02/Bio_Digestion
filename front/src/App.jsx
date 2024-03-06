@@ -8,6 +8,7 @@ import { AuthenticationContextProvider } from "./contexts/authenticationContext"
 import { PrimeReactProvider } from 'primereact/api';
 import LoginPage from "./pages/LoginPage";
 import ProtectedRoute from "./components/ProtectedRoutes/ProtectedRoute";
+import Indicators from "./pages/Indicators";
 import OnlyAdminsPage from "./components/ProtectedRoutes/OnlyAdminsPage";
 import Info from "./pages/Info";
 import Dashboard from "./pages/Dashboard";
@@ -31,6 +32,16 @@ function App() {
                   <ProtectedRoute>
                     <Dashboard>
                       <ProjectsManagement/>
+                    </Dashboard>
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/dashboard/projects/:projectId"
+                element={
+                  <ProtectedRoute>
+                    <Dashboard>
+                      <Indicators/>
                     </Dashboard>
                   </ProtectedRoute>
                 }

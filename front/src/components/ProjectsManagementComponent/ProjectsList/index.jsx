@@ -2,9 +2,11 @@ import { DataTable } from "primereact/datatable";
 import { Column } from "primereact/column";
 import {formatDate} from '../../../utils/formatDate'
 import LeafIcon from '../../../icons/LeafIcon'
+import {useNavigate} from 'react-router-dom'
 import './index.css'
 
 function ProjectsList({projects, setSelectedProjects, selectedProjects, deletingProjects}) {
+  const navigate = useNavigate()
   return (
     <DataTable
       value={projects}
@@ -17,6 +19,7 @@ function ProjectsList({projects, setSelectedProjects, selectedProjects, deleting
       stripedRows = {true}
       scrollable 
       scrollHeight={"70vh"}
+      onRowClick={({data}) => navigate(`${data.id}`)}
     >
       {deletingProjects?<Column selectionMode="multiple"></Column>:null}
       <Column

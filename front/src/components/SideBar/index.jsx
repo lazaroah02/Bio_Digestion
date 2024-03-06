@@ -9,7 +9,7 @@ import UserIcon from "../../icons/UserIcon";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useConfirmDialog } from "../../hooks/useConfirmDialog";
 
-function SideBar() {
+function SideBar({closeSideBar = () => {}}) {
   const { auth, handleLogout } = useContext(AuthenticationContext);
   const {confirmDialog, showConfirm} = useConfirmDialog()
   const { pathname } = useLocation();
@@ -21,6 +21,11 @@ function SideBar() {
 
   function logout(){
     handleLogout(() => navigate("/bye"))
+  }
+
+  function handleNavigate(pathname){
+    closeSideBar()
+    navigate(pathname)
   }
 
   return (
@@ -39,7 +44,7 @@ function SideBar() {
               }
             ></aside>
             <span
-            onClick={() => navigate("/dashboard/projects")}
+            onClick={() => handleNavigate("/dashboard/projects")}
               className={
                 checkActivePath("projects") ? "sidebar-active-path" : null
               }
@@ -60,7 +65,7 @@ function SideBar() {
               }
             ></aside>
             <span
-            onClick={() => navigate("/dashboard/graphics")}
+            onClick={() => handleNavigate("/dashboard/graphics")}
               className={
                 checkActivePath("graphics") ? "sidebar-active-path" : null
               }
@@ -81,7 +86,7 @@ function SideBar() {
               }
             ></aside>
             <span
-            onClick={() => navigate("/dashboard/info")}
+            onClick={() => handleNavigate("/dashboard/info")}
               className={checkActivePath("info") ? "sidebar-active-path" : null}
             >
               <DocIcon
@@ -100,7 +105,7 @@ function SideBar() {
               }
             ></aside>
             <span
-            onClick={() => navigate("/dashboard/users")}
+            onClick={() => handleNavigate("/dashboard/users")}
               className={
                 checkActivePath("users") ? "sidebar-active-path" : null
               }
