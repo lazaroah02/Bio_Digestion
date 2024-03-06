@@ -124,6 +124,7 @@
     }
     .confirm-deletion-buttons-container{
         width: 100%;
+        bottom: 30px;
     }
 
     .confirm-deletion-buttons-container button:last-child{
@@ -137,4 +138,5 @@
     .no-projects-message{
         font-size:18px;
     }
+
 }

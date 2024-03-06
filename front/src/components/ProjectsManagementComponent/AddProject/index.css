@@ -120,4 +120,7 @@
         height: 50px;
         font-size: 18px;
     }
+    .position-normal{
+        bottom:30px;
+    }
 }

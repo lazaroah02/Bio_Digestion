@@ -2,4 +2,60 @@
     background-color:#fff;
     width: 100%;
     height: 100%;
+    padding: 10px;
+}
+
+.indicators-page .header{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap:10px;
+}
+
+.indicators-page .header h4{
+    margin:0;
+
+    color: rgba(0, 0, 0, 0.6);
+    text-align: center;
+    font-family: Outfit-Regular;
+    font-size: 30px;
+    font-weight: 500;
+}
+
+.indicators-page .advise{
+    margin-left: 37px;
+    margin-top: 10px;
+
+    color: rgba(0, 0, 0, 0.5);
+    font-family: Outfit-Regular;
+    font-size: 20px;
+    font-weight: 400;
+}
+
+.indicators-grid-container{
+    width: 80%;
+}
+
+@media (max-width:1300px){
+    .indicators-page .header{
+        width: 90%;
+        position: sticky;
+        top:12px;
+        left: 50px;
+        z-index: 1;
+        
+    }
+
+    .indicators-page .header .go-back-button{
+        display:none;
+    }
+}
+
+@media (max-width: 500px) {
+    .indicators-page .header h4{    
+        font-size: 20px;
+    }
+    .indicators-page .header{
+        top:22px;
+    }
 }

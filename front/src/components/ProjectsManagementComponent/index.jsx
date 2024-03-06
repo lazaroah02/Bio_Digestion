@@ -85,7 +85,10 @@ function ProjectsManagement() {
       ) : <div className = "no-projects-message">No hay projectos aún</div>}
       {deletingProjects?
             <section className = "confirm-deletion-buttons-container">
-              <button onClick={() => setDeletingProjects(false)}><span>Cancelar</span></button>
+              <button onClick={() => {
+                setDeletingProjects(false)
+                setSelectedProjects([])
+                }}><span>Cancelar</span></button>
               <button onClick={() => showConfirm(true)}>{selectedProjects.length == 0?
               <span>Selecciona para eliminar</span>
               :<span>Eliminar</span>

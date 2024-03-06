@@ -19,7 +19,7 @@ function ProjectsList({projects, setSelectedProjects, selectedProjects, deleting
       stripedRows = {true}
       scrollable 
       scrollHeight={"70vh"}
-      onRowClick={({data}) => navigate(`${data.id}`)}
+      onRowClick={({data}) => navigate(`${data.id}`, { state: data })}
     >
       {deletingProjects?<Column selectionMode="multiple"></Column>:null}
       <Column

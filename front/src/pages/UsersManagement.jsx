@@ -77,8 +77,11 @@ function UsersManagement() {
         <UserGrid users = {users} setSelectedUsers={setSelectedUsers} selectedUsers={selectedUsers} deletingUsers = {deletingUsers}/>
       }
       {deletingUsers ? (
-        <section className="confirm-deletion-buttons-container">
-          <button onClick={() => setDeletingUsers(false)}>
+        <section className="confirm-deletion-buttons-container user-confirm-deletion-buttons">
+          <button onClick={() => {
+            setSelectedUsers([])
+            setDeletingUsers(false)}
+            }>
             <span>Cancelar</span>
           </button>
           <button onClick={() => showConfirm(true)}>

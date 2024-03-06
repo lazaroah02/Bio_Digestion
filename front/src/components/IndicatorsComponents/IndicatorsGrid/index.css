@@ -1,0 +1,16 @@
+.indicators-grid{
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(450px, 450px));
+    grid-template-rows: auto;
+    gap:10px;
+    place-content: center;
+}
+
+.indicator-card{
+    background-color:red;
+    width: 100%;
+    max-width: 450px;
+    height: 200px;
+}
