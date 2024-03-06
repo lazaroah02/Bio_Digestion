@@ -43,6 +43,7 @@ function ProjectsManagement() {
               detail: success.message,
             });
             setDeletingProjects(false)
+            setSelectedProjects([])
           } else {
             showToast({
               severity: "error",

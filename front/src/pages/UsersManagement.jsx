@@ -30,6 +30,7 @@ function UsersManagement() {
         } 
         showSuccessMessage(success.message)
         setDeletingUsers(false) 
+        setSelectedUsers([])
     }})
   }
   

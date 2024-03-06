@@ -15,10 +15,14 @@ function UsersGrid({users, selectedUsers, setSelectedUsers, deletingUsers}) {
         }
       }
     return ( 
-        <section className = "users-grid">
-            {users.map((user) => 
-                <UserCard key = {user.id} user = {userInfo(user)} selectedUsers = {selectedUsers} handleCheckUser={handleCheckUser} deletingUsers = {deletingUsers}/>
-            )}
+        <section className = "users-grid-container">
+            <section className = "users-grid">
+                {users.map((user) => 
+                    <UserCard key = {user.id} user = {userInfo(user)} selectedUsers = {selectedUsers} handleCheckUser={handleCheckUser} deletingUsers = {deletingUsers}/>
+                )}
+                <article className = "user-card transparent"></article>
+                <article className = "user-card transparent"></article>
+            </section>
         </section>
      );
 }

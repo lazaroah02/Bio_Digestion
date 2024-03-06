@@ -6,6 +6,10 @@
     flex-direction: column;
 }
 
+.transparent{
+    opacity: 0;
+}
+
 .user-card-header{
     height: 10%;
     width: 100%;
