@@ -73,7 +73,7 @@ function UsersManagement() {
           editUser = {handleEditUser}
         />
         :
-        <UserGrid users = {users}/>
+        <UserGrid users = {users} setSelectedUsers={setSelectedUsers} selectedUsers={selectedUsers} deletingUsers = {deletingUsers}/>
       }
       {deletingUsers ? (
         <section className="confirm-deletion-buttons-container">
