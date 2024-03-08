@@ -57,5 +57,7 @@
 }
 
 .selected{
-    background-color:red
+    outline: 2px solid #FF6868;
+    background: #FDE5E5;
+
 }

@@ -7,7 +7,7 @@ import {Checkbox} from 'primereact/checkbox'
 
 function UserCard({user, selectedUsers, handleCheckUser, deletingUsers, editUser, changePassword}) {
     return ( 
-        <article className = {selectedUsers.some(selectedProduct => user.id === selectedProduct.id)?'user-card selected':'user-card'}>
+        <article onClick={() => {deletingUsers?handleCheckUser({checked:!selectedUsers.some(selectedProduct => user.id === selectedProduct.id), user:user}):null}} className = {selectedUsers.some(selectedProduct => user.id === selectedProduct.id)?'user-card selected':'user-card'}>
             <header className = "user-card-header">
                 <div className = "user-card-username-container"><UserIcon/>{user.username}</div>
                 <ActionButtons user = {user} editUser={editUser} changePassword={changePassword}/>
@@ -21,9 +21,3 @@ function UserCard({user, selectedUsers, handleCheckUser, deletingUsers, editUser
 }
 
 export default UserCard;
-
-
-  //{deletingUsers?<Checkbox
-                //    checked={selectedUsers.some(selectedProduct => user.id === selectedProduct.id)}
-                //    onChange={(e) => handleCheckUser({checked:e.checked, user:user})}
-                //    />:null}
