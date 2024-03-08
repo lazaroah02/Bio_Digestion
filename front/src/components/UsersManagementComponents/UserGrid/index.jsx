@@ -2,7 +2,7 @@ import './index.css'
 import UserCard from './UserCard';
 import {userInfo} from '../../../utils/normalizeUserFormInfo'
 
-function UsersGrid({users, selectedUsers, setSelectedUsers, deletingUsers}) {
+function UsersGrid({users, selectedUsers, setSelectedUsers, deletingUsers, editUser, changePassword}) {
     function handleCheckUser({ checked, user }) {
         // Si el checkbox está marcado, agregar el usuario al array de seleccionados
         if (checked) {
@@ -18,7 +18,7 @@ function UsersGrid({users, selectedUsers, setSelectedUsers, deletingUsers}) {
         <section className = "users-grid-container">
             <section className = "users-grid">
                 {users.map((user) => 
-                    <UserCard key = {user.id} user = {userInfo(user)} selectedUsers = {selectedUsers} handleCheckUser={handleCheckUser} deletingUsers = {deletingUsers}/>
+                    <UserCard key = {user.id} user = {userInfo(user)} selectedUsers = {selectedUsers} handleCheckUser={handleCheckUser} deletingUsers = {deletingUsers} editUser={editUser} changePassword={changePassword}/>
                 )}
                 <article className = "user-card transparent"></article>
                 <article className = "user-card transparent"></article>

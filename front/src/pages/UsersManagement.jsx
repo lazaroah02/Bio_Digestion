@@ -8,48 +8,65 @@ import TrashIcon from "../icons/TrashIcon";
 import CreateUser from "../components/UsersManagementComponents/CreateUser";
 import { useToast } from "../hooks/useToast";
 import { useConfirmDialog } from "../hooks/useConfirmDialog";
-import {useIsMobileMode} from '../hooks/useIsMobileMode'
-import UserGrid from '../components/UsersManagementComponents/UserGrid'
+import { useIsMobileMode } from "../hooks/useIsMobileMode";
+import UserGrid from "../components/UsersManagementComponents/UserGrid";
 
 function UsersManagement() {
-  const { users, loadingUsers, handleDeleteUsers, handleChangePassword, handleCreateUser, handleEditUser } = useManageUsers();
+  const {
+    users,
+    loadingUsers,
+    handleDeleteUsers,
+    handleChangePassword,
+    handleCreateUser,
+    handleEditUser,
+  } = useManageUsers();
   const [selectedUsers, setSelectedUsers] = useState([]);
   const [deletingUsers, setDeletingUsers] = useState(false);
-  const {toast, showErrorMessage, showSuccessMessage} = useToast()
-  const {confirmDialog, showConfirm} = useConfirmDialog()
-  const {mobileMode} = useIsMobileMode({mobileWidth: 900})
+  const { toast, showErrorMessage, showSuccessMessage } = useToast();
+  const { confirmDialog, showConfirm } = useConfirmDialog();
+  const { mobileMode } = useIsMobileMode({ mobileWidth: 900 });
 
   //delete users
-  function deleteUsers(){
+  function deleteUsers() {
     if (selectedUsers.length == 0) {
-      return showErrorMessage("Debes seleccionar algun usuario")
+      return showErrorMessage("Debes seleccionar algun usuario");
     }
-    handleDeleteUsers({users: selectedUsers.map(user => user.id), callback: (success) => {
+    handleDeleteUsers({
+      users: selectedUsers.map((user) => user.id),
+      callback: (success) => {
         if (success.status != 200) {
-          return showErrorMessage(success.message)
-        } 
-        showSuccessMessage(success.message)
-        setDeletingUsers(false) 
-        setSelectedUsers([])
-    }})
+          return showErrorMessage(success.message);
+        }
+        showSuccessMessage(success.message);
+        setDeletingUsers(false);
+        setSelectedUsers([]);
+      },
+    });
   }
-  
 
   //change password
-  function changePassword({newPassword, userId, changePasswordModalCallback}){
-    handleChangePassword({userId: userId, newPassword: newPassword, callback:(success) => {
-      if(success.status != 200) {
-        return showErrorMessage(success.message)
-      }
-      showSuccessMessage(success.message)
-      changePasswordModalCallback()
-    }})
+  function changePassword({
+    newPassword,
+    userId,
+    changePasswordModalCallback,
+  }) {
+    handleChangePassword({
+      userId: userId,
+      newPassword: newPassword,
+      callback: (success) => {
+        if (success.status != 200) {
+          return showErrorMessage(success.message);
+        }
+        showSuccessMessage(success.message);
+        changePasswordModalCallback();
+      },
+    });
   }
 
   return (
     <section className="user-management-page">
-        {toast()}
-        {confirmDialog(deleteUsers)}
+      {toast()}
+      {confirmDialog(deleteUsers)}
       {loadingUsers ? (
         <section className="projects-managment-loader-container">
           <div>
@@ -64,24 +81,33 @@ function UsersManagement() {
           content={"Eliminar Usuario"}
         />
       </header>
-      {!mobileMode?
+      {!mobileMode ? (
         <UserList
           users={users}
           selectedUsers={selectedUsers}
           setSelectedUsers={setSelectedUsers}
           deletingUsers={deletingUsers}
           changePassword={changePassword}
-          editUser = {handleEditUser}
+          editUser={handleEditUser}
         />
-        :
-        <UserGrid users = {users} setSelectedUsers={setSelectedUsers} selectedUsers={selectedUsers} deletingUsers = {deletingUsers}/>
-      }
+      ) : (
+        <UserGrid
+          users={users}
+          setSelectedUsers={setSelectedUsers}
+          selectedUsers={selectedUsers}
+          deletingUsers={deletingUsers}
+          changePassword={changePassword}
+          editUser={handleEditUser}
+        />
+      )}
       {deletingUsers ? (
         <section className="confirm-deletion-buttons-container user-confirm-deletion-buttons">
-          <button onClick={() => {
-            setSelectedUsers([])
-            setDeletingUsers(false)}
-            }>
+          <button
+            onClick={() => {
+              setSelectedUsers([]);
+              setDeletingUsers(false);
+            }}
+          >
             <span>Cancelar</span>
           </button>
           <button onClick={() => showConfirm(true)}>
@@ -94,9 +120,7 @@ function UsersManagement() {
           </button>
         </section>
       ) : (
-        <CreateUser   
-          createUser = {handleCreateUser}         
-        />
+        <CreateUser createUser={handleCreateUser} />
       )}
     </section>
   );

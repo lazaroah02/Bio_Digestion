@@ -35,6 +35,10 @@
     font-weight: 500;
 }
 
+.hidden{
+    background-color: red!important;
+}
+
 @media (max-width:1300px) {
     .projects-managment-options-dropdown{
         right: -35px;
