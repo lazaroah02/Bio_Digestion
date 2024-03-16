@@ -18,11 +18,11 @@ function Indicators() {
                 </header>
                 <div className = "advise">Selecciona para calcular</div>
                 <section className = "indicators-grid-container">
-                    <IndicatorsGrid/>
+                    <IndicatorsGrid indicators = {indicators}/>
                 </section>
             </div>
             <aside className = "indicators-page-graphics-section">
-                asd
+                
             </aside>
         </article>
      );
