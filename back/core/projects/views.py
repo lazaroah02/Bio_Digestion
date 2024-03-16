@@ -5,6 +5,9 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework import status
 from django.core.exceptions import ObjectDoesNotExist
+from rest_framework.decorators import action
+from indicators.models import Indicators
+from indicators.serializers import IndicatorsSerializer
 
 # Create your views here.
 
@@ -28,4 +31,15 @@ class ProjectsManagment(ModelViewSet):
                 return Response([], status = status.HTTP_400_BAD_REQUEST)
         except :
             return Response([], status = status.HTTP_400_BAD_REQUEST)
+    
+    @action(methods=["get"], detail=True)
+    def get_project_indicators(self, request, pk):
+        try:
+            indicators = IndicatorsSerializer(Indicators.objects.get(project = pk))
+            return Response(indicators.data, status = status.HTTP_200_OK)
+        except ObjectDoesNotExist:
+            return Response([], status = status.HTTP_400_BAD_REQUEST)     
+        except Exception as e:
+            print(e)
+            return Response([], status = status.HTTP_500_INTERNAL_SERVER_ERROR)      
     
