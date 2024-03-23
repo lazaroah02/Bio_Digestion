@@ -22,7 +22,7 @@
     width: 79%;
     height: 100%;
     background-color: transparent;
-    overflow-y: auto;
+    overflow-y: hidden;
     border-radius: 15px;
 }
 

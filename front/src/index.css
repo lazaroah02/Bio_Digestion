@@ -17,6 +17,10 @@
   font-family: Outfit-Bold;
   src: url('./assets/fonts/Outfit/Outfit-Bold.woff2');
 }
+@font-face {
+  font-family: Outfit-Semi-Bold;
+  src: url('./assets/fonts/Outfit/Outfit-SemiBold.woff2');
+}
 
 body {
   margin: 0;
