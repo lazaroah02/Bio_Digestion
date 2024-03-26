@@ -20,6 +20,7 @@ function ProjectsManagement() {
     loadingProjects,
     handleCreateProject,
     handleDeleteProjects,
+    handleUpdateProject
   } = useManageProjects();
 
   //delete projects
@@ -80,6 +81,7 @@ function ProjectsManagement() {
             selectedProjects={selectedProjects}
             setSelectedProjects={setSelectedProjects}
             deletingProjects={deletingProjects}
+            updateProject={handleUpdateProject}
           />
         </>
       ) : <div className = "no-projects-message">No hay projectos aún</div>}

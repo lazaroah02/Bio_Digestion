@@ -9,7 +9,7 @@ export function updateProject({id, newName, user, token}){
         body: JSON.stringify({name:newName, user:user})
     })
     .then(res => {
-        if(res.status == 201){
+        if(res.status == 200){
             return res.json()
             .then(data => {
                 return data
@@ -17,7 +17,7 @@ export function updateProject({id, newName, user, token}){
 
         }
         else{
-            throw new Error('Error al crear el proyecto')
+            throw new Error('Error al editar el proyecto')
         }
     })
 }

@@ -3,9 +3,10 @@ import { Column } from "primereact/column";
 import {formatDate} from '../../../utils/formatDate'
 import LeafIcon from '../../../icons/LeafIcon'
 import {useNavigate} from 'react-router-dom'
+import UpdateProject from "../UpdateProject";
 import './index.css'
 
-function ProjectsList({projects, setSelectedProjects, selectedProjects, deletingProjects}) {
+function ProjectsList({projects, setSelectedProjects, selectedProjects, deletingProjects, updateProject}) {
   const navigate = useNavigate()
   return (
     <DataTable
@@ -39,6 +40,13 @@ function ProjectsList({projects, setSelectedProjects, selectedProjects, deleting
             <div className="table-project-field-container">
               <span>{formatDate(project.created_at)}</span>
             </div>
+          );
+        }}
+      ></Column>
+      <Column
+        body={(project) => {
+          return (
+            <UpdateProject project={project} updateProject = {updateProject} className={"edit-project-button"}/>
           );
         }}
       ></Column>
