@@ -20,7 +20,6 @@ function ProjectsList({projects, setSelectedProjects, selectedProjects, deleting
       stripedRows = {true}
       scrollable 
       scrollHeight={"70vh"}
-      onRowClick={({data}) => navigate(`${data.id}`, { state: data })}
     >
       {deletingProjects?<Column selectionMode="multiple"></Column>:null}
       <Column
@@ -29,7 +28,7 @@ function ProjectsList({projects, setSelectedProjects, selectedProjects, deleting
         className="project-name-datatable-field"
         body={(project) => {
           return (
-              <><LeafIcon width="18"/><span>{project.name}</span></>
+              <div onClick = {() => navigate(`${project.id}`, { state: project })}><LeafIcon width="18" color = "green"/><span>{project.name}</span></div>
           );
         }}
       ></Column>

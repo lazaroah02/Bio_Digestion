@@ -14,6 +14,9 @@
 .projects-list-datatable td{
     border: 0;
 }
+.projects-list-datatable tr{
+    cursor: auto;
+}
 
 .project-name-datatable-field{
     margin-right: auto;
@@ -26,8 +29,21 @@
     gap: 10px;
 }
 
+.project-name-datatable-field div{
+    display: flex;
+    align-items: center;
+    gap:10px;
+    width: 100%;
+    max-width: 300px;
+    cursor: pointer;
+}
+
+.project-name-datatable-field div:hover{
+    color:green;
+}
+
 .project-name-datatable-field span{
-    max-width: 75%;
+    width: 100%;
     overflow: hidden;
     white-space: nowrap;
     text-overflow:ellipsis;
