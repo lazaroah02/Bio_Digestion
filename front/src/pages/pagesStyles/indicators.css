@@ -53,7 +53,7 @@
     .indicators-page .header{
         width: 90%;
         position: sticky;
-        top:12px;
+        top:4px;
         left: 50px;
         z-index: 1;
         
@@ -75,9 +75,12 @@
 
 @media (max-width: 500px) {
     .indicators-page .header h4{    
-        font-size: 20px;
+        font-size: 24px;
     }
     .indicators-page .header{
-        top:22px;
+        top:9px;
+    }
+    .indicators-page-main .advise{
+        font-size:18px;
     }
 }
