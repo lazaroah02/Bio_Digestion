@@ -1,4 +1,9 @@
 import "./index.css";
+import CalculateVAN from "../CalculateIndicatorsModals/CalculateVAN";
+import CalculateTRI from "../CalculateIndicatorsModals/CalculateTRI";
+import CalculateTIR from "../CalculateIndicatorsModals/CalculateTIR";
+import CalculateLEC from "../CalculateIndicatorsModals/CalculateLEC";
+import CalculateBPM from "../CalculateIndicatorsModals/CalculateBPM";
 
 function IndicatorsGrid({ indicators }) {
   return (
@@ -12,6 +17,7 @@ function IndicatorsGrid({ indicators }) {
                     Valor Actual Neto (VAN)
                 </header>
                 {indicators?.VAN.toFixed(2)}
+                <CalculateVAN/>
             </section>
         </article>
       <article className="indicator-card">
@@ -23,6 +29,7 @@ function IndicatorsGrid({ indicators }) {
                     Tasa Interna de Retorno (TIR)
                 </header>
                 {indicators?.TRI.toFixed(2)}
+                <CalculateTIR/>
             </section>
         </article>
       <article className="indicator-card">
@@ -34,6 +41,7 @@ function IndicatorsGrid({ indicators }) {
                     Tiempo de Recuperación de Inversión (TRI)
                 </header>
                 {indicators?.TIR.toFixed(2)}
+                <CalculateTRI/>
             </section>
         </article>
       <article className="indicator-card">
@@ -45,6 +53,7 @@ function IndicatorsGrid({ indicators }) {
                     Costo Nivelado de la Electricidad (LEC)
                 </header>
                 {indicators?.LEC.toFixed(2)}
+                <CalculateLEC/>
             </section>
         </article>
       <article className="indicator-card">
@@ -56,6 +65,7 @@ function IndicatorsGrid({ indicators }) {
                     Potencial de Biometano Generado (BPM)
                 </header>
                 {indicators?.BPM.toFixed(2)}
+                <CalculateBPM/>
             </section>
         </article>
       <article className="indicator-card">
