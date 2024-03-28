@@ -7,7 +7,7 @@ function CalculateIndicatorModal({title, asideColor = "", indicatorForm = () => 
     const [show, setShow] = useState(false)
     return ( 
         <>
-        <button onClick={() => setShow(true)}>Calcular</button>
+        <button onClick={() => setShow(true)} className = "show-modal-indicator-button">Calcular</button>
         <Dialog
             visible={show}
             onHide={() => setShow(false)}
@@ -21,8 +21,11 @@ function CalculateIndicatorModal({title, asideColor = "", indicatorForm = () => 
             <section className = "calculate-indicator-modal">
                 <article>
                     <header>
-                        <h1 style={{color:asideColor}}>{title}</h1>
-                        <button onClick={() => setShow(false)}><XIcon/></button>
+                        <div>
+                            <h1>{title}</h1>
+                            <button onClick={() => setShow(false)}><XIcon/></button>
+                        </div>
+                        <span>Ingrese los siguientes datos</span>
                     </header>
                     <section>
                         {indicatorForm}

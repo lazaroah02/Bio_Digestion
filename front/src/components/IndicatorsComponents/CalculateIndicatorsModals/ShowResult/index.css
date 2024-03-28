@@ -1,0 +1,32 @@
+.show-result-indicator-calculation{
+    position:absolute;
+    top:50%;
+    left: 50%;
+    transform: translate(-50%, -50%)
+}
+
+.show-result-indicator-calculation div{
+    color: #FFF;
+    font-family: Outfit-Regular;
+    font-size: 30px;
+    font-weight: 500;
+}
+
+.show-result-indicator-calculation span{
+    color: #FFF;
+    font-family: Outfit-Regular;
+    font-size: 50px;
+    font-weight: 500;
+}
+
+.save-result-indicator-calculation{
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    border: 2px solid #fff;
+    border-radius: 15px;
+    background-color: transparent;
+    padding: 10px;
+    color: #FFF;
+}

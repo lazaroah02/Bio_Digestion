@@ -1,3 +1,16 @@
+.show-modal-indicator-button{
+    border:0;
+    background-color: transparent;
+    font-family: Outfit-Regular;
+    border: 1px solid green;
+    border-radius:5px
+}
+
+.show-modal-indicator-button:hover{
+    color:white;
+    background:green;
+}
+
 .calculate-indicator-modal{
     display: flex;
     flex-direction: row;
@@ -8,6 +21,7 @@
 
 .calculate-indicator-modal aside{
     width: 40%;
+    position: relative;
 }
 
 .calculate-indicator-modal article{
@@ -16,20 +30,35 @@
 }
 
 .calculate-indicator-modal article header{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.calculate-indicator-modal article header div{
     width: 80%;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    margin: 0 auto;;
+    margin: 0 auto;
+}
+.calculate-indicator-modal article header span{
+    width: 80%;
+    margin: 0 auto;
 }
 
-.calculate-indicator-modal article header h1{
+.calculate-indicator-modal article header div h1{
     margin:0;
+    color:#2DD244;
+    font-size: 25px;
+    font-family: Outfit-Regular;
+    font-weight: 500;
 }
 
 .calculate-indicator-modal article header button{
     border: 0;
     background-color: transparent;
+    width: 50px;
 }
 
 @media (max-width:500px) {
