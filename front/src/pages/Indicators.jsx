@@ -7,11 +7,7 @@ import './pagesStyles/indicators.css';
 function Indicators() {
     const location = useLocation();
     const project = location.state;
-    const {indicators, loadingIndicators} = useManageIndicators({projectId:project.id});
-
-    function updateIndicatorValue({indicatorName, newValue}){
-        console.log(indicatorName, newValue);
-    }
+    const {indicators, loadingIndicators, updateIndicatorValue} = useManageIndicators({projectId:project.id});
 
     return ( 
         <article className = "indicators-page">
