@@ -9,6 +9,10 @@ function Indicators() {
     const project = location.state;
     const {indicators, loadingIndicators} = useManageIndicators({projectId:project.id});
 
+    function updateIndicatorValue({indicatorName, newValue}){
+        console.log(indicatorName, newValue);
+    }
+
     return ( 
         <article className = "indicators-page">
             <div className = "indicators-page-main">
@@ -18,7 +22,7 @@ function Indicators() {
                 </header>
                 <div className = "advise">Selecciona para calcular</div>
                 <section className = "indicators-grid-container">
-                    <IndicatorsGrid indicators = {indicators}/>
+                    <IndicatorsGrid indicators = {indicators} updateIndicatorValue={updateIndicatorValue}/>
                 </section>
             </div>
             <aside className = "indicators-page-graphics-section">

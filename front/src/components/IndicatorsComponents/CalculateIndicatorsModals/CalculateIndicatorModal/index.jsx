@@ -3,7 +3,7 @@ import {Dialog} from 'primereact/dialog'
 import XIcon from '../../../../icons/XIcon'
 import './index.css'
 
-function CalculateIndicatorModal({title, asideColor = "", indicatorForm = () => null, asideContent  = () => null}) {
+function CalculateIndicatorModal({title, asideColor = "", indicatorForm = null, asideContent  = null}) {
     const [show, setShow] = useState(false)
     return ( 
         <>
