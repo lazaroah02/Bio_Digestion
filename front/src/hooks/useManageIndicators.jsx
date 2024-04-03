@@ -6,6 +6,7 @@ import AuthenticationContext from '../contexts/authenticationContext'
 export function useManageIndicators({projectId}) {
     const [indicators, setIndicators] = useState(null)
     const [loadingIndicators, setLoading] = useState(false)
+    const [hasFetched, setHasFetched] = useState(false);
     const {auth} = useContext(AuthenticationContext)
 
     //get project indicators
@@ -14,14 +15,25 @@ export function useManageIndicators({projectId}) {
         getIndicators({projectId: projectId, token:auth.token})
         .then(data => {
             setIndicators(data[0])
+            setHasFetched(true)
         })
         .catch(err => {})
         .finally(() => {setLoading(false)})
     },[projectId])
 
+    //every time the indicator's values change, save them in database
+    useEffect(() => {
+        //evoid effect execution in first fetch
+        if (hasFetched) {
+            saveIndicatorsValuesInDatabase();
+        }
+    }, [indicators]);
+
     //save project indicator values in database 
-    function handleSaveIndicatorsValuesInDatabase(){
+    function saveIndicatorsValuesInDatabase(){
         updateIndicators({indicatorsId:indicators.id, token:auth.token, indicators:indicators})
+        .then(res => {})
+        .catch(err => {})
     }
 
     //update indicator value
@@ -29,5 +41,5 @@ export function useManageIndicators({projectId}) {
         setIndicators((prev) => ({...prev, [indicatorName]:newValue}))
     }
 
-    return ( {indicators, updateIndicatorValue, loadingIndicators, handleSaveIndicatorsValuesInDatabase} );
+    return ( {indicators, updateIndicatorValue, loadingIndicators} );
 }
