@@ -14,7 +14,7 @@ function IndicatorCard({indicatorName, indicatorValue, asideColor, title, childr
                 <header>{title}</header>
                 <form id = {`indicator-card-${indicatorName}-form`} onSubmit={(e) => handleSave(e)}>
                     <div className = "input-and-buttons-container">
-                        <input id = "indicatorValue" type="number" defaultValue={indicatorValue} step="0.01" readOnly = {!editting}/>
+                        <input id = "indicatorValue" type="number" defaultValue={indicatorValue} step="0.01" readOnly = {!editting} required/>
                         <div >
                             <button className = "edit-indicator-value-button" onClick = {() => setEdditing(!editting)} type = "reset">{editting?'Cancelar':'Editar'}</button>
                             {editting?<button className = "save-indicator-value-button" type="submit">Guardar</button>:null}
