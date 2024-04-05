@@ -1,35 +1,47 @@
 import './index.css'
 import '../commonStyles.css'
 import InfoIcon from '../../../../icons/InfoIcon';
+import { calculateVAN } from '../../../../utils/calculateIndicators';
 
-function CalculateVAN({indicators}) {
+function CalculateVAN({indicators, setVanResult}) {
 
     function handleCalculate(e){
         e.preventDefault();
-        console.log("aa")
+        let Q = parseFloat(e.target["Q"].value)
+        let r = parseFloat(e.target["r"].value)
+        let Inv = parseFloat(e.target["Inv"].value)
+        let n = parseInt(e.target["n"].value)
+        let partialResults = []
+        //calculate VAN n times
+        for(let j = 1; j <= n; j++) {
+            partialResults.push(parseFloat(calculateVAN({Q: Q, r: r, Inv: Inv, j:j})))
+        }
+        //add all VAN values
+        let result = partialResults.reduce((acumulator, value) => acumulator + value, 0).toFixed(2)
+        setVanResult({indicatorName:"VAN",result:result})
     }
 
     return ( 
         <section>
             <form className='calculate-VAN-form' onSubmit={(e) => handleCalculate(e)}>
                 <div className = "calculate-VAN-field-container">
-                    <label>Q:</label>
-                    <input className = "calculate-indicator-input" type = "number" step="0.01" required/>
+                    <label htmlFor='Q'>Q:</label>
+                    <input id = "Q" className = "calculate-indicator-input" type = "number" step="0.01" required/>
                     <InfoIcon className = "info-icon"/>
                 </div>
                 <div className = "calculate-VAN-field-container">
-                    <label>r:</label>
-                    <input className = "calculate-indicator-input" type = "number" step="0.01" required/>
+                    <label htmlFor='r'>r:</label>
+                    <input id = "r" className = "calculate-indicator-input" type = "number" step="0.01" required/>
                     <InfoIcon className = "info-icon"/>
                 </div>
                 <div className = "calculate-VAN-field-container">
-                    <label>Inv:</label>
-                    <input className = "calculate-indicator-input" type = "number" step="0.01" required/>
+                    <label htmlFor='Inv'>Inv:</label>
+                    <input id = "Inv" className = "calculate-indicator-input" type = "number" step="0.01" required/>
                     <InfoIcon className = "info-icon"/>
                 </div>
                 <div className = "calculate-VAN-field-container">
-                    <label>n:</label>
-                    <input className = "calculate-indicator-input" defaultValue={indicators?.n} readOnly type = "number" step="0.01" required/>
+                    <label htmlFor='n'>n:</label>
+                    <input id = "n" className = "calculate-indicator-input" defaultValue={indicators?.n} readOnly type = "number" step="0.01" required/>
                     <InfoIcon className = "info-icon"/>
                 </div>
                 <div className = "calculate-VAN-buttons-container">

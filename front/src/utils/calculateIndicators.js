@@ -1,5 +1,5 @@
-export function calculateVAN(){
-    return 0
+export function calculateVAN({Q, r, Inv, j}){
+    return ( ( Q / Math.pow((1 + r), j) ) - Inv ).toFixed(2)
 }
 
 export function calculateTIR(){

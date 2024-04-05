@@ -1,13 +1,15 @@
 import './index.css'
 
-function ShowVANResult({result = null}) {
+function ShowVANResult({result = null, updateIndicatorValue}) {
     return ( 
         <section className = "show-VAN-result">
             <section className = "show-result-VAN-calculation">
                 <div>Resultado:</div>
-                <span>{result?.toFixed(2)}</span>
+                <span>{result}</span>
             </section> 
-            <button className = "save-result-VAN-calculation">Guardar Nuevo Resultado</button>
+            <button className = "save-result-VAN-calculation" onClick={() => {
+                result !== null?updateIndicatorValue({indicatorName:"VAN", newValue:result}):null
+            }}>Guardar Nuevo Resultado</button>
         </section>
      );
 }
