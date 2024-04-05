@@ -31,7 +31,7 @@ export function useManageIndicators({projectId}) {
 
     //save project indicator values in database 
     function saveIndicatorsValuesInDatabase(){
-        updateIndicators({indicatorsId:indicators.id, token:auth.token, indicators:indicators})
+        updateIndicators({indicatorsId:indicators?.id, token:auth.token, indicators:indicators})
         .then(res => {})
         .catch(err => {})
     }
