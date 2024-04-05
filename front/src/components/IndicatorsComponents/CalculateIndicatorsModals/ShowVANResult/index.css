@@ -1,0 +1,37 @@
+.show-VAN-result{
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+.show-result-VAN-calculation{
+    position:absolute;
+    top:50%;
+    left: 50%;
+    transform: translate(-50%, -50%)
+}
+
+.show-result-VAN-calculation div{
+    color: #FFF;
+    font-family: Outfit-Regular;
+    font-size: 30px;
+    font-weight: 500;
+}
+
+.show-result-VAN-calculation span{
+    color: #FFF;
+    font-family: Outfit-Regular;
+    font-size: 50px;
+    font-weight: 500;
+}
+
+.save-result-VAN-calculation{
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    border: 2px solid #fff;
+    border-radius: 15px;
+    background-color: transparent;
+    padding: 10px;
+    color: #FFF;
+}

@@ -5,6 +5,7 @@ import CalculateTIR from "../CalculateIndicatorsModals/CalculateTIR";
 import CalculateLEC from "../CalculateIndicatorsModals/CalculateLEC";
 import CalculateBPM from "../CalculateIndicatorsModals/CalculateBPM";
 import ShowResult from '../CalculateIndicatorsModals/ShowResult'
+import ShowVANResult from "../CalculateIndicatorsModals/ShowVANResult";
 import IndicatorCard from "./IndicatorCard";
 import "./index.css";
 
@@ -16,7 +17,8 @@ function IndicatorsGrid({ indicators, updateIndicatorValue }) {
         <CalculateIndicatorModal
           title={"Calcular VAN"}
           asideColor="green"
-          indicatorForm={<CalculateVAN />}
+          indicatorForm={<CalculateVAN indicators = {indicators}/>}
+          asideContent={<ShowVANResult />}
         />
       </IndicatorCard>
       <IndicatorCard title = "Tasa Interna de Retorno (TIR)" indicatorName = {"TIR"} updateIndicatorValue={updateIndicatorValue} indicatorValue={indicators?.TIR} asideColor={"#06F"}>
