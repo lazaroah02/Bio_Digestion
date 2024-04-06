@@ -62,7 +62,7 @@ function CalculateQ({ setQValue }) {
                 step="0.01"
                 required
               />
-              <ShowPropertiesInfo/>
+              <ShowPropertiesInfo title = "IA" description="IA, representa los ingresos anuales (en unidades monetarias por año)"/>
             </div>
             <div className="calculate-IA-advice">
               <span>No conoces el valor?</span>{" "}
@@ -78,7 +78,7 @@ function CalculateQ({ setQValue }) {
               step="0.01"
               required
             />
-            <ShowPropertiesInfo/>
+            <ShowPropertiesInfo title = "GA" description="GA, representa los gastos anuales (en unidades monetarias por año), producto de labores de operación y mantenimiento del sistema."/>
           </div>
           {result !== null && result !== "NaN" ? (
             <div className="show-Q-result">

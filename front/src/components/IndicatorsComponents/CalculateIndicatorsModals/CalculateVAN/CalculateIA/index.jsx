@@ -51,22 +51,22 @@ function CalculateIA({setIAValue}) {
             <div className = "calculate-indicator-field-container">
                 <label htmlFor='CP'>CP:</label>
                 <input id = "CP" className = "calculate-indicator-input" type = "number" step="0.01" required/>
-                <ShowPropertiesInfo/>
+                <ShowPropertiesInfo title = "CP" description='CP, representa poder calórico del vapor. (kWh/ m3).'/>
             </div>
             <div className = "calculate-indicator-field-container">
                 <label htmlFor='Fc'>Fc:</label>
                 <input id = "Fc" className = "calculate-indicator-input" type = "number" step="0.01" required/>
-                <ShowPropertiesInfo/>
+                <ShowPropertiesInfo title = "Fc"/>
             </div>
             <div className = "calculate-indicator-field-container">
                 <label htmlFor='Ve'>Ve:</label>
                 <input id = "Ve" className = "calculate-indicator-input" type = "number" step="0.01" required/>
-                <ShowPropertiesInfo/>
+                <ShowPropertiesInfo title = "Ve"/>
             </div>
             <div className = "calculate-indicator-field-container">
                 <label htmlFor='PE'>PE:</label>
                 <input id = "PE" className = "calculate-indicator-input" type = "number" step="0.01" required/>
-                <ShowPropertiesInfo/>
+                <ShowPropertiesInfo title = "PE" description='PE, representa el precio de la energía producida (CUP)'/>
             </div>
             {result?<div className = "show-Q-result"><span>Resultado: {result}</span><button className = "small-green-button" onClick = {() => handleSaveValue()}>Usar</button></div>:null}
             <IndicatorFormActionButtons handleCleanResult={() => {}} key={"asd"}/>

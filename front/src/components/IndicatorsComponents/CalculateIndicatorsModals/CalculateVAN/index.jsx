@@ -38,24 +38,24 @@ function CalculateVAN({indicators, setVanResult}) {
                     <div className = "calculate-indicator-field-container">
                         <label htmlFor='Q'>Q:</label>
                         <input id = "Q" value = {QValue} onChange={(e) => setQValue(e.target.value)} className = "calculate-indicator-input" type = "number" step="0.01" required/>
-                        <ShowPropertiesInfo/>
+                        <ShowPropertiesInfo title = "Q" description='Q, es el flujo de caja en unidades monetarias por año'/>
                     </div>
                     <div className = "calculate-Q-advice"><span>No conoces el valor?</span> <CalculateQ setQValue={setQValue}/></div>
                 </div>
                 <div className = "calculate-indicator-field-container">
                     <label htmlFor='r'>r:</label>
                     <input id = "r" className = "calculate-indicator-input" type = "number" step="0.01" required/>
-                    <ShowPropertiesInfo/>
+                    <ShowPropertiesInfo title = "r" description='r, es la tasa de descuento'/>
                 </div>
                 <div className = "calculate-indicator-field-container">
                     <label htmlFor='Inv'>Inv:</label>
                     <input id = "Inv" className = "calculate-indicator-input" type = "number" step="0.01" required/>
-                    <ShowPropertiesInfo/>
+                    <ShowPropertiesInfo title = "Inv" description='Inv, corresponde a la inversión total'/>
                 </div>
                 <div className = "calculate-indicator-field-container">
                     <label htmlFor='n'>n:</label>
                     <input id = "n" className = "calculate-indicator-input" defaultValue={indicators?.n} readOnly type = "number" step="0.01" required/>
-                    <ShowPropertiesInfo/>
+                    <ShowPropertiesInfo title = "n" description='El valor de n representa al número de años de vida útil del Biorreactor, que, a los efectos del presente trabajo, será considerada 30 años.'/>
                 </div>
                 <IndicatorFormActionButtons handleCleanResult={handleCleanResult}/>
             </form>
