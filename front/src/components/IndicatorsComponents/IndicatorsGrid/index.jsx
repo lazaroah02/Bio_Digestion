@@ -18,7 +18,7 @@ function IndicatorsGrid({ indicators, indicatorResults, updateIndicatorValue, se
           title={"Calcular VAN"}
           asideColor="green"
           indicatorForm={<CalculateVAN indicators = {indicators} setVanResult={setIndicatorResult}/>}
-          asideContent={<ShowVANResult result={indicatorResults?.VAN} updateIndicatorValue={updateIndicatorValue}/>}
+          asideContent={<ShowVANResult result={indicatorResults?.VAN} VANpartialResults = {indicatorResults?.VANpartialResults} updateIndicatorValue={updateIndicatorValue}/>}
         />
       </IndicatorCard>
       <IndicatorCard title = "Tasa Interna de Retorno (TIR)" indicatorName = {"TIR"} updateIndicatorValue={updateIndicatorValue} indicatorValue={indicators?.TIR} asideColor={"#06F"}>

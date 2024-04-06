@@ -19,6 +19,12 @@ function CalculateVAN({indicators, setVanResult}) {
         //add all VAN values
         let result = partialResults.reduce((acumulator, value) => acumulator + value, 0).toFixed(2)
         setVanResult({indicatorName:"VAN",result:result})
+        setVanResult({indicatorName:"VANpartialResults",result:partialResults})
+    }
+
+    function handleCleanResult(){
+        setVanResult({indicatorName:"VAN", result:null})
+        setVanResult({indicatorName:"VANpartialResults", result:[]})
     }
 
     return ( 
@@ -45,7 +51,7 @@ function CalculateVAN({indicators, setVanResult}) {
                     <InfoIcon className = "info-icon"/>
                 </div>
                 <div className = "calculate-VAN-buttons-container">
-                    <button className = "calculate-VAN-reset-button" type = "reset">Borrar</button>
+                    <button className = "calculate-VAN-reset-button" type = "reset" onClick={() => handleCleanResult()}>Borrar</button>
                     <button className = "calculate-VAN-button" type = "submit">Calcular</button>
                 </div>
             </form>

@@ -11,6 +11,7 @@ function Indicators() {
     const {indicators, loadingIndicators, updateIndicatorValue} = useManageIndicators({projectId:project.id});
     const [indicatorResults, setIndicatorResults] = useState({
         VAN:null,
+        VANpartialResults:[],
         TIR:null,
         TRI:null,
         LEC:null,
