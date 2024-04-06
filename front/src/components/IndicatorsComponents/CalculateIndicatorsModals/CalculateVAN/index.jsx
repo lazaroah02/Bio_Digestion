@@ -3,15 +3,18 @@ import '../commonStyles.css'
 import InfoIcon from '../../../../icons/InfoIcon';
 import { calculateVAN } from '../../../../utils/calculateIndicators';
 import CalculateQ from './CalculateQ'
+import {useState} from 'react'
+import IndicatorFormActionButtons from '../IndicatorFormsActionButtons';
 
 function CalculateVAN({indicators, setVanResult}) {
+    const [QValue, setQValue] = useState("")
 
     function handleCalculate(e){
         e.preventDefault();
-        let Q = parseFloat(e.target["Q"].value)
-        let r = parseFloat(e.target["r"].value)
-        let Inv = parseFloat(e.target["Inv"].value)
-        let n = parseInt(e.target["n"].value)
+        let Q = parseFloat(QValue)
+        let r = parseFloat(e.target["r"]?.value)
+        let Inv = parseFloat(e.target["Inv"]?.value)
+        let n = parseInt(e.target["n"]?.value)
         let partialResults = []
         //calculate VAN n times
         for(let j = 1; j <= n; j++) {
@@ -32,32 +35,29 @@ function CalculateVAN({indicators, setVanResult}) {
         <section>
             <form className='calculate-VAN-form' onSubmit={(e) => handleCalculate(e)}>
                 <div>
-                    <div className = "calculate-VAN-field-container">
+                    <div className = "calculate-indicator-field-container">
                         <label htmlFor='Q'>Q:</label>
-                        <input id = "Q" className = "calculate-indicator-input" type = "number" step="0.01" required/>
+                        <input id = "Q" value = {QValue} onChange={(e) => setQValue(e.target.value)} className = "calculate-indicator-input" type = "number" step="0.01" required/>
                         <InfoIcon className = "info-icon"/>
                     </div>
-                    <div className = "calculate-Q-advice"><span>No conoces el valor?</span> <CalculateQ/></div>
+                    <div className = "calculate-Q-advice"><span>No conoces el valor?</span> <CalculateQ setQValue={setQValue}/></div>
                 </div>
-                <div className = "calculate-VAN-field-container">
+                <div className = "calculate-indicator-field-container">
                     <label htmlFor='r'>r:</label>
                     <input id = "r" className = "calculate-indicator-input" type = "number" step="0.01" required/>
                     <InfoIcon className = "info-icon"/>
                 </div>
-                <div className = "calculate-VAN-field-container">
+                <div className = "calculate-indicator-field-container">
                     <label htmlFor='Inv'>Inv:</label>
                     <input id = "Inv" className = "calculate-indicator-input" type = "number" step="0.01" required/>
                     <InfoIcon className = "info-icon"/>
                 </div>
-                <div className = "calculate-VAN-field-container">
+                <div className = "calculate-indicator-field-container">
                     <label htmlFor='n'>n:</label>
                     <input id = "n" className = "calculate-indicator-input" defaultValue={indicators?.n} readOnly type = "number" step="0.01" required/>
                     <InfoIcon className = "info-icon"/>
                 </div>
-                <div className = "calculate-VAN-buttons-container">
-                    <button className = "calculate-VAN-reset-button" type = "reset" onClick={() => handleCleanResult()}>Borrar</button>
-                    <button className = "calculate-VAN-button" type = "submit">Calcular</button>
-                </div>
+                <IndicatorFormActionButtons handleCleanResult={handleCleanResult}/>
             </form>
         </section> 
     );

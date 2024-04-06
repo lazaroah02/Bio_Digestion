@@ -1,21 +1,51 @@
-/*inputs styles*/
-.calculate-indicator-input{
+/*flex-direction:row container for label, input and info indicator form*/
+.calculate-indicator-field-container{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap:10px;
+}
+
+.calculate-indicator-field-container label{
+    min-width:30px;
+    color: #000;
+    font-family: Outfit-Regular;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.calculate-indicator-field-container input{
     flex-grow: 1;
     min-width: 100px;
     border-radius: 5px;
     border: 0;
     background: #d9d9d98f;
+    height:30px;
 }
-
-.calculate-indicator-input:focus{
+.calculate-indicator-field-container input:focus{
     outline: none;
     box-shadow: none;
     border-color: black;
 }
-.calculate-indicator-input:hover{
+.calculate-indicator-field-container input:hover{
     border-color: black;
 }
 
 .info-icon{
     cursor: pointer;
+}
+
+/*small green button styles*/
+.small-green-button{
+    border:0;
+    background-color: transparent;
+    font-family: Outfit-Regular;
+    border: 1px solid green;
+    border-radius:5px
+}
+
+.small-green-button:hover{
+    color:white;
+    background:green;
 }

@@ -2,6 +2,10 @@ export function calculateVAN({Q, r, Inv, j}){
     return ( ( Q / Math.pow((1 + r), j) ) - Inv ).toFixed(2)
 }
 
+export function calculateQ({IA, GA}){
+    return (parseFloat(IA) - parseFloat(GA)).toFixed(2)
+}
+
 export function calculateTIR(){
     return 0
 }

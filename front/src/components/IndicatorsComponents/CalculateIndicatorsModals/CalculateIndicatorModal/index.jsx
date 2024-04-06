@@ -2,12 +2,13 @@ import {useState} from 'react'
 import {Dialog} from 'primereact/dialog'
 import XIcon from '../../../../icons/XIcon'
 import './index.css'
+import '../commonStyles.css'
 
 function CalculateIndicatorModal({title, asideColor = "", indicatorForm = null, asideContent  = null}) {
     const [show, setShow] = useState(false)
     return ( 
         <>
-        <button onClick={() => setShow(true)} className = "show-modal-indicator-button">Calcular</button>
+        <button onClick={() => setShow(true)} className = "small-green-button">Calcular</button>
         <Dialog
             visible={show}
             onHide={() => setShow(false)}

@@ -1,16 +1,3 @@
-.show-modal-indicator-button{
-    border:0;
-    background-color: transparent;
-    font-family: Outfit-Regular;
-    border: 1px solid green;
-    border-radius:5px
-}
-
-.show-modal-indicator-button:hover{
-    color:white;
-    background:green;
-}
-
 .calculate-indicator-modal{
     display: flex;
     flex-direction: row;
