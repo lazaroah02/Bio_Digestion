@@ -1,8 +1,8 @@
 import {Dialog} from 'primereact/dialog'
 import { useState } from 'react';
 import { calculateIA } from '../../../../../utils/calculateIndicators';
-import InfoIcon from '../../../../../icons/InfoIcon';
 import IndicatorFormActionButtons from '../../IndicatorFormsActionButtons';
+import ShowPropertiesInfo from '../../ShowPropertiesInfo';
 import './index.css'
 import '../../commonStyles.css'
 
@@ -44,29 +44,29 @@ function CalculateIA({setIAValue}) {
         draggable={false}
         resizable={false}
         style={{ maxWidth: "93vw" }}
-        header="Calculate Q"
-        headerClassName="calculate-Q-header"
+        header="Calculate IA"
+        headerClassName="calculate-indicator-header"
       >
         <form className = "calculate-Q-form" onSubmit={(e) => handleCalculate(e)}>
             <div className = "calculate-indicator-field-container">
                 <label htmlFor='CP'>CP:</label>
                 <input id = "CP" className = "calculate-indicator-input" type = "number" step="0.01" required/>
-                <InfoIcon className = "info-icon"/>
+                <ShowPropertiesInfo/>
             </div>
             <div className = "calculate-indicator-field-container">
                 <label htmlFor='Fc'>Fc:</label>
                 <input id = "Fc" className = "calculate-indicator-input" type = "number" step="0.01" required/>
-                <InfoIcon className = "info-icon"/>
+                <ShowPropertiesInfo/>
             </div>
             <div className = "calculate-indicator-field-container">
                 <label htmlFor='Ve'>Ve:</label>
                 <input id = "Ve" className = "calculate-indicator-input" type = "number" step="0.01" required/>
-                <InfoIcon className = "info-icon"/>
+                <ShowPropertiesInfo/>
             </div>
             <div className = "calculate-indicator-field-container">
                 <label htmlFor='PE'>PE:</label>
                 <input id = "PE" className = "calculate-indicator-input" type = "number" step="0.01" required/>
-                <InfoIcon className = "info-icon"/>
+                <ShowPropertiesInfo/>
             </div>
             {result?<div className = "show-Q-result"><span>Resultado: {result}</span><button className = "small-green-button" onClick = {() => handleSaveValue()}>Usar</button></div>:null}
             <IndicatorFormActionButtons handleCleanResult={() => {}} key={"asd"}/>

@@ -1,9 +1,9 @@
 import { Dialog } from "primereact/dialog";
 import { useState } from "react";
-import InfoIcon from "../../../../../icons/InfoIcon";
 import IndicatorFormActionButtons from "../../IndicatorFormsActionButtons";
 import { calculateQ } from "../../../../../utils/calculateIndicators";
 import CalculateIA from "../CalculateIA";
+import ShowPropertiesInfo from "../../ShowPropertiesInfo";
 import "./index.css";
 import "../../commonStyles.css";
 
@@ -47,7 +47,7 @@ function CalculateQ({ setQValue }) {
         resizable={false}
         style={{ maxWidth: "93vw" }}
         header="Calculate Q"
-        headerClassName="calculate-Q-header"
+        headerClassName="calculate-indicator-header"
       >
         <form className="calculate-Q-form" onSubmit={(e) => handleCalculate(e)}>
           <div>
@@ -62,7 +62,7 @@ function CalculateQ({ setQValue }) {
                 step="0.01"
                 required
               />
-              <InfoIcon className="info-icon" />
+              <ShowPropertiesInfo/>
             </div>
             <div className="calculate-IA-advice">
               <span>No conoces el valor?</span>{" "}
@@ -78,7 +78,7 @@ function CalculateQ({ setQValue }) {
               step="0.01"
               required
             />
-            <InfoIcon className="info-icon" />
+            <ShowPropertiesInfo/>
           </div>
           {result !== null && result !== "NaN" ? (
             <div className="show-Q-result">

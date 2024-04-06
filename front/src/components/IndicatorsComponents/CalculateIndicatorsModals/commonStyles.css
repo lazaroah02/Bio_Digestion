@@ -1,3 +1,11 @@
+.calculate-indicator-header{
+    margin:0;
+    color:#2DD244;
+    font-size: 25px;
+    font-family: Outfit-Regular;
+    font-weight: 500;
+}
+
 /*flex-direction:row container for label, input and info indicator form*/
 .calculate-indicator-field-container{
     width: 100%;
@@ -30,10 +38,6 @@
 }
 .calculate-indicator-field-container input:hover{
     border-color: black;
-}
-
-.info-icon{
-    cursor: pointer;
 }
 
 /*small green button styles*/

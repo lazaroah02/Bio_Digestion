@@ -1,10 +1,10 @@
 import './index.css'
 import '../commonStyles.css'
-import InfoIcon from '../../../../icons/InfoIcon';
 import { calculateVAN } from '../../../../utils/calculateIndicators';
 import CalculateQ from './CalculateQ'
 import {useState} from 'react'
 import IndicatorFormActionButtons from '../IndicatorFormsActionButtons';
+import ShowPropertiesInfo from '../ShowPropertiesInfo';
 
 function CalculateVAN({indicators, setVanResult}) {
     const [QValue, setQValue] = useState("")
@@ -38,24 +38,24 @@ function CalculateVAN({indicators, setVanResult}) {
                     <div className = "calculate-indicator-field-container">
                         <label htmlFor='Q'>Q:</label>
                         <input id = "Q" value = {QValue} onChange={(e) => setQValue(e.target.value)} className = "calculate-indicator-input" type = "number" step="0.01" required/>
-                        <InfoIcon className = "info-icon"/>
+                        <ShowPropertiesInfo/>
                     </div>
                     <div className = "calculate-Q-advice"><span>No conoces el valor?</span> <CalculateQ setQValue={setQValue}/></div>
                 </div>
                 <div className = "calculate-indicator-field-container">
                     <label htmlFor='r'>r:</label>
                     <input id = "r" className = "calculate-indicator-input" type = "number" step="0.01" required/>
-                    <InfoIcon className = "info-icon"/>
+                    <ShowPropertiesInfo/>
                 </div>
                 <div className = "calculate-indicator-field-container">
                     <label htmlFor='Inv'>Inv:</label>
                     <input id = "Inv" className = "calculate-indicator-input" type = "number" step="0.01" required/>
-                    <InfoIcon className = "info-icon"/>
+                    <ShowPropertiesInfo/>
                 </div>
                 <div className = "calculate-indicator-field-container">
                     <label htmlFor='n'>n:</label>
                     <input id = "n" className = "calculate-indicator-input" defaultValue={indicators?.n} readOnly type = "number" step="0.01" required/>
-                    <InfoIcon className = "info-icon"/>
+                    <ShowPropertiesInfo/>
                 </div>
                 <IndicatorFormActionButtons handleCleanResult={handleCleanResult}/>
             </form>
