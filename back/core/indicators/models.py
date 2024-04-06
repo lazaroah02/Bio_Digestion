@@ -19,7 +19,7 @@ class Indicators(models.Model):
     #Potencial de Biometano Generado (BPM)
     BPM = models.FloatField(blank=True, null=True)
     #Eficiencia del proceso (n)
-    n = models.IntegerField(blank=True, null=True)
+    n = models.IntegerField(blank=True, null=True, default=30)
 
     def __str__(self):
         return f"Indicadores del proyecto {self.project.name}"    
@@ -27,4 +27,4 @@ class Indicators(models.Model):
 @receiver(post_save, sender=Project)
 def create_project_indicators(sender, instance, created, **kwargs):
     if created:
-        Indicators.objects.create(project=instance)    
+        Indicators.objects.create(project=instance, n = 30)    
