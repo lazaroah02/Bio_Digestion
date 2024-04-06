@@ -1,0 +1,13 @@
+.calculate-Q-button{
+    border:0;
+    background-color: transparent;
+    font-family: Outfit-Regular;
+    border: 1px solid green;
+    border-radius:5px;
+}
+
+.calculate-Q-button:hover{
+    color:white;
+    background:green;
+}
+

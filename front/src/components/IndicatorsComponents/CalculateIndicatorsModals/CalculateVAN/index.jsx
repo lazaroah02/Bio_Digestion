@@ -2,6 +2,7 @@ import './index.css'
 import '../commonStyles.css'
 import InfoIcon from '../../../../icons/InfoIcon';
 import { calculateVAN } from '../../../../utils/calculateIndicators';
+import CalculateQ from './CalculateQ'
 
 function CalculateVAN({indicators, setVanResult}) {
 
@@ -30,10 +31,13 @@ function CalculateVAN({indicators, setVanResult}) {
     return ( 
         <section>
             <form className='calculate-VAN-form' onSubmit={(e) => handleCalculate(e)}>
-                <div className = "calculate-VAN-field-container">
-                    <label htmlFor='Q'>Q:</label>
-                    <input id = "Q" className = "calculate-indicator-input" type = "number" step="0.01" required/>
-                    <InfoIcon className = "info-icon"/>
+                <div>
+                    <div className = "calculate-VAN-field-container">
+                        <label htmlFor='Q'>Q:</label>
+                        <input id = "Q" className = "calculate-indicator-input" type = "number" step="0.01" required/>
+                        <InfoIcon className = "info-icon"/>
+                    </div>
+                    <div className = "calculate-Q-advice"><span>No conoces el valor?</span> <CalculateQ/></div>
                 </div>
                 <div className = "calculate-VAN-field-container">
                     <label htmlFor='r'>r:</label>
