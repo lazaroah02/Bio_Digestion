@@ -54,11 +54,11 @@ function IndicatorsGrid({ indicators, indicatorResults, updateIndicatorValue, se
         />
       </IndicatorCard>
       
-      <article className="indicator-card">
+      <article className="indicator-card n-indicator-card">
         <aside style={{ backgroundColor: "#DC0101" }}></aside>
         <section>
           <header>Eficiencia del proceso (n)</header>
-          {indicators?.n}
+          <span>{indicators?.n}</span>
         </section>
       </article>
     </section>
