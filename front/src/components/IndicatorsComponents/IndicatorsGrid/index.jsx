@@ -33,7 +33,7 @@ function IndicatorsGrid({ indicators, indicatorResults, updateIndicatorValue, se
         <CalculateIndicatorModal
           title={"Calcular TRI"}
           asideColor="#0FF"
-          indicatorForm={<CalculateTRI />}
+          indicatorForm={<CalculateTRI setTRIResult={setIndicatorResult}/>}
           asideContent={<ShowResult result={indicatorResults?.TRI} indicatorName={"TRI"} updateIndicatorValue={updateIndicatorValue}/>}
         />
       </IndicatorCard>

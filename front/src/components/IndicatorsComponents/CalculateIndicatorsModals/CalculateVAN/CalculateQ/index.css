@@ -1,7 +1,5 @@
 .calculate-Q-form{
-    display: flex;
-    flex-direction: column;
-    row-gap: 30px;
+    gap: 30px;
 }
 
 .show-Q-result{

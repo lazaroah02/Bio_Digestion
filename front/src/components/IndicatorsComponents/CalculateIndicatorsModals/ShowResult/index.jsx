@@ -3,7 +3,7 @@ import {useToast} from '../../../../hooks/useToast'
 function ShowResult({result = null, updateIndicatorValue, indicatorName}) {
     const {toast, showSuccessMessage, showErrorMessage} = useToast()
     function handleSaveResult(){
-        if(result !== null){
+        if(result !== null && result !== "NaN"){
             updateIndicatorValue({indicatorName:indicatorName, newValue:result});
             showSuccessMessage("Valor actualizado")
         }else{
@@ -15,7 +15,7 @@ function ShowResult({result = null, updateIndicatorValue, indicatorName}) {
             {toast()}
             <section className = "show-result-indicator-calculation">
                 <div>Resultado:</div>
-                <span>{result?.toFixed(2)}</span>
+                <span>{result !== null && result != "NaN"?result:null}</span>
             </section> 
             <button className = "save-result-indicator-calculation"
             onClick={() => handleSaveResult()}>Guardar Nuevo Resultado</button>

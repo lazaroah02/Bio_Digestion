@@ -19,7 +19,7 @@ function ShowVANResult({result = null, VANpartialResults = [], updateIndicatorVa
     },[VANpartialResults])  
 
     function handleSaveResult(){
-        if(result !== null){
+        if(result !== null && result != "NaN"){
             updateIndicatorValue({indicatorName:"VAN", newValue:result});
             showSuccessMessage("Valor actualizado")
         }else{
@@ -33,7 +33,7 @@ function ShowVANResult({result = null, VANpartialResults = [], updateIndicatorVa
             <AgChartsReact options={chartOptions} />
             <section className = "show-result-VAN-calculation">
                 <div>Resultado:</div>
-                <span>{result}</span>
+                <span>{result !== null && result != "NaN"?result:null}</span>
             </section> 
             <button className = "save-result-VAN-calculation" onClick={() => handleSaveResult()}>Guardar Nuevo Resultado</button>
         </section>

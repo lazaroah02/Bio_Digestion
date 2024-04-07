@@ -6,6 +6,11 @@
     font-weight: 500;
 }
 
+.calculate-indicator-form{
+    display:flex;
+    flex-direction:column;
+}
+
 /*flex-direction:row container for label, input and info indicator form*/
 .calculate-indicator-field-container{
     width: 100%;

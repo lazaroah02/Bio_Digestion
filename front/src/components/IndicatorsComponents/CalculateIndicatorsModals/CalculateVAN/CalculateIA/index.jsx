@@ -47,7 +47,7 @@ function CalculateIA({setIAValue}) {
         header="Calculate IA"
         headerClassName="calculate-indicator-header"
       >
-        <form className = "calculate-Q-form" onSubmit={(e) => handleCalculate(e)}>
+        <form className = "calculate-indicator-form calculate-IA-form" onSubmit={(e) => handleCalculate(e)}>
             <div className = "calculate-indicator-field-container">
                 <label htmlFor='CP'>CP:</label>
                 <input id = "CP" className = "calculate-indicator-input" type = "number" step="0.01" required/>

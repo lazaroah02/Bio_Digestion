@@ -49,7 +49,7 @@ function CalculateQ({ setQValue }) {
         header="Calculate Q"
         headerClassName="calculate-indicator-header"
       >
-        <form className="calculate-Q-form" onSubmit={(e) => handleCalculate(e)}>
+        <form className="calculate-indicator-form calculate-Q-form" onSubmit={(e) => handleCalculate(e)}>
           <div>
             <div className="calculate-indicator-field-container">
               <label htmlFor="IA">IA:</label>

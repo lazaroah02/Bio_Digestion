@@ -14,8 +14,8 @@ export function calculateTIR(){
     return 0
 }
 
-export function calculateTRI(){
-    return 0
+export function calculateTRI({Inv, Q}){
+    return ( parseFloat(Inv) / parseFloat(Q) ).toFixed(2)
 }
 
 export function calculateLEC(){
