@@ -18,9 +18,39 @@ export function calculateTRI({Inv, Q}){
     return ( parseFloat(Inv) / parseFloat(Q) ).toFixed(2)
 }
 
-export function calculateLEC(){
-    return 0
+//LEC
+export function calculateLEC({Inv, OyM, n, E}){
+    return ( parseFloat(calculateCA({Inv:Inv, OyM:OyM, n:n})) / parseFloat(calculateEA({E:E, n:n})) ).toFixed(2)
 }
+
+function calculateCA({Inv, OyM, n}){
+    let partialResults = []
+    //calculate CA n times
+    for(let j = 1; j <= n; j++) {
+        partialResults.push(parseFloat(
+            ( parseFloat(Inv) + parseFloat(OyM) ) / calculateCAandEADenominator({n:n, j:j})
+        ))
+    }
+    //add all CA values
+    return partialResults.reduce((acumulator, value) => acumulator + value, 0).toFixed(2)
+}
+
+function calculateEA({E, n}){
+    let partialResults = []
+    //calculate EA n times
+    for(let j = 1; j <= n; j++) {
+        partialResults.push(parseFloat(
+            parseFloat(E) / calculateCAandEADenominator({n:n, j:j})
+        ))
+    }
+    //add all EA values
+    return partialResults.reduce((acumulator, value) => acumulator + value, 0).toFixed(2)
+}
+
+function calculateCAandEADenominator({n, j}){
+    return Math.pow((1 + parseFloat(n)), j*-1)
+}
+//END LEC
 
 export function calculateBPM(){
     return 0

@@ -69,7 +69,7 @@ function CalculateIA({setIAValue}) {
                 <ShowPropertiesInfo title = "PE" description='PE, representa el precio de la energía producida (CUP)'/>
             </div>
             {result?<div className = "show-Q-result"><span>Resultado: {result}</span><button className = "small-green-button" onClick = {() => handleSaveValue()}>Usar</button></div>:null}
-            <IndicatorFormActionButtons handleCleanResult={() => {}} key={"asd"}/>
+            <IndicatorFormActionButtons handleCleanResult={() => {}} key={"IA"}/>
         </form>
       </Dialog>
     </>

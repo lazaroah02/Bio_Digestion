@@ -54,9 +54,9 @@ function CalculateVAN({indicators, setVanResult}) {
             <div className = "calculate-indicator-field-container">
                 <label htmlFor='n'>n:</label>
                 <input id = "n" className = "calculate-indicator-input" defaultValue={indicators?.n} readOnly type = "number" step="0.01" required/>
-                <ShowPropertiesInfo title = "n" description='El valor de n representa al número de años de vida útil del Biorreactor, que, a los efectos del presente trabajo, será considerada 30 años.'/>
+                <ShowPropertiesInfo title = "n" description='El valor de n representa al número de años de vida útil del Biorreactor'/>
             </div>
-            <IndicatorFormActionButtons handleCleanResult={handleCleanResult}/>
+            <IndicatorFormActionButtons handleCleanResult={handleCleanResult} key = {"VAN"}/>
         </form>
     );
 }

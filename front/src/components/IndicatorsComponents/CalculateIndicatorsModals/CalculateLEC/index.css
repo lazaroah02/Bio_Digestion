@@ -1,6 +1,22 @@
 .calculate-LEC-form{
-    gap:40px;
-    margin-top: 80px;
+    gap:30px;
+    margin-top: 30px;
     min-height: 300px;
     justify-content: space-between;
+}
+
+.calculate-CA-section{
+    display: flex;
+    flex-direction: column;
+    gap:20px
+}
+
+.calculate-CA-section-title{
+    justify-content: center;
+    margin-bottom:-10px
+}
+
+.calculate-EA-section-title{
+    justify-content: center;
+    margin-bottom: 5px;
 }

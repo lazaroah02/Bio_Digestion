@@ -93,7 +93,7 @@ function CalculateQ({ setQValue }) {
           ) : null}
           <IndicatorFormActionButtons
             handleCleanResult={() => {}}
-            key={"asd"}
+            key={"Q"}
           />
         </form>
       </Dialog>

@@ -39,7 +39,7 @@ function CalculateTRI({setTRIResult}) {
                     <div className = "calculate-Q-advice"><span>No conoces el valor?</span> <CalculateQ setQValue={setQValue}/></div>
                 </div>
             </div>
-            <IndicatorFormActionButtons className = "calculate-TRI-action-buttons" handleCleanResult={handleCleanResult}/>
+            <IndicatorFormActionButtons className = "calculate-TRI-action-buttons" handleCleanResult={handleCleanResult} key = {"TRI"}/>
         </form>
     );
 }

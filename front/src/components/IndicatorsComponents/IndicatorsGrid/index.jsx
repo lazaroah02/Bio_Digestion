@@ -41,7 +41,7 @@ function IndicatorsGrid({ indicators, indicatorResults, updateIndicatorValue, se
         <CalculateIndicatorModal
           title={"Calcular LEC"}
           asideColor="#AD00FF"
-          indicatorForm={<CalculateLEC />}
+          indicatorForm={<CalculateLEC indicators={indicators} setLECResult={setIndicatorResult}/>}
           asideContent={<ShowResult result={indicatorResults?.LEC} indicatorName={"LEC"} updateIndicatorValue={updateIndicatorValue}/>}
         />
       </IndicatorCard>
