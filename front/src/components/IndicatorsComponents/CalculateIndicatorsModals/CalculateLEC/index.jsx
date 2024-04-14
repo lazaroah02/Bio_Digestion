@@ -30,12 +30,12 @@ function CalculateLEC({indicators, setLECResult}) {
             <div className = "calculate-indicator-field-container">
                 <label htmlFor='n' style = {{minWidth:"53px"}}>n:</label>
                 <input id = "n" className = "calculate-indicator-input" type = "number" readOnly defaultValue = {indicators?.n}/>
-                <ShowPropertiesInfo title = "n" description='Eficiencia del proceso'/>
+                <ShowPropertiesInfo title = "n" description='Vida útil de la planta en años'/>
             </div>
             <section className = "calculate-CA-section">
                 <div className = "calculate-indicator-field-container calculate-CA-section-title">
                     <h4 style = {{margin:"0px", marginBottom:"5px"}}>CA</h4>
-                    <ShowPropertiesInfo title = "CA" description='CA, costos de inversión'/>
+                    <ShowPropertiesInfo title = "CA" description='Costos de inversión en USD/kW incluyendo todos los componentes auxiliares necesarios para la instalación y la infraestructura en el año'/>
                 </div>
                 <div className = "calculate-indicator-field-container">
                     <label htmlFor='Inv' style = {{minWidth:"53px"}}>Inv:</label>
@@ -45,7 +45,7 @@ function CalculateLEC({indicators, setLECResult}) {
                 <div className = "calculate-indicator-field-container">
                     <label htmlFor='O&M'>O & M:</label>
                     <input id = "O&M" className = "calculate-indicator-input" type = "number" step="0.01" required/>
-                    <ShowPropertiesInfo title = "O & M" description='O & M, representa cada año en USD'/>
+                    <ShowPropertiesInfo title = "O & M" description='Operación y mantenimiento (O&M) como costo fijo en USD/kW o variable en USD/kWh en el año'/>
                 </div>
             </section>
             <section className = "calculate-EA-section">
@@ -56,7 +56,7 @@ function CalculateLEC({indicators, setLECResult}) {
                 <div className = "calculate-indicator-field-container">
                     <label htmlFor='E' style = {{minWidth:"53px"}}>E:</label>
                     <input id = "E" className = "calculate-indicator-input" type = "number" step="0.01" required/>
-                    <ShowPropertiesInfo title = "E" description=''/>
+                    <ShowPropertiesInfo title = "E" description='Tasa de descuento en % '/>
                 </div>
             </section>
             <IndicatorFormActionButtons handleCleanResult={handleCleanResult} key = {"LEC"}/>
