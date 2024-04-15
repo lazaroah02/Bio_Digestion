@@ -47,16 +47,6 @@ function App() {
                 }
               />
               <Route
-                path="/dashboard/graphics"
-                element={
-                  <ProtectedRoute>
-                    <Dashboard>
-                      <>Graphics</>
-                    </Dashboard>
-                  </ProtectedRoute>
-                }
-              />
-              <Route
                 path="/dashboard/info"
                 element={
                   <ProtectedRoute>
