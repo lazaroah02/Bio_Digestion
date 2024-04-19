@@ -22,6 +22,19 @@ function Indicators() {
         setIndicatorResults((prev) => ({...prev, [indicatorName]:result}))
     }
 
+    function resetIndicatorResults(){
+        setIndicatorResults(
+            {
+                VAN:null,
+                VANpartialResults:[],
+                TIR:null,
+                TRI:null,
+                LEC:null,
+                BPM:null
+            }
+        )
+    }
+
     return ( 
         <article className = "indicators-page">
             <div className = "indicators-page-main">
@@ -31,7 +44,7 @@ function Indicators() {
                 </header>
                 <div className = "advise">Selecciona para calcular</div>
                 <section className = "indicators-grid-container">
-                    <IndicatorsGrid indicators = {indicators} updateIndicatorValue={updateIndicatorValue} indicatorResults={indicatorResults} setIndicatorResult = {setIndicatorResult}/>
+                    <IndicatorsGrid resetIndicatorResults = {resetIndicatorResults} indicators = {indicators} updateIndicatorValue={updateIndicatorValue} indicatorResults={indicatorResults} setIndicatorResult = {setIndicatorResult}/>
                 </section>
             </div>
             <aside className = "indicators-page-graphics-section">

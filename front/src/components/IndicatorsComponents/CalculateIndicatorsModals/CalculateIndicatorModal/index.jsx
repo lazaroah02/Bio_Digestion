@@ -4,14 +4,17 @@ import XIcon from '../../../../icons/XIcon'
 import './index.css'
 import '../commonStyles.css'
 
-function CalculateIndicatorModal({title, asideColor = "", indicatorForm = null, asideContent  = null}) {
+function CalculateIndicatorModal({title, asideColor = "", indicatorForm = null, asideContent  = null, resetIndicatorResults = () => {}}) {
     const [show, setShow] = useState(false)
     return ( 
         <>
         <button onClick={() => setShow(true)} className = "small-green-button">Calcular</button>
         <Dialog
             visible={show}
-            onHide={() => setShow(false)}
+            onHide={() => {
+                resetIndicatorResults()
+                setShow(false)
+            }}
             position="center"
             draggable={false}
             resizable={false}
@@ -24,7 +27,10 @@ function CalculateIndicatorModal({title, asideColor = "", indicatorForm = null, 
                     <header>
                         <div>
                             <h1>{title}</h1>
-                            <button onClick={() => setShow(false)}><XIcon/></button>
+                            <button onClick={() => {
+                                setShow(false)
+                                resetIndicatorResults()
+                                }}><XIcon/></button>
                         </div>
                         <span>Ingrese los siguientes datos</span>
                     </header>

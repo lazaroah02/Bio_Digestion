@@ -9,13 +9,14 @@ import ShowVANResult from "../CalculateIndicatorsModals/ShowVANResult";
 import IndicatorCard from "./IndicatorCard";
 import "./index.css";
 
-function IndicatorsGrid({ indicators, indicatorResults, updateIndicatorValue, setIndicatorResult }) {
+function IndicatorsGrid({ indicators, indicatorResults, updateIndicatorValue, setIndicatorResult, resetIndicatorResults }) {
 
   return (
     <section className="indicators-grid">
       <IndicatorCard title="Valor Actual Neto (VAN)" indicatorName = {"VAN"} updateIndicatorValue={updateIndicatorValue} indicatorValue={indicators?.VAN} asideColor={"#02C502"}>
         <CalculateIndicatorModal
           title={"Calcular VAN"}
+          resetIndicatorResults = {resetIndicatorResults}
           asideColor="green"
           indicatorForm={<CalculateVAN indicators = {indicators} setVanResult={setIndicatorResult}/>}
           asideContent={<ShowVANResult result={indicatorResults?.VAN} VANpartialResults = {indicatorResults?.VANpartialResults} updateIndicatorValue={updateIndicatorValue}/>}
@@ -24,6 +25,7 @@ function IndicatorsGrid({ indicators, indicatorResults, updateIndicatorValue, se
       <IndicatorCard title = "Tasa Interna de Retorno (TIR)" indicatorName = {"TIR"} updateIndicatorValue={updateIndicatorValue} indicatorValue={indicators?.TIR} asideColor={"#06F"}>
         <CalculateIndicatorModal
           title={"Calcular TIR"}
+          resetIndicatorResults = {resetIndicatorResults}
           asideColor="#06F"
           indicatorForm={<CalculateTIR />}
           asideContent={<ShowResult result={indicatorResults?.TIR} indicatorName={"TIR"} updateIndicatorValue={updateIndicatorValue}/>}
@@ -32,6 +34,7 @@ function IndicatorsGrid({ indicators, indicatorResults, updateIndicatorValue, se
       <IndicatorCard title = "Tiempo de Recuperación de Inversión (TRI)" indicatorName = {"TRI"} updateIndicatorValue={updateIndicatorValue} indicatorValue={indicators?.TRI} asideColor={"#0FF"}>
         <CalculateIndicatorModal
           title={"Calcular TRI"}
+          resetIndicatorResults = {resetIndicatorResults}
           asideColor="#0FF"
           indicatorForm={<CalculateTRI setTRIResult={setIndicatorResult}/>}
           asideContent={<ShowResult result={indicatorResults?.TRI} indicatorName={"TRI"} updateIndicatorValue={updateIndicatorValue}/>}
@@ -40,6 +43,7 @@ function IndicatorsGrid({ indicators, indicatorResults, updateIndicatorValue, se
       <IndicatorCard title = "Costo Nivelado de la Electricidad (LEC)" indicatorName = {"LEC"} updateIndicatorValue={updateIndicatorValue} indicatorValue={indicators?.LEC} asideColor={"#AD00FF"}>
         <CalculateIndicatorModal
           title={"Calcular LEC"}
+          resetIndicatorResults = {resetIndicatorResults}
           asideColor="#AD00FF"
           indicatorForm={<CalculateLEC indicators={indicators} setLECResult={setIndicatorResult}/>}
           asideContent={<ShowResult result={indicatorResults?.LEC} indicatorName={"LEC"} updateIndicatorValue={updateIndicatorValue}/>}
@@ -48,6 +52,7 @@ function IndicatorsGrid({ indicators, indicatorResults, updateIndicatorValue, se
       <IndicatorCard title = "Potencial de Biometano Generado (BPM)" indicatorName = {"BPM"} updateIndicatorValue={updateIndicatorValue} indicatorValue={indicators?.BPM} asideColor={"#FFC700"}>
         <CalculateIndicatorModal
           title={"Calcular BPM"}
+          resetIndicatorResults = {resetIndicatorResults}
           asideColor="#FFC700"
           indicatorForm={<CalculateBPM setBPMResult={setIndicatorResult}/>}
           asideContent={<ShowResult result={indicatorResults?.BPM} indicatorName={"BPM"} updateIndicatorValue={updateIndicatorValue}/>}

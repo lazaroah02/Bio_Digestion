@@ -53,7 +53,7 @@ function CalculateBMP({setBPMResult}) {
                 <input id = "VH2S" className = "calculate-indicator-input" type = "number" step="0.01" required/>
                 <ShowPropertiesInfo title = "VH2S" description='VH2S, Volumen del sulfuro de hidrógeno en el biogas que debe ser removido para obtener biometano puro.'/>
             </div>
-            <IndicatorFormActionButtons handleCleanResult={handleCleanResult} key = {"VAN"}/>
+            <IndicatorFormActionButtons handleCleanResult={handleCleanResult} key = {"BPM"}/>
         </form>
     );
 }
