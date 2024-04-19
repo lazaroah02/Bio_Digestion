@@ -1,3 +1,4 @@
+//VAN
 export function calculateVAN({Q, r, Inv, j}){
     return ( ( Q / Math.pow((1 + r), j) ) - Inv ).toFixed(2)
 }
@@ -9,11 +10,14 @@ export function calculateQ({IA, GA}){
 export function calculateIA({CP, Fc, Ve, PE}){
     return (parseFloat(CP) * parseFloat(Fc) * parseFloat(Ve) * parseFloat(PE)).toFixed(2)
 }
+//END VAN
 
+//TIR
 export function calculateTIR(){
     return 0
 }
 
+//TRI
 export function calculateTRI({Inv, Q}){
     return ( parseFloat(Inv) / parseFloat(Q) ).toFixed(2)
 }
@@ -52,6 +56,7 @@ function calculateCAandEADenominator({n, j}){
 }
 //END LEC
 
+//BPM
 export function calculateBPM(){
     return 0
 }

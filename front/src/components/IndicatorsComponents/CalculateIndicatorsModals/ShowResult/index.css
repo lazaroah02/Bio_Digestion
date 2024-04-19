@@ -17,6 +17,8 @@
     font-family: Outfit-Regular;
     font-size: 50px;
     font-weight: 500;
+    display: flex;
+    justify-content: center;
 }
 
 .save-result-indicator-calculation{

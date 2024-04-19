@@ -49,7 +49,7 @@ function IndicatorsGrid({ indicators, indicatorResults, updateIndicatorValue, se
         <CalculateIndicatorModal
           title={"Calcular BPM"}
           asideColor="#FFC700"
-          indicatorForm={<CalculateBPM />}
+          indicatorForm={<CalculateBPM setBPMResult={setIndicatorResult}/>}
           asideContent={<ShowResult result={indicatorResults?.BPM} indicatorName={"BPM"} updateIndicatorValue={updateIndicatorValue}/>}
         />
       </IndicatorCard>

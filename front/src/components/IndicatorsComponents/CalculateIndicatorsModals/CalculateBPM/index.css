@@ -1,0 +1,8 @@
+.calculate-BPM-form{
+    gap:40px;
+    margin-top: 40px;
+}
+
+.calculate-BPM-form label{
+    min-width: 65px;
+}
