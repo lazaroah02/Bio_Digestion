@@ -57,6 +57,6 @@ function calculateCAandEADenominator({n, j}){
 //END LEC
 
 //BPM
-export function calculateBPM(){
-    return 0
+export function calculateBPM({Qs, DQOi, f_DQO, Efp, T, VH2S}){
+    return ( ( Qs * DQOi * ( 1 - (f_DQO/100) ) * Efp * 0.35 * ( (T + 273) / 273 ) ) - VH2S ).toFixed(2)
 }
