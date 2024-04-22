@@ -12,13 +12,16 @@ function CalculateVAN({indicators, setVanResult}) {
     function handleCalculate(e){
         e.preventDefault();
         let Q = parseFloat(QValue)
-        let r = parseFloat(e.target["r"]?.value)
+        let r = parseFloat(e.target["r"]?.value) / 100
         let Inv = parseFloat(e.target["Inv"]?.value)
         let n = parseInt(e.target["n"]?.value)
         let partialResults = []
+        let Qincrement = parseFloat(r * Inv)
+        let Qacumulator = Q
         //calculate VAN n times
         for(let j = 1; j <= n; j++) {
-            partialResults.push(parseFloat(calculateVAN({Q: Q, r: r, Inv: Inv, j:j})))
+            partialResults.push(parseFloat(calculateVAN({Q: Qacumulator, r: r, Inv: Inv, j:j})))
+            Qacumulator += Qincrement
         }
         //add all VAN values
         let result = partialResults.reduce((acumulator, value) => acumulator + value, 0).toFixed(2)
@@ -42,7 +45,7 @@ function CalculateVAN({indicators, setVanResult}) {
                 <div className = "calculate-Q-advice"><span>No conoces el valor?</span> <CalculateQ setQValue={setQValue}/></div>
             </div>
             <div className = "calculate-indicator-field-container">
-                <label htmlFor='r'>r:</label>
+                <label htmlFor='r'>r (%):</label>
                 <input id = "r" className = "calculate-indicator-input" type = "number" step="0.01" required/>
                 <ShowPropertiesInfo title = "r" description='r, es la tasa de descuento'/>
             </div>

@@ -56,7 +56,7 @@ function CalculateIA({setIAValue}) {
             <div className = "calculate-indicator-field-container">
                 <label htmlFor='Fc'>Fc:</label>
                 <input id = "Fc" className = "calculate-indicator-input" type = "number" step="0.01" required/>
-                <ShowPropertiesInfo title = "Fc"/>
+                <ShowPropertiesInfo title = "Fc" description = "Fc, Factor de conversión (Kwh)"/>
             </div>
             <div className = "calculate-indicator-field-container">
                 <label htmlFor='Ve'>Ve:</label>
