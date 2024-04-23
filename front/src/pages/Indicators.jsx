@@ -47,8 +47,9 @@ function Indicators() {
                     <IndicatorsGrid resetIndicatorResults = {resetIndicatorResults} indicators = {indicators} updateIndicatorValue={updateIndicatorValue} indicatorResults={indicatorResults} setIndicatorResult = {setIndicatorResult}/>
                 </section>
             </div>
-            <aside className = "indicators-page-graphics-section">
-                
+            <aside className = "indicators-page-aside-section">
+                <div className = "show-Z-value-container"></div>
+                <div className = "show-Z-graphic-container"></div>
             </aside>
         </article>
      );

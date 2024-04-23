@@ -13,11 +13,27 @@
    backdrop-filter: blur(5px);
 }
 
-.indicators-page-graphics-section{
-    background: rgba(255, 255, 255, 0.80);
-    backdrop-filter: blur(5px);
+.indicators-page-aside-section{
     width: 30%;
+    display: flex;
+    flex-direction: column;
+    gap:10px;
+}
+
+.show-Z-value-container{
+    height: 40%;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.80);
     border-radius: 15px;
+    backdrop-filter: blur(5px);
+}
+
+.show-Z-graphic-container{
+    height: 60%;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.80);
+    border-radius: 15px;
+    backdrop-filter: blur(5px);
 }
 
 .indicators-page-main .header{
@@ -50,6 +66,9 @@
 }
 
 @media (max-width:1300px){
+    .indicators-page{
+        padding: 10px;
+    }
     .indicators-page .header{
         width: 90%;
         position: sticky;
@@ -58,14 +77,16 @@
         z-index: 1;
         
     }
-
     .indicators-page .header .go-back-button{
         display:none;
     }
 }
 
-@media (max-width: 800px) {
-    .indicators-page-graphics-section{
+@media (max-width: 950px) {
+    .indicators-page{
+        padding: 0;
+    }
+    .indicators-page-aside-section{
         display: none;
     }
     .indicators-page-main{
