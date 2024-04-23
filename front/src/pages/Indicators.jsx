@@ -4,11 +4,13 @@ import IndicatorsGrid from '../components/IndicatorsComponents/IndicatorsGrid';
 import {useManageIndicators} from '../hooks/useManageIndicators'
 import {useState} from 'react'
 import './pagesStyles/indicators.css';
+import {useIsMobileMode} from '../hooks/useIsMobileMode'
 
 function Indicators() {
     const location = useLocation();
     const project = location.state;
     const {indicators, loadingIndicators, updateIndicatorValue} = useManageIndicators({projectId:project.id});
+    const {mobileMode} = useIsMobileMode({mobileWidth:950});
     const [indicatorResults, setIndicatorResults] = useState({
         VAN:null,
         VANpartialResults:[],
@@ -44,13 +46,21 @@ function Indicators() {
                 </header>
                 <div className = "advise">Selecciona para calcular</div>
                 <section className = "indicators-grid-container">
+                    {mobileMode?
+                        <aside className = "indicators-page-aside-section">
+                            <div className = "show-Z-value-container"></div>
+                            <div className = "show-Z-graphic-container"></div>
+                        </aside>
+                    :null}
                     <IndicatorsGrid resetIndicatorResults = {resetIndicatorResults} indicators = {indicators} updateIndicatorValue={updateIndicatorValue} indicatorResults={indicatorResults} setIndicatorResult = {setIndicatorResult}/>
                 </section>
             </div>
-            <aside className = "indicators-page-aside-section">
-                <div className = "show-Z-value-container"></div>
-                <div className = "show-Z-graphic-container"></div>
-            </aside>
+            {!mobileMode?
+                <aside className = "indicators-page-aside-section">
+                    <div className = "show-Z-value-container"></div>
+                    <div className = "show-Z-graphic-container"></div>
+                </aside>
+            :null}
         </article>
      );
 }

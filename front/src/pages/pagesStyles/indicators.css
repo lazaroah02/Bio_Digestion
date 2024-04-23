@@ -63,6 +63,9 @@
 
 .indicators-grid-container{
     width: 100%;
+    height: auto;
+    max-height: 86vh;
+    overflow-y: auto;
 }
 
 @media (max-width:1300px){
@@ -87,7 +90,16 @@
         padding: 0;
     }
     .indicators-page-aside-section{
-        display: none;
+        width: 95%;
+        height: 300px;
+        margin: 0 auto;
+        flex-direction: row;
+    }
+    .show-Z-value-container{
+        height: 100%;
+    }
+    .show-Z-graphic-container{
+        height: 100%;
     }
     .indicators-page-main{
         width: 100%;
@@ -103,5 +115,17 @@
     }
     .indicators-page-main .advise{
         font-size:18px;
+    }
+    .indicators-page-aside-section{
+        width: 93%;
+        height: 400px;
+        margin: 0 auto;
+        flex-direction: column;
+    }
+    .show-Z-value-container{
+        height: 50%;
+    }
+    .show-Z-graphic-container{
+        height: 50%;
     }
 }
