@@ -1,22 +1,34 @@
 import "./index.css";
 import CalculateIndicatorModal from "../CalculateIndicatorModal";
 import ShowResult from "../ShowResult";
-import CalculateZ from '../CalculateZ'
-import {validateNotNullIndicator} from '../../../../utils/validateNotNullIndicator'
+import CalculateZ from "../CalculateZ";
+import { validateNotNullIndicator } from "../../../../utils/validateNotNullIndicator";
 
-function ShowZResult({ result = null, indicators, indicatorResults, updateIndicatorValue, resetIndicatorResults, setIndicatorResult, showErrorMessage, showSuccessMessage }) {
-
-  function validateIndicatorValues(callback){
+function ShowZResult({
+  result = null,
+  indicators,
+  indicatorResults,
+  updateIndicatorValue,
+  resetIndicatorResults,
+  setIndicatorResult,
+  showErrorMessage,
+  showSuccessMessage,
+}) {
+  function validateIndicatorValues(callback) {
     validateNotNullIndicator({
-      VAN:indicators?.VAN, 
-      TRI:indicators?.TRI, 
-      TIR:indicators?.TIR, 
-      LEC:indicators?.LEC, 
-      BPM:indicators?.BPM, 
-      n:indicators?.n
+      VAN: indicators?.VAN,
+      TRI: indicators?.TRI,
+      TIR: indicators?.TIR,
+      LEC: indicators?.LEC,
+      BPM: indicators?.BPM,
+      n: indicators?.n,
     })
-    .then((res) => {return callback()})
-    .catch(err => {showErrorMessage(err)})
+      .then((res) => {
+        return callback();
+      })
+      .catch((err) => {
+        showErrorMessage(err);
+      });
   }
 
   return (
@@ -27,7 +39,7 @@ function ShowZResult({ result = null, indicators, indicatorResults, updateIndica
         <CalculateIndicatorModal
           title="Calcular Z"
           calculateButtonExtraStyles="calculate-z-button"
-          validationBeforeShowModal = {validateIndicatorValues}
+          validationBeforeShowModal={validateIndicatorValues}
           asideColor="green"
           asideContent={
             <ShowResult
@@ -40,7 +52,11 @@ function ShowZResult({ result = null, indicators, indicatorResults, updateIndica
             />
           }
           indicatorForm={
-              <CalculateZ indicators={indicators} setZresult={setIndicatorResult} showErrorMessage={showErrorMessage}/>
+            <CalculateZ
+              indicators={indicators}
+              setZresult={setIndicatorResult}
+              showErrorMessage={showErrorMessage}
+            />
           }
           key="calculate-z"
           resetIndicatorResults={resetIndicatorResults}

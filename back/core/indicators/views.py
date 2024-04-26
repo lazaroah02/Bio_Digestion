@@ -8,7 +8,7 @@ from django_filters.rest_framework import DjangoFilterBackend
 
 # Create your views here.
 
-class Indicators(ModelViewSet):
+class IndicatorsView(ModelViewSet):
     permission_classes = [IsAuthenticated]
     queryset = Indicators.objects.all()
     serializer_class = IndicatorsSerializer
