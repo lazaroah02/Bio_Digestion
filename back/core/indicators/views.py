@@ -4,7 +4,6 @@ from indicators.models import Indicators
 from rest_framework.response import Response
 from rest_framework import status
 from indicators.serializers import IndicatorsSerializer
-from rest_framework import generics, filters, viewsets
 from django_filters.rest_framework import DjangoFilterBackend
 
 # Create your views here.

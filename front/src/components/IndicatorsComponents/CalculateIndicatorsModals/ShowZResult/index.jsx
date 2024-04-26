@@ -4,7 +4,7 @@ import ShowResult from "../ShowResult";
 import CalculateZ from '../CalculateZ'
 import {validateNotNullIndicator} from '../../../../utils/validateNotNullIndicator'
 
-function ShowZResult({ result = null, indicators, indicatorResults, updateIndicatorValue, resetIndicatorResults, setIndicatorResult, showErrorMessage }) {
+function ShowZResult({ result = null, indicators, indicatorResults, updateIndicatorValue, resetIndicatorResults, setIndicatorResult, showErrorMessage, showSuccessMessage }) {
 
   function validateIndicatorValues(callback){
     validateNotNullIndicator({
@@ -35,6 +35,8 @@ function ShowZResult({ result = null, indicators, indicatorResults, updateIndica
               indicatorName="Z"
               updateIndicatorValue={updateIndicatorValue}
               key="Z"
+              showErrorMessage={showErrorMessage}
+              showSuccessMessage={showSuccessMessage}
             />
           }
           indicatorForm={

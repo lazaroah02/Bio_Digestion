@@ -62,6 +62,7 @@ function Indicators() {
                     resetIndicatorResults={resetIndicatorResults}
                     setIndicatorResult={setIndicatorResult}
                     showErrorMessage={showErrorMessage}
+                    showSuccessMessage={showSuccessMessage}
                 />
               </div>
               <div className="show-Z-graphic-container"></div>
@@ -89,6 +90,7 @@ function Indicators() {
               resetIndicatorResults={resetIndicatorResults}
               setIndicatorResult={setIndicatorResult}
               showErrorMessage={showErrorMessage}
+              showSuccessMessage={showSuccessMessage}
             />
           </div>
           <div className="show-Z-graphic-container"></div>
