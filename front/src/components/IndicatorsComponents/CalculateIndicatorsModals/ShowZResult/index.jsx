@@ -3,7 +3,7 @@ import CalculateIndicatorModal from "../CalculateIndicatorModal";
 import ShowResult from "../ShowResult";
 import CalculateZ from '../CalculateZ'
 
-function ShowZResult({ result = null }) {
+function ShowZResult({ result = null, indicators, indicatorResults, updateIndicatorValue, resetIndicatorResults, setIndicatorResult }) {
   return (
     <section className="show-Z-result">
       <div>Valor de Z</div>
@@ -14,17 +14,17 @@ function ShowZResult({ result = null }) {
         asideColor="green"
         asideContent={
           <ShowResult
-            result={null}
+            result={indicatorResults?.Z}
             indicatorName="Z"
-            updateIndicatorValue={() => {}}
+            updateIndicatorValue={updateIndicatorValue}
             key="Z"
           />
         }
         indicatorForm={
-            <CalculateZ/>
+            <CalculateZ indicators={indicators} setZresult={setIndicatorResult}/>
         }
         key="calculate-z"
-        resetIndicatorResults={() => {}}
+        resetIndicatorResults={resetIndicatorResults}
       />
     </section>
   );

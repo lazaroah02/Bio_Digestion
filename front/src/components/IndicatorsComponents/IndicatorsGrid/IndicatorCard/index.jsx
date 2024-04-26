@@ -1,14 +1,18 @@
 import './index.css'
 import { useState, useRef } from 'react';
+import { useToast } from '../../../../hooks/useToast';
 function IndicatorCard({indicatorName, indicatorValue, asideColor, title, children, updateIndicatorValue}) {
     const [editting, setEdditing] = useState(false)
     const inputRef = useRef(null)
+    const {toast, showSuccessMessage} = useToast()
     function handleSave(){
         setEdditing(false)
         updateIndicatorValue({indicatorName:indicatorName, newValue:inputRef.current?.value})
+        showSuccessMessage("Operación Exitosa")
     }
     return ( 
         <article className="indicator-card">
+            {toast()}
             <aside style={{ backgroundColor: asideColor }}></aside>
             <section>
                 <header>{title}</header>

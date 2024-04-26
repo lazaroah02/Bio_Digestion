@@ -60,3 +60,15 @@ function calculateCAandEADenominator({n, j}){
 export function calculateBPM({Qs, DQOi, f_DQO, Efp, T, VH2S}){
     return ( ( Qs * DQOi * ( 1 - (f_DQO/100) ) * Efp * 0.35 * ( (T + 273) / 273 ) ) - VH2S ).toFixed(2)
 }
+
+//Z
+export function calculateZ({VAN, TRI, TIR, LEC, BPM, n, VAN_d, TRI_d, TIR_d, LEC_d, BPM_d, n_d}){
+    return Math.max(...[
+        Math.abs(VAN - VAN_d) / VAN_d, 
+        Math.abs(TIR - TIR_d) / TIR_d, 
+        Math.abs(TRI - TRI_d) / TRI_d, 
+        Math.abs(LEC - LEC_d) / LEC_d, 
+        Math.abs(BPM - BPM_d) / BPM_d, 
+        Math.abs(n - n_d) / n_d
+    ])
+}

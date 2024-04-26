@@ -7,4 +7,4 @@ class IndicatorsSerializer(ModelSerializer):
     
     class Meta:
         model = Indicators
-        fields = ["id", "project", "VAN", "TIR", "TRI", "LEC", "BPM", "n"]
+        fields = ["id", "project", "VAN", "TIR", "TRI", "LEC", "BPM", "n", "Z"]

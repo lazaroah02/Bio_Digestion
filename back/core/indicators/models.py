@@ -20,6 +20,8 @@ class Indicators(models.Model):
     BPM = models.FloatField(blank=True, null=True)
     #Eficiencia del proceso (n)
     n = models.IntegerField(blank=True, null=True, default=30)
+    
+    Z = models.FloatField(blank=True, null=True)
 
     def __str__(self):
         return f"Indicadores del proyecto {self.project.name}"    
