@@ -72,7 +72,7 @@ function ShowZResult({
       } else {
         setNotUpdatedZ(false);
       }
-    } catch(exception){console.log(exception);}
+    } catch(exception){}
   }, [indicators]);
 
   //this function happend when the user click the "save new result" button in the aside of the calculate indicator modal
