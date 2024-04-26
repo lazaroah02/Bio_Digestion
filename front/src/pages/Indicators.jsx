@@ -6,10 +6,12 @@ import { useState } from "react";
 import "./pagesStyles/indicators.css";
 import { useIsMobileMode } from "../hooks/useIsMobileMode";
 import ShowZResult from "../components/IndicatorsComponents/CalculateIndicatorsModals/ShowZResult";
+import { useToast } from "../hooks/useToast";
 
 function Indicators() {
   const location = useLocation();
   const project = location.state;
+  const {toast, showErrorMessage} = useToast()
   const { indicators, loadingIndicators, updateIndicatorValue } =
     useManageIndicators({ projectId: project.id });
   const { mobileMode } = useIsMobileMode({ mobileWidth: 950 });
@@ -41,6 +43,7 @@ function Indicators() {
 
   return (
     <article className="indicators-page">
+        {toast()}
       <div className="indicators-page-main">
         <header className="header">
           <GoBackButton />
@@ -58,6 +61,7 @@ function Indicators() {
                     updateIndicatorValue={updateIndicatorValue}
                     resetIndicatorResults={resetIndicatorResults}
                     setIndicatorResult={setIndicatorResult}
+                    showErrorMessage={showErrorMessage}
                 />
               </div>
               <div className="show-Z-graphic-container"></div>
@@ -82,6 +86,7 @@ function Indicators() {
               updateIndicatorValue={updateIndicatorValue}
               resetIndicatorResults={resetIndicatorResults}
               setIndicatorResult={setIndicatorResult}
+              showErrorMessage={showErrorMessage}
             />
           </div>
           <div className="show-Z-graphic-container"></div>

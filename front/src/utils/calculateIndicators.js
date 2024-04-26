@@ -70,5 +70,5 @@ export function calculateZ({VAN, TRI, TIR, LEC, BPM, n, VAN_d, TRI_d, TIR_d, LEC
         Math.abs(LEC - LEC_d) / LEC_d, 
         Math.abs(BPM - BPM_d) / BPM_d, 
         Math.abs(n - n_d) / n_d
-    ])
+    ]).toFixed(2)
 }
