@@ -17,7 +17,6 @@ export function createProject({name, user, token}){
 
         }
         else{
-            console.log(res)
             throw new Error('Error al crear el proyecto')
         }
     })

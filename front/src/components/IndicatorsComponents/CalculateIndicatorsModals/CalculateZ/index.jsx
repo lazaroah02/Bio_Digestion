@@ -4,7 +4,7 @@ import ShowPropertiesInfo from '../ShowPropertiesInfo'
 import IndicatorFormActionButtons from '../IndicatorFormsActionButtons'
 import { calculateZ } from '../../../../utils/calculateIndicators'
 
-function CalculateZ({indicators, setZresult}) {
+function CalculateZ({indicators, setZresult, showErrorMessage}) {
     function handleCalculate(e){
         e.preventDefault()
         let VAN_d = parseFloat(e.target["VAN_d"].value)
@@ -14,13 +14,18 @@ function CalculateZ({indicators, setZresult}) {
         let BPM_d = parseFloat(e.target["BPM_d"].value)
         let n_d = parseFloat(e.target["n_d"].value)
 
+        //verify any value is cero, cause divide by cero is not supported
+        if([VAN_d, TIR_d, TIR_d, LEC_d, BPM_d, n_d].some(value => value === 0)){
+            return showErrorMessage("Ningún valor puede ser cero")
+        }
+
         let result = calculateZ({
-            VAN:indicators?.VAN, 
-            TRI:indicators?.TRI, 
-            TIR:indicators?.TIR, 
-            LEC:indicators?.LEC, 
-            BPM:indicators?.BPM, 
-            n:indicators?.n, 
+            VAN:parseFloat(indicators?.VAN), 
+            TRI:parseFloat(indicators?.TRI), 
+            TIR:parseFloat(indicators?.TIR), 
+            LEC:parseFloat(indicators?.LEC), 
+            BPM:parseFloat(indicators?.BPM), 
+            n:parseFloat(indicators?.n), 
             VAN_d:VAN_d, 
             TRI_d:TRI_d,  
             TIR_d:TIR_d, 

@@ -1,7 +1,6 @@
 import './index.css'
 import {useToast} from '../../../../hooks/useToast'
-function ShowResult({result = null, updateIndicatorValue, indicatorName}) {
-    const {toast, showSuccessMessage, showErrorMessage} = useToast()
+function ShowResult({result = null, updateIndicatorValue, indicatorName, showErrorMessage, showSuccessMessage}) {
     function handleSaveResult(){
         if(result !== null && result !== "NaN"){
             updateIndicatorValue({indicatorName:indicatorName, newValue:result});
@@ -12,7 +11,6 @@ function ShowResult({result = null, updateIndicatorValue, indicatorName}) {
     }
     return (
         <>
-            {toast()}
             <section className = "show-result-indicator-calculation">
                 <div>Resultado:</div>
                 <span>{result !== null && result != "NaN"?result:null}</span>

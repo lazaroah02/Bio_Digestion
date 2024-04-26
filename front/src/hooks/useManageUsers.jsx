@@ -19,7 +19,7 @@ export function useManageUsers() {
             .then(data => {
                 setUsers(data)
             })
-            .catch(err => console.log(err))
+            .catch(err => {})
             .finally(() => setloadingUsers(false))
         }
     },[])

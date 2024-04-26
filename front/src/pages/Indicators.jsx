@@ -11,7 +11,7 @@ import { useToast } from "../hooks/useToast";
 function Indicators() {
   const location = useLocation();
   const project = location.state;
-  const {toast, showErrorMessage} = useToast()
+  const {toast, showErrorMessage, showSuccessMessage} = useToast()
   const { indicators, loadingIndicators, updateIndicatorValue } =
     useManageIndicators({ projectId: project.id });
   const { mobileMode } = useIsMobileMode({ mobileWidth: 950 });
@@ -73,6 +73,8 @@ function Indicators() {
             updateIndicatorValue={updateIndicatorValue}
             indicatorResults={indicatorResults}
             setIndicatorResult={setIndicatorResult}
+            showErrorMessage={showErrorMessage}
+            showSuccessMessage = {showSuccessMessage}
           />
         </section>
       </div>

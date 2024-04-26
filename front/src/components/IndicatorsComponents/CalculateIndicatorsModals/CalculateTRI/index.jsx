@@ -6,13 +6,16 @@ import {useState} from 'react'
 import IndicatorFormActionButtons from '../IndicatorFormsActionButtons';
 import ShowPropertiesInfo from '../ShowPropertiesInfo';
 
-function CalculateTRI({setTRIResult}) {
+function CalculateTRI({setTRIResult, showErrorMessage}) {
     const [QValue, setQValue] = useState("")
 
     function handleCalculate(e){
         e.preventDefault();
         let Q = parseFloat(QValue)
         let Inv = parseFloat(e.target["Inv"]?.value)
+        if(Q === 0){
+            return showErrorMessage("El valor de Q no puede ser cero")
+        }
         let result = calculateTRI({Inv:Inv, Q:Q})
         setTRIResult({indicatorName:"TRI",result:result})
     }

@@ -3,8 +3,7 @@ import {useToast} from '../../../../hooks/useToast'
 import { useState, useEffect } from 'react'
 import { AgChartsReact } from 'ag-charts-react'
 
-function ShowVANResult({result = null, VANpartialResults = [], updateIndicatorValue}) {
-    const {toast, showSuccessMessage, showErrorMessage} = useToast()
+function ShowVANResult({result = null, VANpartialResults = [], updateIndicatorValue, showErrorMessage, showSuccessMessage}) {
     const [chartOptions, setChartOptions] = useState({
         // Data: Data to be displayed in the chart
         data: [],
@@ -29,7 +28,6 @@ function ShowVANResult({result = null, VANpartialResults = [], updateIndicatorVa
 
     return ( 
         <section className = "show-VAN-result">
-            {toast()}
             <AgChartsReact options={chartOptions} />
             <section className = "show-result-VAN-calculation">
                 <div>Resultado:</div>

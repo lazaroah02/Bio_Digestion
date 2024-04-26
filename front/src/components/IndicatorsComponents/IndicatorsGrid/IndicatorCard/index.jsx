@@ -1,10 +1,8 @@
 import './index.css'
 import { useState, useRef } from 'react';
-import { useToast } from '../../../../hooks/useToast';
-function IndicatorCard({indicatorName, indicatorValue, asideColor, title, children, updateIndicatorValue}) {
+function IndicatorCard({indicatorName, indicatorValue, asideColor, title, children, updateIndicatorValue, showSuccessMessage}) {
     const [editting, setEdditing] = useState(false)
     const inputRef = useRef(null)
-    const {toast, showSuccessMessage} = useToast()
     function handleSave(){
         setEdditing(false)
         updateIndicatorValue({indicatorName:indicatorName, newValue:inputRef.current?.value})
@@ -12,7 +10,6 @@ function IndicatorCard({indicatorName, indicatorValue, asideColor, title, childr
     }
     return ( 
         <article className="indicator-card">
-            {toast()}
             <aside style={{ backgroundColor: asideColor }}></aside>
             <section>
                 <header>{title}</header>

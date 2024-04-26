@@ -38,7 +38,7 @@ function ShowZResult({ result = null, indicators, indicatorResults, updateIndica
             />
           }
           indicatorForm={
-              <CalculateZ indicators={indicators} setZresult={setIndicatorResult}/>
+              <CalculateZ indicators={indicators} setZresult={setIndicatorResult} showErrorMessage={showErrorMessage}/>
           }
           key="calculate-z"
           resetIndicatorResults={resetIndicatorResults}

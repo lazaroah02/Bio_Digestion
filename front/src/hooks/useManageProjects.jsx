@@ -18,7 +18,7 @@ export function useManageProjects() {
             .then(data => {
                 setProjects(data)
             })
-            .catch(err => console.log(err))
+            .catch(err => {})
             .finally(() => setloadingProjects(false))
         }
     },[])
