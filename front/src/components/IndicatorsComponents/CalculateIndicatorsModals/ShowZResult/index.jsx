@@ -3,6 +3,10 @@ import CalculateIndicatorModal from "../CalculateIndicatorModal";
 import ShowResult from "../ShowResult";
 import CalculateZ from "../CalculateZ";
 import { validateNotNullIndicator } from "../../../../utils/validateNotNullIndicator";
+import { calculateZ } from "../../../../utils/calculateIndicators";
+import { getFromLocalStorageDesiredIndicatorValues } from "../../../../utils/localStorageDesiredIndicatorValues";
+import { useState, useEffect } from "react";
+import { saveInLocalStorageDesiredIndicatorValues } from "../../../../utils/localStorageDesiredIndicatorValues";
 
 function ShowZResult({
   result = null,
@@ -14,6 +18,15 @@ function ShowZResult({
   showErrorMessage,
   showSuccessMessage,
 }) {
+  const [notUpdatedZ, setNotUpdatedZ] = useState(false);
+  const [desiredIndicatorValues, setDesiredIndicatorValues] = useState({
+    VAN_d: "",
+    TRI_d: "",
+    TIR_d: "",
+    LEC_d: "",
+    BPM_d: "",
+    n_d: "",
+  });
   function validateIndicatorValues(callback) {
     validateNotNullIndicator({
       VAN: indicators?.VAN,
@@ -31,6 +44,65 @@ function ShowZResult({
       });
   }
 
+  //check if the actual Z result correspond with the actual indicator values,
+  //making a pre-calculation based on the last desired indicator values entered by the user
+  useEffect(() => {
+    try {
+      const { VAN_d, TRI_d, TIR_d, LEC_d, BPM_d, n_d } =
+        getFromLocalStorageDesiredIndicatorValues();
+      let result = calculateZ({
+        VAN: parseFloat(indicators?.VAN),
+        TRI: parseFloat(indicators?.TRI),
+        TIR: parseFloat(indicators?.TIR),
+        LEC: parseFloat(indicators?.LEC),
+        BPM: parseFloat(indicators?.BPM),
+        n: parseFloat(indicators?.n),
+        VAN_d: parseFloat(VAN_d),
+        TRI_d: parseFloat(TRI_d),
+        TIR_d: parseFloat(TIR_d),
+        LEC_d: parseFloat(LEC_d),
+        BPM_d: parseFloat(BPM_d),
+        n_d: parseFloat(n_d),
+      });
+      if (parseFloat(result).toFixed(2) !== indicators?.Z.toFixed(2)) {
+        setNotUpdatedZ(true);
+      } else {
+        setNotUpdatedZ(false);
+      }
+    } catch {}
+  }, [indicators]);
+
+  //this function happend when the user click the save new result button
+  function handleUpdateIndicatorValue({ indicatorName, newValue }) {
+    updateIndicatorValue({ indicatorName: indicatorName, newValue: newValue });
+
+    //save in local storage the desired indicators values for future
+    //comprobations every time the user saves the Z calculation result
+    saveInLocalStorageDesiredIndicatorValues({
+      VAN_d: desiredIndicatorValues.VAN_d,
+      TRI_d: desiredIndicatorValues.TRI_d,
+      TIR_d: desiredIndicatorValues.TIR_d,
+      LEC_d: desiredIndicatorValues.LEC_d,
+      BPM_d: desiredIndicatorValues.BPM_d,
+      n_d: desiredIndicatorValues.n_d,
+    });
+
+    //indicate that Z is updated
+    setNotUpdatedZ(false)
+  }
+
+  function resetValues(){
+    resetIndicatorResults()
+    setDesiredIndicatorValues({
+      VAN_d: "",
+      TRI_d: "",
+      TIR_d: "",
+      LEC_d: "",
+      BPM_d: "",
+      n_d: "",
+    })
+  }
+
   return (
     <>
       <section className="show-Z-result">
@@ -45,7 +117,7 @@ function ShowZResult({
             <ShowResult
               result={indicatorResults?.Z}
               indicatorName="Z"
-              updateIndicatorValue={updateIndicatorValue}
+              updateIndicatorValue={handleUpdateIndicatorValue}
               key="Z"
               showErrorMessage={showErrorMessage}
               showSuccessMessage={showSuccessMessage}
@@ -56,10 +128,12 @@ function ShowZResult({
               indicators={indicators}
               setZresult={setIndicatorResult}
               showErrorMessage={showErrorMessage}
+              desiredIndicatorValues={desiredIndicatorValues}
+              setDesiredIndicatorValues = {setDesiredIndicatorValues}
             />
           }
           key="calculate-z"
-          resetIndicatorResults={resetIndicatorResults}
+          resetIndicatorResults={resetValues}
         />
       </section>
     </>
