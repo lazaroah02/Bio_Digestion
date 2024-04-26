@@ -24,8 +24,22 @@
     font-size: 25px;
     font-weight: 600;
     line-height: 35px; /* 116.667% */
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap:10px;
 }
 
 .calculate-z-button{
     scale: 1.5;
+}
+
+.danger{
+    fill:red!important;
+    color: red!important;
+}
+
+.success{
+    fill:green!important;
+    color: green!important;
 }

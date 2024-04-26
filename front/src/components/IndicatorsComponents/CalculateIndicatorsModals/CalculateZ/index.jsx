@@ -9,7 +9,8 @@ function CalculateZ({
   setZresult,
   showErrorMessage,
   desiredIndicatorValues,
-  setDesiredIndicatorValues
+  setDesiredIndicatorValues,
+  resetDesiredIndicatorValues
 }) {
   function handleCalculate(e) {
     e.preventDefault();
@@ -44,6 +45,7 @@ function CalculateZ({
 
   function handleCleanResult() {
     setZresult({ indicatorName: "Z", result: null });
+    resetDesiredIndicatorValues()
   }
 
   return (

@@ -7,6 +7,7 @@ import { calculateZ } from "../../../../utils/calculateIndicators";
 import { getFromLocalStorageDesiredIndicatorValues } from "../../../../utils/localStorageDesiredIndicatorValues";
 import { useState, useEffect } from "react";
 import { saveInLocalStorageDesiredIndicatorValues } from "../../../../utils/localStorageDesiredIndicatorValues";
+import ShowPropertiesInfo from "../ShowPropertiesInfo";
 
 function ShowZResult({
   result = null,
@@ -27,6 +28,8 @@ function ShowZResult({
     BPM_d: "",
     n_d: "",
   });
+
+  //validate if any indicator values is null when the user click on calculate Z button
   function validateIndicatorValues(callback) {
     validateNotNullIndicator({
       VAN: indicators?.VAN,
@@ -72,7 +75,7 @@ function ShowZResult({
     } catch {}
   }, [indicators]);
 
-  //this function happend when the user click the save new result button
+  //this function happend when the user click the "save new result" button in the aside of the calculate indicator modal
   function handleUpdateIndicatorValue({ indicatorName, newValue }) {
     updateIndicatorValue({ indicatorName: indicatorName, newValue: newValue });
 
@@ -88,11 +91,10 @@ function ShowZResult({
     });
 
     //indicate that Z is updated
-    setNotUpdatedZ(false)
+    setNotUpdatedZ(false);
   }
 
-  function resetValues(){
-    resetIndicatorResults()
+  function resetDesiredIndicatorValues() {
     setDesiredIndicatorValues({
       VAN_d: "",
       TRI_d: "",
@@ -100,14 +102,47 @@ function ShowZResult({
       LEC_d: "",
       BPM_d: "",
       n_d: "",
-    })
+    });
+  }
+
+  //reset the indicatorResults and desiredIndicatorValues to its default values
+  function resetValues() {
+    resetIndicatorResults();
+    resetDesiredIndicatorValues();
   }
 
   return (
     <>
       <section className="show-Z-result">
         <div>Valor de Z</div>
-        <span>{result !== null && result != "NaN" ? result : null}</span>
+        <span>
+          {result !== null && result != "NaN" ? (
+            <>
+              {result}
+              {notUpdatedZ ? (
+                <ShowPropertiesInfo
+                  title="Advertencia"
+                  iconClassName="danger"
+                  headerClassName="danger"
+                  description = {
+                    <div>
+                      <p>El valor de Z no está actualizado.</p>
+                      <p>Se han producido cambios en los valores de los indicadores desde la última vez que se calculó Z.</p> 
+                      <p>Es recomendable volver a calcular Z </p>
+                    </div>
+                  }
+                />
+              ) : (
+                <ShowPropertiesInfo
+                  title="Información"
+                  iconClassName="success"
+                  headerClassName="success"
+                  description="El valor de Z está actualizado"
+                />
+              )}
+            </>
+          ) : null}
+        </span>
         <CalculateIndicatorModal
           title="Calcular Z"
           calculateButtonExtraStyles="calculate-z-button"
@@ -129,7 +164,8 @@ function ShowZResult({
               setZresult={setIndicatorResult}
               showErrorMessage={showErrorMessage}
               desiredIndicatorValues={desiredIndicatorValues}
-              setDesiredIndicatorValues = {setDesiredIndicatorValues}
+              setDesiredIndicatorValues={setDesiredIndicatorValues}
+              resetDesiredIndicatorValues={resetDesiredIndicatorValues}
             />
           }
           key="calculate-z"

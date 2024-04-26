@@ -4,12 +4,12 @@ import InfoIcon from '../../../../icons/InfoIcon'
 import { Dialog } from 'primereact/dialog';
 import { useState } from 'react';
 
-function ShowPropertiesInfo({title = "", description = ""}) {
+function ShowPropertiesInfo({title = "", description = "", iconClassName = "", headerClassName = ""}) {
     const [show, setShow] = useState(false)
     return ( 
         <>
             <span onClick = {() => setShow(true)}>
-                <InfoIcon  className = "info-icon"/>
+                <InfoIcon  className = {"info-icon " + iconClassName}/>
             </span>
             <Dialog
                 visible={show}
@@ -19,7 +19,7 @@ function ShowPropertiesInfo({title = "", description = ""}) {
                 resizable={false}
                 style={{ maxWidth: "93vw" }}
                 header={title}
-                headerClassName="calculate-indicator-header"
+                headerClassName={"calculate-indicator-header " + headerClassName}
             >
                 {description}
             </Dialog>
