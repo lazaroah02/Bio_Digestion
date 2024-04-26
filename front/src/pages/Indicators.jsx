@@ -5,6 +5,7 @@ import {useManageIndicators} from '../hooks/useManageIndicators'
 import {useState} from 'react'
 import './pagesStyles/indicators.css';
 import {useIsMobileMode} from '../hooks/useIsMobileMode'
+import ShowZResult from '../components/IndicatorsComponents/CalculateIndicatorsModals/ShowZResult';
 
 function Indicators() {
     const location = useLocation();
@@ -57,7 +58,9 @@ function Indicators() {
             </div>
             {!mobileMode?
                 <aside className = "indicators-page-aside-section">
-                    <div className = "show-Z-value-container"></div>
+                    <div className = "show-Z-value-container">
+                        <ShowZResult result = {5.1}/>
+                    </div>
                     <div className = "show-Z-graphic-container"></div>
                 </aside>
             :null}

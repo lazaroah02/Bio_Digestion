@@ -1,0 +1,31 @@
+.show-Z-result{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    gap:20px;
+}
+
+.show-Z-result div{
+    color: #606060;
+    text-align: center;
+    font-family: Outfit-Semi-Bold;
+    font-size: 30px;
+    font-weight: 600;
+}
+
+.show-Z-result span{
+    color: #707070;
+    text-align: center;
+    font-family: Outfit-Regular;
+    font-size: 25px;
+    font-weight: 600;
+    line-height: 35px; /* 116.667% */
+}
+
+.calculate-z-button{
+    scale: 1.5;
+}

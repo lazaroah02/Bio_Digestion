@@ -4,11 +4,11 @@ import XIcon from '../../../../icons/XIcon'
 import './index.css'
 import '../commonStyles.css'
 
-function CalculateIndicatorModal({title, asideColor = "", indicatorForm = null, asideContent  = null, resetIndicatorResults = () => {}}) {
+function CalculateIndicatorModal({title, calculateButtonExtraStyles = "", asideColor = "", indicatorForm = null, asideContent  = null, resetIndicatorResults = () => {}}) {
     const [show, setShow] = useState(false)
     return ( 
         <>
-        <button onClick={() => setShow(true)} className = "small-green-button">Calcular</button>
+        <button onClick={() => setShow(true)} className = {"small-green-button " + calculateButtonExtraStyles}>Calcular</button>
         <Dialog
             visible={show}
             onHide={() => {
