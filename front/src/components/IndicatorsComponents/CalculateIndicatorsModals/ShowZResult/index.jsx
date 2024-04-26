@@ -67,12 +67,12 @@ function ShowZResult({
         BPM_d: parseFloat(BPM_d),
         n_d: parseFloat(n_d),
       });
-      if (parseFloat(result).toFixed(2) !== indicators?.Z.toFixed(2)) {
+      if (parseFloat(result).toFixed(2) !== parseFloat(indicators?.Z).toFixed(2)) {
         setNotUpdatedZ(true);
       } else {
         setNotUpdatedZ(false);
       }
-    } catch {}
+    } catch(exception){console.log(exception);}
   }, [indicators]);
 
   //this function happend when the user click the "save new result" button in the aside of the calculate indicator modal
@@ -89,9 +89,6 @@ function ShowZResult({
       BPM_d: desiredIndicatorValues.BPM_d,
       n_d: desiredIndicatorValues.n_d,
     });
-
-    //indicate that Z is updated
-    setNotUpdatedZ(false);
   }
 
   function resetDesiredIndicatorValues() {
