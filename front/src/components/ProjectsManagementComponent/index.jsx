@@ -57,6 +57,20 @@ function ProjectsManagement() {
     }
   }
 
+  //show the select field of each row
+  function startProjectDeletion(){
+    setDeletingProjects(true)
+  }
+
+  //header dropdown options
+  const headerDropdownOptions = [
+    {
+      fun:startProjectDeletion,
+      content: "Eliminar Proyecto",
+      icon: <TrashIcon color = {'rgba(0, 0, 0, 0.9)'} width = {'20px'}/>
+    }
+  ]
+
   return (
     <article className="projects-managment-component">
       {loadingProjects?
@@ -74,7 +88,7 @@ function ProjectsManagement() {
             <span>
               Proyectos
             </span>
-            <OptionsDropdown setDeletingProjects={setDeletingProjects}/>
+            <OptionsDropdown optionsProps={headerDropdownOptions}/>
           </header>
           <ProjectsList
             projects={projects}

@@ -63,6 +63,20 @@ function UsersManagement() {
     });
   }
 
+  //show the select field of each row
+  function startUserDeletion(){
+    setDeletingUsers(true)
+  }
+
+  //header dropdown options
+  const headerDropdownOptions = [
+    {
+      fun:startUserDeletion,
+      content: "Eliminar Usuario",
+      icon: <TrashIcon color = {'rgba(0, 0, 0, 0.9)'} width = {'20px'}/>
+    }
+  ]
+
   return (
     <section className="user-management-page">
       {toast()}
@@ -77,8 +91,7 @@ function UsersManagement() {
       <header className="projects-list-header">
         <span>Usuarios</span>
         <OptionsDropdown
-          setDeletingProjects={setDeletingUsers}
-          content={"Eliminar Usuario"}
+          optionsProps={headerDropdownOptions}
         />
       </header>
       {!mobileMode ? (
