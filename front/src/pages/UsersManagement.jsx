@@ -11,6 +11,8 @@ import { useToast } from "../hooks/useToast";
 import { useConfirmDialog } from "../hooks/useConfirmDialog";
 import { useIsMobileMode } from "../hooks/useIsMobileMode";
 import UserGrid from "../components/UsersManagementComponents/UserGrid";
+import { PDFDownloadLink } from "@react-pdf/renderer";
+import UsersReport from "../PdfTemplates/UsersReport";
 
 function UsersManagement() {
   const {
@@ -65,23 +67,33 @@ function UsersManagement() {
   }
 
   //show the select field of each row
-  function startUserDeletion(){
-    setDeletingUsers(true)
+  function startUserDeletion() {
+    setDeletingUsers(true);
   }
 
   //header dropdown options
   const headerDropdownOptions = [
     {
-      fun:startUserDeletion,
+      fun: startUserDeletion,
       content: "Eliminar Usuario",
-      icon: <TrashIcon color = {'rgba(0, 0, 0, 0.9)'} width = {'20px'}/>
+      icon: <TrashIcon color={"rgba(0, 0, 0, 0.9)"} width={"20px"} />,
     },
     {
-      fun:() => {},
-      content: "Generar Reporte",
-      icon: <DocIcon color = {'rgba(0, 0, 0, 0.6)'} width = {'17px'}/>
+      fun: () => {},
+      content: (
+        <PDFDownloadLink
+          document={<UsersReport />}
+          fileName="Usuarios de Bio Digestión.pdf"
+          className="generate-pdf-link"
+        >
+          {({ loading }) =>
+            loading ? "Cargando documento..." : "Generar Reporte"
+          }
+        </PDFDownloadLink>
+      ),
+      icon: <DocIcon color={"rgba(0, 0, 0, 0.6)"} width={"17px"} />,
     },
-  ]
+  ];
 
   return (
     <section className="user-management-page">
@@ -96,9 +108,7 @@ function UsersManagement() {
       ) : null}
       <header className="projects-list-header">
         <span>Usuarios</span>
-        <OptionsDropdown
-          optionsProps={headerDropdownOptions}
-        />
+        <OptionsDropdown optionsProps={headerDropdownOptions} />
       </header>
       {!mobileMode ? (
         <UserList

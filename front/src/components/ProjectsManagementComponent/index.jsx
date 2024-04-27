@@ -9,6 +9,8 @@ import TrashIcon from "../../icons/TrashIcon.jsx";
 import DocIcon from "../../icons/DocIcon.jsx";
 import "./index.css";
 import OptionsDropdown from "./OptionsDropdown/index.jsx";
+import { PDFDownloadLink } from "@react-pdf/renderer";
+import ProjectsReport from "../../PdfTemplates/ProjectsReport";
 
 function ProjectsManagement() {
   const [selectedProjects, setSelectedProjects] = useState([]);
@@ -72,7 +74,17 @@ function ProjectsManagement() {
     },
     {
       fun:() => {},
-      content: "Generar Reporte",
+      content: (
+        <PDFDownloadLink
+          document={<ProjectsReport />}
+          fileName="Proyectos de Bio Digestión.pdf"
+          className="generate-pdf-link"
+        >
+          {({ loading }) =>
+            loading ? "Cargando documento..." : "Generar Reporte"
+          }
+        </PDFDownloadLink>
+      ),
       icon: <DocIcon color = {'rgba(0, 0, 0, 0.6)'} width = {'17px'}/>
     },
   ]
