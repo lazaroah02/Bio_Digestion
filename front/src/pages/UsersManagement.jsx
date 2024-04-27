@@ -11,8 +11,9 @@ import { useToast } from "../hooks/useToast";
 import { useConfirmDialog } from "../hooks/useConfirmDialog";
 import { useIsMobileMode } from "../hooks/useIsMobileMode";
 import UserGrid from "../components/UsersManagementComponents/UserGrid";
-import { PDFDownloadLink } from "@react-pdf/renderer";
+import { PDFDownloadLink, PDFViewer } from "@react-pdf/renderer";
 import UsersReport from "../PdfTemplates/UsersReport";
+import PdfTemplate from "../PdfTemplates/PdfTemplate";
 
 function UsersManagement() {
   const {
@@ -82,7 +83,7 @@ function UsersManagement() {
       fun: () => {},
       content: (
         <PDFDownloadLink
-          document={<UsersReport />}
+          document={<PdfTemplate><UsersReport /></PdfTemplate>}
           fileName="Usuarios de Bio Digestión.pdf"
           className="generate-pdf-link"
         >
@@ -110,6 +111,9 @@ function UsersManagement() {
         <span>Usuarios</span>
         <OptionsDropdown optionsProps={headerDropdownOptions} />
       </header>
+      <PDFViewer>
+        <PdfTemplate><UsersReport/></PdfTemplate>
+      </PDFViewer>
       {!mobileMode ? (
         <UserList
           users={users}

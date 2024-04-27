@@ -3,7 +3,6 @@ import LogoFullGreen from "../../assets/logos/full-logo-green.svg";
 import AuthenticationContext from "../../contexts/authenticationContext";
 import { useContext } from "react";
 import StackIcon from "../../icons/StackIcon";
-import GraphicIcon from "../../icons/GraphicIcon";
 import DocIcon from "../../icons/DocIcon";
 import UserIcon from "../../icons/UserIcon";
 import { useLocation, useNavigate } from "react-router-dom";
