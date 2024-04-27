@@ -10,7 +10,7 @@ function CalculateZ({
   showErrorMessage,
   desiredIndicatorValues,
   setDesiredIndicatorValues,
-  resetDesiredIndicatorValues
+  clearDesiredIndicatorValues
 }) {
   function handleCalculate(e) {
     e.preventDefault();
@@ -45,7 +45,7 @@ function CalculateZ({
 
   function handleCleanResult() {
     setZresult({ indicatorName: "Z", result: null });
-    resetDesiredIndicatorValues()
+    clearDesiredIndicatorValues()
   }
 
   return (
@@ -58,7 +58,7 @@ function CalculateZ({
         <input
           id="VAN_d"
           className="calculate-indicator-input"
-          value={desiredIndicatorValues.VAN_d}
+          value={desiredIndicatorValues.VAN_d? desiredIndicatorValues.VAN_d: ""}
           onChange={(e) =>
             setDesiredIndicatorValues((prev) => ({ ...prev, VAN_d: e.target.value }))
           }
@@ -76,7 +76,7 @@ function CalculateZ({
         <input
           id="TIR_d"
           className="calculate-indicator-input"
-          value = {desiredIndicatorValues.TIR_d} 
+          value = {desiredIndicatorValues.TIR_d? desiredIndicatorValues.TIR_d :""} 
           onChange={(e) => setDesiredIndicatorValues((prev) => ({...prev, TIR_d:e.target.value}))}          
           type="number"
           step="0.01"
@@ -92,7 +92,7 @@ function CalculateZ({
         <input
           id="TRI_d"
           className="calculate-indicator-input"
-          value = {desiredIndicatorValues.TRI_d} 
+          value = {desiredIndicatorValues.TRI_d? desiredIndicatorValues.TRI_d: ""} 
           onChange={(e) => setDesiredIndicatorValues((prev) => ({...prev, TRI_d:e.target.value}))}
           type="number"
           step="0.01"
@@ -108,7 +108,7 @@ function CalculateZ({
         <input
           id="LEC_d"
           className="calculate-indicator-input"
-          value = {desiredIndicatorValues.LEC_d} 
+          value = {desiredIndicatorValues.LEC_d? desiredIndicatorValues.LEC_d: ""} 
           onChange={(e) => setDesiredIndicatorValues((prev) => ({...prev, LEC_d:e.target.value}))}
           type="number"
           step="0.01"
@@ -124,7 +124,7 @@ function CalculateZ({
         <input
           id="BPM_d"
           className="calculate-indicator-input"
-          value = {desiredIndicatorValues.BPM_d} 
+          value = {desiredIndicatorValues.BPM_d? desiredIndicatorValues.BPM_d : ""} 
           onChange={(e) => setDesiredIndicatorValues((prev) => ({...prev, BPM_d:e.target.value}))}
           type="number"
           step="0.01"
@@ -140,7 +140,7 @@ function CalculateZ({
         <input
           id="n_d"
           className="calculate-indicator-input"
-          value = {desiredIndicatorValues.n_d} 
+          value = {desiredIndicatorValues.n_d? desiredIndicatorValues.n_d: ""} 
           onChange={(e) => setDesiredIndicatorValues((prev) => ({...prev, n_d:e.target.value}))}
           type="number"
           step="0.01"

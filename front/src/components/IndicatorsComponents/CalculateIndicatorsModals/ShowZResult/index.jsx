@@ -21,12 +21,12 @@ function ShowZResult({
 }) {
   const [notUpdatedZ, setNotUpdatedZ] = useState(false);
   const [desiredIndicatorValues, setDesiredIndicatorValues] = useState({
-    VAN_d: "",
-    TRI_d: "",
-    TIR_d: "",
-    LEC_d: "",
-    BPM_d: "",
-    n_d: "",
+    VAN_d: localStorage.getItem('VAN_d'),
+    TRI_d: localStorage.getItem('TRI_d'),
+    TIR_d: localStorage.getItem('TIR_d'),
+    LEC_d: localStorage.getItem('LEC_d'),
+    BPM_d: localStorage.getItem('BPM_d'),
+    n_d: localStorage.getItem('n_d'),
   });
 
   //validate if any indicator values is null when the user click on calculate Z button
@@ -51,8 +51,10 @@ function ShowZResult({
   //making a pre-calculation based on the last desired indicator values entered by the user
   useEffect(() => {
     try {
-      const { VAN_d, TRI_d, TIR_d, LEC_d, BPM_d, n_d } =
-        getFromLocalStorageDesiredIndicatorValues();
+      const { VAN_d, TRI_d, TIR_d, LEC_d, BPM_d, n_d } = getFromLocalStorageDesiredIndicatorValues();
+      if( VAN_d == null, TRI_d == null, TIR_d == null, LEC_d == null, BPM_d == null, n_d == null){
+        return
+      }  
       let result = calculateZ({
         VAN: parseFloat(indicators?.VAN),
         TRI: parseFloat(indicators?.TRI),
@@ -92,6 +94,17 @@ function ShowZResult({
   }
 
   function resetDesiredIndicatorValues() {
+    setDesiredIndicatorValues({
+      VAN_d: localStorage.getItem('VAN_d'),
+      TRI_d: localStorage.getItem('TRI_d'),
+      TIR_d: localStorage.getItem('TIR_d'),
+      LEC_d: localStorage.getItem('LEC_d'),
+      BPM_d: localStorage.getItem('BPM_d'),
+      n_d: localStorage.getItem('n_d'),
+    });
+  }
+
+  function clearDesiredIndicatorValues(){
     setDesiredIndicatorValues({
       VAN_d: "",
       TRI_d: "",
@@ -162,7 +175,7 @@ function ShowZResult({
               showErrorMessage={showErrorMessage}
               desiredIndicatorValues={desiredIndicatorValues}
               setDesiredIndicatorValues={setDesiredIndicatorValues}
-              resetDesiredIndicatorValues={resetDesiredIndicatorValues}
+              clearDesiredIndicatorValues = {clearDesiredIndicatorValues}
             />
           }
           key="calculate-z"
