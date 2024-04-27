@@ -11,7 +11,6 @@ import "./index.css";
 import OptionsDropdown from "./OptionsDropdown/index.jsx";
 import { PDFDownloadLink } from "@react-pdf/renderer";
 import ProjectsReport from "../../PdfTemplates/ProjectsReport";
-import PdfTemplate from "../../PdfTemplates/PdfTemplate";
 
 function ProjectsManagement() {
   const [selectedProjects, setSelectedProjects] = useState([]);
@@ -77,7 +76,7 @@ function ProjectsManagement() {
       fun:() => {},
       content: (
         <PDFDownloadLink
-          document={<PdfTemplate><ProjectsReport /></PdfTemplate>}
+          document={<ProjectsReport />}
           fileName="Proyectos de Bio Digestión.pdf"
           className="generate-pdf-link"
         >

@@ -1,12 +1,9 @@
-import { Document, Page, Text, View, StyleSheet } from '@react-pdf/renderer';
+import { Document, Text, View, StyleSheet } from '@react-pdf/renderer';
+import FrontPage from './FrontPage';
 
 function UsersReport() {
     // PDF styles
     const styles = StyleSheet.create({
-        page: {
-            flexDirection: 'row',
-            backgroundColor: '#E4E4E4'
-        },
         section: {
             margin: 10,
             padding: 10,
@@ -15,14 +12,7 @@ function UsersReport() {
     });
     return ( 
         <Document>
-            <Page size="A4" style={styles.page}>
-                <View style={styles.section}>
-                    <Text>Sección #1</Text>
-                </View>
-                <View style={styles.section}>
-                    <Text>Sección #2</Text>
-                </View>
-            </Page>
+            <FrontPage title="Reporte de usuarios de Bio Digestión"/>
         </Document>
      );
 }

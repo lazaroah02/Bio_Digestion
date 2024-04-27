@@ -13,7 +13,6 @@ import { useIsMobileMode } from "../hooks/useIsMobileMode";
 import UserGrid from "../components/UsersManagementComponents/UserGrid";
 import { PDFDownloadLink, PDFViewer } from "@react-pdf/renderer";
 import UsersReport from "../PdfTemplates/UsersReport";
-import PdfTemplate from "../PdfTemplates/PdfTemplate";
 
 function UsersManagement() {
   const {
@@ -83,7 +82,7 @@ function UsersManagement() {
       fun: () => {},
       content: (
         <PDFDownloadLink
-          document={<PdfTemplate><UsersReport /></PdfTemplate>}
+          document={<UsersReport/>}
           fileName="Usuarios de Bio Digestión.pdf"
           className="generate-pdf-link"
         >
@@ -111,8 +110,8 @@ function UsersManagement() {
         <span>Usuarios</span>
         <OptionsDropdown optionsProps={headerDropdownOptions} />
       </header>
-      <PDFViewer>
-        <PdfTemplate><UsersReport/></PdfTemplate>
+      <PDFViewer style={{width:'100%', height:'50vh'}}>
+        <UsersReport/>
       </PDFViewer>
       {!mobileMode ? (
         <UserList

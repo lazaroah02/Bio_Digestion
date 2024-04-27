@@ -1,4 +1,5 @@
-import { Document, Page, Text, View, StyleSheet } from '@react-pdf/renderer';
+import { Document, Text, View, StyleSheet } from '@react-pdf/renderer';
+import FrontPage from './FrontPage';
 
 function ProjectsReport() {
     // PDF styles
@@ -15,14 +16,7 @@ function ProjectsReport() {
     });
     return ( 
         <Document>
-            <Page size="A4" style={styles.page}>
-                <View style={styles.section}>
-                    <Text>Sección #1</Text>
-                </View>
-                <View style={styles.section}>
-                    <Text>Sección #2</Text>
-                </View>
-            </Page>
+            <FrontPage title = "Reporte de proyectos de Bio Digestión"/>
         </Document>
      );
 }
