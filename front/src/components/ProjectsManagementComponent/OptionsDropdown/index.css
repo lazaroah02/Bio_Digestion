@@ -35,13 +35,22 @@
     font-weight: 500;
 }
 
+.start-projects-deletion-button:hover{
+    color:green;
+}
+
+.start-projects-deletion-button span{
+    width: 128px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
 .hidden{
     background-color: red!important;
 }
 
 @media (max-width:1300px) {
     .projects-managment-options-dropdown{
-        right: -35px;
         right: -35px;
     }
 }

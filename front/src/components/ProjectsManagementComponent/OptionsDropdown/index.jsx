@@ -20,7 +20,6 @@ function OptionsDropdown({optionsProps = []}) {
     }
   })
     
-  console.log(options)
   return ( 
       <>
           <section className = "projects-managment-options-dropdown-container" onClick={() => {dropdownRef.current.show()}}>

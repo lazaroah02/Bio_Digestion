@@ -5,6 +5,7 @@ import { useState } from "react";
 import OptionsDropdown from "../components/ProjectsManagementComponent/OptionsDropdown";
 import Loader from "../components/Loader";
 import TrashIcon from "../icons/TrashIcon";
+import DocIcon from "../icons/DocIcon";
 import CreateUser from "../components/UsersManagementComponents/CreateUser";
 import { useToast } from "../hooks/useToast";
 import { useConfirmDialog } from "../hooks/useConfirmDialog";
@@ -74,7 +75,12 @@ function UsersManagement() {
       fun:startUserDeletion,
       content: "Eliminar Usuario",
       icon: <TrashIcon color = {'rgba(0, 0, 0, 0.9)'} width = {'20px'}/>
-    }
+    },
+    {
+      fun:() => {},
+      content: "Generar Reporte",
+      icon: <DocIcon color = {'rgba(0, 0, 0, 0.6)'} width = {'17px'}/>
+    },
   ]
 
   return (

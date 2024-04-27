@@ -6,6 +6,7 @@ import { useToast } from "../../hooks/useToast.jsx";
 import { useConfirmDialog } from "../../hooks/useConfirmDialog.jsx";
 import Loader from '../Loader'
 import TrashIcon from "../../icons/TrashIcon.jsx";
+import DocIcon from "../../icons/DocIcon.jsx";
 import "./index.css";
 import OptionsDropdown from "./OptionsDropdown/index.jsx";
 
@@ -68,7 +69,12 @@ function ProjectsManagement() {
       fun:startProjectDeletion,
       content: "Eliminar Proyecto",
       icon: <TrashIcon color = {'rgba(0, 0, 0, 0.9)'} width = {'20px'}/>
-    }
+    },
+    {
+      fun:() => {},
+      content: "Generar Reporte",
+      icon: <DocIcon color = {'rgba(0, 0, 0, 0.6)'} width = {'17px'}/>
+    },
   ]
 
   return (
