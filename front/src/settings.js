@@ -14,5 +14,3 @@ export const USERS_MANAGEMENT_URL = `${BASE_URL}/users/managment/`
 
 //indicators
 export const INDICATORS_MANAGMENT_URL = `${BASE_URL}/indicators/management/`
-
-
