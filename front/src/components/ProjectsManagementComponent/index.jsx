@@ -9,7 +9,7 @@ import TrashIcon from "../../icons/TrashIcon.jsx";
 import DocIcon from "../../icons/DocIcon.jsx";
 import "./index.css";
 import OptionsDropdown from "./OptionsDropdown/index.jsx";
-import { PDFDownloadLink } from "@react-pdf/renderer";
+import { PDFDownloadLink} from "@react-pdf/renderer";
 import ProjectsReport from "../../PdfTemplates/ProjectsReport";
 
 function ProjectsManagement() {
@@ -76,7 +76,7 @@ function ProjectsManagement() {
       fun:() => {},
       content: (
         <PDFDownloadLink
-          document={<ProjectsReport />}
+          document={<ProjectsReport projects={projects}/>}
           fileName="Proyectos de Bio Digestión.pdf"
           className="generate-pdf-link"
         >
