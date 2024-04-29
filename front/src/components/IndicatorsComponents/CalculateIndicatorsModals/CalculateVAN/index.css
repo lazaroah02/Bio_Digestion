@@ -3,6 +3,10 @@
     margin-top: 40px;
 }
 
+.calculate-VAN-form label{
+    min-width: 40px;
+}
+
 .calculate-Q-advice{
     display: flex;
     align-items: center;

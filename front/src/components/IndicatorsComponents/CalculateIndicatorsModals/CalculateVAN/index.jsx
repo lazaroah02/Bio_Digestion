@@ -16,15 +16,12 @@ function CalculateVAN({indicators, setVanResult}) {
         let Inv = parseFloat(e.target["Inv"]?.value)
         let n = parseInt(e.target["n"]?.value)
         let partialResults = []
-        let Qincrement = parseFloat(r * Inv)
-        let Qacumulator = Q
-        //calculate VAN n times
+        //calculate VAN n years to show the VAN value for each year in the graphic
         for(let j = 1; j <= n; j++) {
-            partialResults.push(parseFloat(calculateVAN({Q: Qacumulator, r: r, Inv: Inv, j:j})))
-            Qacumulator += Qincrement
+            partialResults.push(parseFloat(calculateVAN({Q: Q, r: r, j:j, Inv})))
         }
-        //add all VAN values
-        let result = partialResults.reduce((acumulator, value) => acumulator + value, 0).toFixed(2)
+        //calculate the VAN
+        let result = calculateVAN({Q: Q, r: r, j:n, Inv})
         setVanResult({indicatorName:"VAN",result:result})
         setVanResult({indicatorName:"VANpartialResults",result:partialResults})
     }
@@ -40,14 +37,14 @@ function CalculateVAN({indicators, setVanResult}) {
                 <div className = "calculate-indicator-field-container">
                     <label htmlFor='Q'>Q:</label>
                     <input id = "Q" value = {QValue} onChange={(e) => setQValue(e.target.value)} className = "calculate-indicator-input" type = "number" step="0.01" required/>
-                    <ShowPropertiesInfo title = "Q" description='Q, es el flujo de caja en unidades monetarias por año'/>
+                    <ShowPropertiesInfo title = "Q" description='Q, es el flujo de caja en unidades monetarias'/>
                 </div>
                 <div className = "calculate-Q-advice"><span>No conoces el valor?</span> <CalculateQ setQValue={setQValue}/></div>
             </div>
             <div className = "calculate-indicator-field-container">
                 <label htmlFor='r'>r (%):</label>
                 <input id = "r" className = "calculate-indicator-input" type = "number" step="0.01" required/>
-                <ShowPropertiesInfo title = "r" description='r, es la tasa de descuento'/>
+                <ShowPropertiesInfo title = "r" description='r, es la tasa de descuento. Se da en %. Ejemplo: 10%, 8%, etc.'/>
             </div>
             <div className = "calculate-indicator-field-container">
                 <label htmlFor='Inv'>Inv:</label>

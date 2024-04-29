@@ -1,6 +1,6 @@
 //VAN
-export function calculateVAN({Q, r, Inv, j}){
-    return ( ( Q / Math.pow((1 + r), j) ) - Inv ).toFixed(2)
+export function calculateVAN({Q, r, j, Inv}){
+    return ( ( Q / Math.pow((1 + r), j) ) -Inv).toFixed(2)
 }
 
 export function calculateQ({IA, GA}){
