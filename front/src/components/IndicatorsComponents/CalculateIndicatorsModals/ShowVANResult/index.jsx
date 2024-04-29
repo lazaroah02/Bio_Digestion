@@ -3,7 +3,7 @@ import {useToast} from '../../../../hooks/useToast'
 import { useState, useEffect } from 'react'
 import { AgChartsReact } from 'ag-charts-react'
 
-function ShowVANResult({result = null, VANpartialResults = [], updateIndicatorValue, showErrorMessage, showSuccessMessage}) {
+function ShowVANResult({result = null, VANpartialResults = [], updateIndicatorValue, showErrorMessage, showSuccessMessage, VANpropertiesToSaveInLocalStorage}) {
     const [chartOptions, setChartOptions] = useState({
         // Data: Data to be displayed in the chart
         data: [],
@@ -21,6 +21,8 @@ function ShowVANResult({result = null, VANpartialResults = [], updateIndicatorVa
         if(result !== null && result != "NaN"){
             updateIndicatorValue({indicatorName:"VAN", newValue:result});
             showSuccessMessage("Valor actualizado")
+            localStorage.setItem("Q", VANpropertiesToSaveInLocalStorage.Q)
+            localStorage.setItem("Inv", VANpropertiesToSaveInLocalStorage.Inv)
         }else{
             showErrorMessage("No has efectuado ningún cálculo")
         }

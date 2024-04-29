@@ -7,6 +7,7 @@ import CalculateBPM from "../CalculateIndicatorsModals/CalculateBPM";
 import ShowResult from "../CalculateIndicatorsModals/ShowResult";
 import ShowVANResult from "../CalculateIndicatorsModals/ShowVANResult";
 import IndicatorCard from "./IndicatorCard";
+import { useState } from "react";
 import "./index.css";
 
 function IndicatorsGrid({
@@ -18,6 +19,16 @@ function IndicatorsGrid({
   showErrorMessage,
   showSuccessMessage,
 }) {
+  /*
+  State description:
+  VAN indicator values to save in the local storage.
+  This values are saved in local storage when the user finish the VAN indicator calculation and save the result.
+  This values will be used in the TIR calculation.
+  */
+  const [VANpropertiesToSaveInLocalStorage, setVANPropertiesToSaveInLocalStorage] = useState({
+    Q: "",
+    Inv: ""
+  })
   return (
     <section className="indicators-grid">
       <IndicatorCard
@@ -36,6 +47,7 @@ function IndicatorsGrid({
             <CalculateVAN
               indicators={indicators}
               setVanResult={setIndicatorResult}
+              setVANPropertiesToSaveInLocalStorage = {setVANPropertiesToSaveInLocalStorage}
             />
           }
           asideContent={
@@ -45,6 +57,7 @@ function IndicatorsGrid({
               updateIndicatorValue={updateIndicatorValue}
               showErrorMessage={showErrorMessage}
               showSuccessMessage={showSuccessMessage}
+              VANpropertiesToSaveInLocalStorage = {VANpropertiesToSaveInLocalStorage}
             />
           }
         />

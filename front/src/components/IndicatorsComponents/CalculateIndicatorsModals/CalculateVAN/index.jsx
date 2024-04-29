@@ -6,7 +6,7 @@ import {useState} from 'react'
 import IndicatorFormActionButtons from '../IndicatorFormsActionButtons';
 import ShowPropertiesInfo from '../ShowPropertiesInfo';
 
-function CalculateVAN({indicators, setVanResult}) {
+function CalculateVAN({indicators, setVanResult, setVANPropertiesToSaveInLocalStorage}) {
     const [QValue, setQValue] = useState("")
 
     function handleCalculate(e){
@@ -24,6 +24,7 @@ function CalculateVAN({indicators, setVanResult}) {
         let result = calculateVAN({Q: Q, r: r, j:n, Inv})
         setVanResult({indicatorName:"VAN",result:result})
         setVanResult({indicatorName:"VANpartialResults",result:partialResults})
+        setVANPropertiesToSaveInLocalStorage({Q:Q, Inv:Inv})
     }
 
     function handleCleanResult(){
