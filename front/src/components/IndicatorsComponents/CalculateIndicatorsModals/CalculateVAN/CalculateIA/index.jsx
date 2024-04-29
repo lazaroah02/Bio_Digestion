@@ -12,11 +12,12 @@ function CalculateIA({setIAValue}) {
 
     function handleCalculate(e) {
         e.preventDefault();
+        let BP = e.target["BP"]?.value
         let CP = e.target["CP"]?.value
         let Fc = e.target["Fc"]?.value
-        let Ve = e.target["Ve"]?.value
+        let BF = e.target["BF"]?.value
         let PE = e.target["PE"]?.value
-        setResult(calculateIA({CP:CP, Fc:Fc, Ve:Ve, PE:PE}))
+        setResult(calculateIA({BP:BP, CP:CP, Fc:Fc, BF:BF, PE:PE}))
       }
     
       function handleSaveValue(){
@@ -49,6 +50,11 @@ function CalculateIA({setIAValue}) {
       >
         <form className = "calculate-indicator-form calculate-IA-form" onSubmit={(e) => handleCalculate(e)}>
             <div className = "calculate-indicator-field-container">
+                <label htmlFor='BP'>BP:</label>
+                <input id = "BP" className = "calculate-indicator-input" type = "number" step="0.01" required/>
+                <ShowPropertiesInfo title = "BP" description='BP, representa la cantidad de biogás producido anualmente(m3) x 1año'/>
+            </div>
+            <div className = "calculate-indicator-field-container">
                 <label htmlFor='CP'>CP:</label>
                 <input id = "CP" className = "calculate-indicator-input" type = "number" step="0.01" required/>
                 <ShowPropertiesInfo title = "CP" description='CP, representa poder calórico del vapor. (kWh/ m3).'/>
@@ -59,9 +65,9 @@ function CalculateIA({setIAValue}) {
                 <ShowPropertiesInfo title = "Fc" description = "Fc, Factor de conversión (Kwh)"/>
             </div>
             <div className = "calculate-indicator-field-container">
-                <label htmlFor='Ve'>Ve:</label>
-                <input id = "Ve" className = "calculate-indicator-input" type = "number" step="0.01" required/>
-                <ShowPropertiesInfo title = "Ve"/>
+                <label htmlFor='BF'>BF:</label>
+                <input id = "BF" className = "calculate-indicator-input" type = "number" step="0.01" required/>
+                <ShowPropertiesInfo title = "BF" description='BF, representa la cantidad de biofertilizante producido anualmente (m3) x 1año'/>
             </div>
             <div className = "calculate-indicator-field-container">
                 <label htmlFor='PE'>PE:</label>
