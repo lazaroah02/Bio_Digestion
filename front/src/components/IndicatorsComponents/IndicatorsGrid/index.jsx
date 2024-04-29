@@ -99,6 +99,7 @@ function IndicatorsGrid({
               updateIndicatorValue={updateIndicatorValue}
               showErrorMessage={showErrorMessage}
               showSuccessMessage={showSuccessMessage}
+              unit="años"
             />
           }
         />

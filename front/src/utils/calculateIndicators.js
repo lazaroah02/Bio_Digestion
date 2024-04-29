@@ -14,12 +14,14 @@ export function calculateIA({BP, CP, Fc, BF, PE}){
 
 //TIR
 export function calculateTIR({Q, Inv, n}){
+    //This part of formula is to TIR calculation: (Math.pow((Q / Inv), (1 / n)). 
+    //Then multiply by 100 to express in percent again.
     return ((Math.pow((Q / Inv), (1 / n)) - 1) * 100).toFixed(4)
 }
 
 //TRI
 export function calculateTRI({Inv, Q}){
-    return ( parseFloat(Inv) / parseFloat(Q) ).toFixed(2)
+    return ( parseFloat(Inv) / parseFloat(Q) ).toFixed(1)
 }
 
 //LEC

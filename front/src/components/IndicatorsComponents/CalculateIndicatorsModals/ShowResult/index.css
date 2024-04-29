@@ -19,6 +19,7 @@
     font-weight: 500;
     display: flex;
     justify-content: center;
+    white-space: nowrap;
 }
 
 .save-result-indicator-calculation{
