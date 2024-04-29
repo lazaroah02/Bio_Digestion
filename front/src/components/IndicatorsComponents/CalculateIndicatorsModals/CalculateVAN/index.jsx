@@ -18,7 +18,7 @@ function CalculateVAN({indicators, setVanResult}) {
         let partialResults = []
         //calculate VAN n years to show the VAN value for each year in the graphic
         for(let j = 1; j <= n; j++) {
-            partialResults.push(parseFloat(calculateVAN({Q: Q, r: r, j:j, Inv})))
+            partialResults.push(parseFloat(calculateVAN({Q: Q, r: r, j:j, Inv:Inv})))
         }
         //calculate the VAN
         let result = calculateVAN({Q: Q, r: r, j:n, Inv})
@@ -43,7 +43,7 @@ function CalculateVAN({indicators, setVanResult}) {
             </div>
             <div className = "calculate-indicator-field-container">
                 <label htmlFor='r'>r (%):</label>
-                <input id = "r" className = "calculate-indicator-input" type = "number" step="0.01" required/>
+                <input id = "r" className = "calculate-indicator-input" type = "number" step="0.0001" required/>
                 <ShowPropertiesInfo title = "r" description='r, es la tasa de descuento. Se da en %. Ejemplo: 10%, 8%, etc.'/>
             </div>
             <div className = "calculate-indicator-field-container">

@@ -13,8 +13,8 @@ export function calculateIA({BP, CP, Fc, BF, PE}){
 //END VAN
 
 //TIR
-export function calculateTIR(){
-    return 0
+export function calculateTIR({Q, Inv, n}){
+    return ((Math.pow((Q / Inv), (1 / n)) - 1) * 100).toFixed(4)
 }
 
 //TRI

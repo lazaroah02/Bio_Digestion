@@ -61,7 +61,7 @@ function IndicatorsGrid({
           title={"Calcular TIR"}
           resetIndicatorResults={resetIndicatorResults}
           asideColor="#06F"
-          indicatorForm={<CalculateTIR />}
+          indicatorForm={<CalculateTIR indicators={indicators} setTIRResult={setIndicatorResult}/>}
           asideContent={
             <ShowResult
               result={indicatorResults?.TIR}
@@ -69,6 +69,7 @@ function IndicatorsGrid({
               updateIndicatorValue={updateIndicatorValue}
               showErrorMessage={showErrorMessage}
               showSuccessMessage={showSuccessMessage}
+              unit="%"
             />
           }
         />
