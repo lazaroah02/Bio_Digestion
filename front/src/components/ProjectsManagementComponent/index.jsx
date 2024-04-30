@@ -131,6 +131,7 @@ function ProjectsManagement() {
           :
           <AddProject
                 createProject={handleCreateProject}
+                projects={projects}
                 className={
                   projects.length == 0
                     ? "add-project-button position-center"

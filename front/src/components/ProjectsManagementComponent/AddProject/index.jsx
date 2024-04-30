@@ -3,7 +3,7 @@ import { useState } from "react";
 import {useToast} from '../../../hooks/useToast'
 import './index.css'
 
-function AddProject({createProject, className}) {
+function AddProject({projects, createProject, className}) {
     const [show, setShow] = useState(false)
     const {toast, showErrorMessage, showSuccessMessage} = useToast()
     const [loading, setLoading] = useState(false)
@@ -25,10 +25,18 @@ function AddProject({createProject, className}) {
             }
         }})
     }
+
+    //validate that user have not more than 10 projects
+    function handleShowCreateProjectModal(){
+      if(projects.length >= 10){
+        showErrorMessage("Has alcanzado el número máximo de proyecto")
+      }else
+      setShow(true)
+    }
   return (
     <>
       {toast()}
-      <button className = {className} onClick={() => setShow(true)}>Crear Proyecto <span>+</span></button>
+      <button className = {className} onClick={() => handleShowCreateProjectModal()}>Crear Proyecto <span>+</span></button>
       <Dialog
         visible={show}
         onHide={() => setShow(false)}

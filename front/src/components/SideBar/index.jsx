@@ -5,6 +5,7 @@ import { useContext } from "react";
 import StackIcon from "../../icons/StackIcon";
 import DocIcon from "../../icons/DocIcon";
 import UserIcon from "../../icons/UserIcon";
+import GraphicIcon from "../../icons/GraphicIcon";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useConfirmDialog } from "../../hooks/useConfirmDialog";
 
@@ -69,7 +70,7 @@ function SideBar({closeSideBar = () => {}}) {
                 checkActivePath("graphics") ? "sidebar-active-path" : null
               }
             >
-              <StackIcon
+              <GraphicIcon
                 key={1}
                 width="20px"
                 height="20px"
