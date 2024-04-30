@@ -123,6 +123,9 @@ function Graphics() {
             <div className = "graphic-container">
                 <AgChartsReact options={chartsOptions.Z} />
             </div>
+            <div className = "graphics-page-graphics-separator"></div>
+            <div className = "graphics-page-graphics-separator"></div>
+            <div className = "graphics-page-graphics-separator"></div>
         </section>
     );
 }
