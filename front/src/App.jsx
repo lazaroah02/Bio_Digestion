@@ -13,6 +13,7 @@ import OnlyAdminsPage from "./components/ProtectedRoutes/OnlyAdminsPage";
 import Info from "./pages/Info";
 import Dashboard from "./pages/Dashboard";
 import Bye from "./pages/Bye";
+import Graphics from "./pages/Graphics";
 import UsersManagement from "./pages/UsersManagement";
 import ProjectsManagement from "./pages/Projects";
 import { QueryFiltersContextProvider } from "./contexts/filtersContext";
@@ -42,6 +43,16 @@ function App() {
                   <ProtectedRoute>
                     <Dashboard>
                       <Indicators/>
+                    </Dashboard>
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/dashboard/graphics"
+                element={
+                  <ProtectedRoute>
+                    <Dashboard>
+                      <Graphics/>
                     </Dashboard>
                   </ProtectedRoute>
                 }
