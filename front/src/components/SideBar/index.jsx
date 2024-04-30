@@ -60,6 +60,27 @@ function SideBar({closeSideBar = () => {}}) {
           <li>
             <aside
               className={
+                !checkActivePath("graphics") ? "sidebar-hidden-element" : null
+              }
+            ></aside>
+            <span
+            onClick={() => handleNavigate("/dashboard/graphics")}
+              className={
+                checkActivePath("graphics") ? "sidebar-active-path" : null
+              }
+            >
+              <StackIcon
+                key={1}
+                width="20px"
+                height="20px"
+                color={!checkActivePath("graphics") ? "#565454" : "#02C502"}
+              />
+              Gráficos
+            </span>
+          </li>
+          <li>
+            <aside
+              className={
                 !checkActivePath("info") ? "sidebar-hidden-element" : null
               }
             ></aside>
