@@ -63,7 +63,7 @@ function IndicatorsGrid({
         />
       </IndicatorCard>
       <IndicatorCard
-        title="Tasa Interna de Retorno (TIR)"
+        title="Tasa Interna de Retorno (TIR) (en %)"
         indicatorName={"TIR"}
         updateIndicatorValue={updateIndicatorValue}
         indicatorValue={indicators?.TIR}
@@ -88,7 +88,7 @@ function IndicatorsGrid({
         />
       </IndicatorCard>
       <IndicatorCard
-        title="Tiempo de Recuperación de Inversión (TRI)"
+        title="Tiempo de Recuperación de Inversión (TRI) (en años)"
         indicatorName={"TRI"}
         updateIndicatorValue={updateIndicatorValue}
         indicatorValue={indicators?.TRI}
