@@ -7,6 +7,7 @@ import "./pagesStyles/indicators.css";
 import { useIsMobileMode } from "../hooks/useIsMobileMode";
 import ShowZResult from "../components/IndicatorsComponents/CalculateIndicatorsModals/ShowZResult";
 import { useToast } from "../hooks/useToast";
+import VANResultGraphic from "../components/IndicatorsComponents/CalculateIndicatorsModals/ShowVANResult/VANResultGraphic";
 
 function Indicators() {
   const location = useLocation();
@@ -41,6 +42,15 @@ function Indicators() {
     });
   }
 
+  //get the last VAN results to show in the VAN Partial Resutlts graphic
+  function getLastVANpartialResults(){
+    let vanPartialResults = localStorage.getItem("VANpartialResults")
+    if(vanPartialResults){
+      return vanPartialResults.split(",")
+    }
+    return []
+  }
+
   return (
     <article className="indicators-page">
         {toast()}
@@ -53,7 +63,7 @@ function Indicators() {
         <section className="indicators-grid-container">
           {mobileMode ? (
             <aside className="indicators-page-aside-section">
-              <div className="show-Z-value-container">
+              <section className="show-Z-value-container">
                 <ShowZResult
                     result={indicators?.Z}
                     indicators={indicators}
@@ -64,8 +74,12 @@ function Indicators() {
                     showErrorMessage={showErrorMessage}
                     showSuccessMessage={showSuccessMessage}
                 />
-              </div>
-              <div className="show-Z-graphic-container"></div>
+              </section>
+              <section className="show-VAN-graphic-container">
+                <div className = "VAN-partial-results-graphic">
+                  <VANResultGraphic VANpartialResults={getLastVANpartialResults()}/>
+                </div>
+              </section>
             </aside>
           ) : null}
           <IndicatorsGrid
@@ -81,7 +95,7 @@ function Indicators() {
       </div>
       {!mobileMode ? (
         <aside className="indicators-page-aside-section">
-          <div className="show-Z-value-container">
+          <section className="show-Z-value-container">
             <ShowZResult
               result={indicators?.Z}
               indicators={indicators}
@@ -92,8 +106,12 @@ function Indicators() {
               showErrorMessage={showErrorMessage}
               showSuccessMessage={showSuccessMessage}
             />
-          </div>
-          <div className="show-Z-graphic-container"></div>
+          </section>
+          <section className="show-VAN-graphic-container">
+            <div className = "VAN-partial-results-graphic">
+              <VANResultGraphic VANpartialResults={getLastVANpartialResults()}/>
+            </div>
+          </section>
         </aside>
       ) : null}
     </article>

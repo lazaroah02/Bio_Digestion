@@ -1,27 +1,14 @@
 import './index.css'
-import { useState, useEffect } from 'react'
-import { AgChartsReact } from 'ag-charts-react'
+import VANResultGraphic from './VANResultGraphic';
 
-function ShowVANResult({result = null, VANpartialResults = [], updateIndicatorValue, showErrorMessage, showSuccessMessage, VANpropertiesToSaveInLocalStorage}) {
-    const [chartOptions, setChartOptions] = useState({
-        // Data: Data to be displayed in the chart
-        data: [],
-        // Series: Defines which chart type and data to use
-        series: [{ type: 'line', xKey: 'year', yKey: 'VAN' }],
-        title: { text: 'VAN anual durante n años' },
-      });
-
-    //update Chart on change VANpartialResults
-    useEffect(() => {
-        setChartOptions((prev) => ({...prev, data:VANpartialResults.map((value, index) => {return { year: index+1, VAN: value}})}))
-    },[VANpartialResults])  
-
+function ShowVANResult({result = null, VANpartialResults = [], updateIndicatorValue, showErrorMessage, showSuccessMessage, VANpropertiesToSaveInLocalStorage}) {  
     function handleSaveResult(){
         if(result !== null && result != "NaN"){
             updateIndicatorValue({indicatorName:"VAN", newValue:result});
             showSuccessMessage("Valor actualizado")
             localStorage.setItem("Q", VANpropertiesToSaveInLocalStorage.Q)
             localStorage.setItem("Inv", VANpropertiesToSaveInLocalStorage.Inv)
+            localStorage.setItem("VANpartialResults", VANpartialResults)
         }else{
             showErrorMessage("No has efectuado ningún cálculo")
         }
@@ -29,7 +16,7 @@ function ShowVANResult({result = null, VANpartialResults = [], updateIndicatorVa
 
     return ( 
         <section className = "show-VAN-result">
-            <AgChartsReact options={chartOptions} />
+            <VANResultGraphic VANpartialResults={VANpartialResults}/>
             <section className = "show-result-VAN-calculation">
                 <div>Resultado:</div>
                 <span>{result !== null && result != "NaN"?result:null}</span>

@@ -28,12 +28,20 @@
     backdrop-filter: blur(5px);
 }
 
-.show-Z-graphic-container{
+.show-VAN-graphic-container{
     height: 60%;
     width: 100%;
-    background: rgba(255, 255, 255, 0.80);
+    background: #fff;
     border-radius: 15px;
     backdrop-filter: blur(5px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.show-VAN-graphic-container .VAN-partial-results-graphic{
+    width: 95%;
+    height: 95%;
 }
 
 .indicators-page-main .header{
@@ -98,7 +106,7 @@
     .show-Z-value-container{
         height: 100%;
     }
-    .show-Z-graphic-container{
+    .show-VAN-graphic-container{
         height: 100%;
     }
     .indicators-page-main{
@@ -125,7 +133,7 @@
     .show-Z-value-container{
         height: 50%;
     }
-    .show-Z-graphic-container{
+    .show-VAN-graphic-container{
         height: 50%;
     }
 }
