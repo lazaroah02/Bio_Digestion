@@ -18,6 +18,7 @@ function IndicatorsGrid({
   resetIndicatorResults,
   showErrorMessage,
   showSuccessMessage,
+  projectId
 }) {
   /*
   State description:
@@ -52,6 +53,7 @@ function IndicatorsGrid({
           }
           asideContent={
             <ShowVANResult
+              projectId = {projectId}
               result={indicatorResults?.VAN}
               VANpartialResults={indicatorResults?.VANpartialResults}
               updateIndicatorValue={updateIndicatorValue}
@@ -74,7 +76,7 @@ function IndicatorsGrid({
           title={"Calcular TIR"}
           resetIndicatorResults={resetIndicatorResults}
           asideColor="#06F"
-          indicatorForm={<CalculateTIR indicators={indicators} setTIRResult={setIndicatorResult}/>}
+          indicatorForm={<CalculateTIR projectId = {projectId} indicators={indicators} setTIRResult={setIndicatorResult}/>}
           asideContent={
             <ShowResult
               result={indicatorResults?.TIR}

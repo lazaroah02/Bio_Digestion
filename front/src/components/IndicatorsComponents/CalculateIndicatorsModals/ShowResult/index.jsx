@@ -1,5 +1,5 @@
 import './index.css'
-function ShowResult({result = null, updateIndicatorValue, indicatorName, showErrorMessage, showSuccessMessage, unit = ""}) {
+function ShowResult({result = null, updateIndicatorValue, indicatorName, showErrorMessage, showSuccessMessage, unit = "", projectId}) {
     function handleSaveResult(){
         if(result !== null && result !== "NaN"){
             updateIndicatorValue({indicatorName:indicatorName, newValue:result});

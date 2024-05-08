@@ -6,9 +6,9 @@ import { useState } from "react";
 import IndicatorFormActionButtons from "../IndicatorFormsActionButtons";
 import ShowPropertiesInfo from "../ShowPropertiesInfo";
 
-function CalculateTIR({ indicators, setTIRResult }) {
-  const [QValue, setQValue] = useState(localStorage.getItem("Q")?localStorage.getItem("Q"):"");
-  const [InvValue, setInvValue] = useState(localStorage.getItem("Inv")?localStorage.getItem("Inv"):"");
+function CalculateTIR({ indicators, setTIRResult, projectId }) {
+  const [QValue, setQValue] = useState(localStorage.getItem(`Q-${projectId}`)?localStorage.getItem(`Q-${projectId}`):"");
+  const [InvValue, setInvValue] = useState(localStorage.getItem(`Inv-${projectId}`)?localStorage.getItem(`Inv-${projectId}`):"");
 
   function handleCalculate(e) {
     e.preventDefault();

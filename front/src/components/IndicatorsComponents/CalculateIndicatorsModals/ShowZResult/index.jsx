@@ -18,15 +18,16 @@ function ShowZResult({
   setIndicatorResult,
   showErrorMessage,
   showSuccessMessage,
+  projectId
 }) {
   const [notUpdatedZ, setNotUpdatedZ] = useState(false);
   const [desiredIndicatorValues, setDesiredIndicatorValues] = useState({
-    VAN_d: localStorage.getItem('VAN_d'),
-    TRI_d: localStorage.getItem('TRI_d'),
-    TIR_d: localStorage.getItem('TIR_d'),
-    LEC_d: localStorage.getItem('LEC_d'),
-    BPM_d: localStorage.getItem('BPM_d'),
-    n_d: localStorage.getItem('n_d'),
+    VAN_d: localStorage.getItem(`VAN_d-${projectId}`),
+    TRI_d: localStorage.getItem(`TRI_d-${projectId}`),
+    TIR_d: localStorage.getItem(`TIR_d-${projectId}`),
+    LEC_d: localStorage.getItem(`LEC_d-${projectId}`),
+    BPM_d: localStorage.getItem(`BPM_d-${projectId}`),
+    n_d: localStorage.getItem(`n_d-${projectId}`),
   });
 
   //validate if any indicator values is null when the user click on calculate Z button
@@ -51,7 +52,7 @@ function ShowZResult({
   //making a pre-calculation based on the last desired indicator values entered by the user
   useEffect(() => {
     try {
-      const { VAN_d, TRI_d, TIR_d, LEC_d, BPM_d, n_d } = getFromLocalStorageDesiredIndicatorValues();
+      const { VAN_d, TRI_d, TIR_d, LEC_d, BPM_d, n_d } = getFromLocalStorageDesiredIndicatorValues({projectId:projectId,});
       if( VAN_d == null, TRI_d == null, TIR_d == null, LEC_d == null, BPM_d == null, n_d == null){
         return
       }  
@@ -84,6 +85,7 @@ function ShowZResult({
     //save in local storage the desired indicators values for future
     //comprobations every time the user saves the Z calculation result
     saveInLocalStorageDesiredIndicatorValues({
+      projectId:projectId,
       VAN_d: desiredIndicatorValues.VAN_d,
       TRI_d: desiredIndicatorValues.TRI_d,
       TIR_d: desiredIndicatorValues.TIR_d,
@@ -95,12 +97,12 @@ function ShowZResult({
 
   function resetDesiredIndicatorValues() {
     setDesiredIndicatorValues({
-      VAN_d: localStorage.getItem('VAN_d'),
-      TRI_d: localStorage.getItem('TRI_d'),
-      TIR_d: localStorage.getItem('TIR_d'),
-      LEC_d: localStorage.getItem('LEC_d'),
-      BPM_d: localStorage.getItem('BPM_d'),
-      n_d: localStorage.getItem('n_d'),
+      VAN_d: localStorage.getItem(`VAN_d-${projectId}`),
+      TRI_d: localStorage.getItem(`TRI_d-${projectId}`),
+      TIR_d: localStorage.getItem(`TIR_d-${projectId}`),
+      LEC_d: localStorage.getItem(`LEC_d-${projectId}`),
+      BPM_d: localStorage.getItem(`BPM_d-${projectId}`),
+      n_d: localStorage.getItem(`n_d-${projectId}`),
     });
   }
 

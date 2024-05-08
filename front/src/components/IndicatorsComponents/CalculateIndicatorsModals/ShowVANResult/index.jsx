@@ -1,14 +1,14 @@
 import './index.css'
 import VANResultGraphic from './VANResultGraphic';
 
-function ShowVANResult({result = null, VANpartialResults = [], updateIndicatorValue, showErrorMessage, showSuccessMessage, VANpropertiesToSaveInLocalStorage}) {  
+function ShowVANResult({result = null, VANpartialResults = [], updateIndicatorValue, showErrorMessage, showSuccessMessage, VANpropertiesToSaveInLocalStorage, projectId}) {  
     function handleSaveResult(){
         if(result !== null && result != "NaN"){
             updateIndicatorValue({indicatorName:"VAN", newValue:result});
             showSuccessMessage("Valor actualizado")
-            localStorage.setItem("Q", VANpropertiesToSaveInLocalStorage.Q)
-            localStorage.setItem("Inv", VANpropertiesToSaveInLocalStorage.Inv)
-            localStorage.setItem("VANpartialResults", VANpartialResults)
+            localStorage.setItem(`Q-${projectId}`, VANpropertiesToSaveInLocalStorage.Q)
+            localStorage.setItem(`Inv-${projectId}`, VANpropertiesToSaveInLocalStorage.Inv)
+            localStorage.setItem(`VANpartialResults-${projectId}`, VANpartialResults)
         }else{
             showErrorMessage("No has efectuado ningún cálculo")
         }

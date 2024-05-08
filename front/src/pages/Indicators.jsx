@@ -44,7 +44,7 @@ function Indicators() {
 
   //get the last VAN results to show in the VAN Partial Resutlts graphic
   function getLastVANpartialResults(){
-    let vanPartialResults = localStorage.getItem("VANpartialResults")
+    let vanPartialResults = localStorage.getItem(`VANpartialResults-${project.id}`)
     if(vanPartialResults){
       return vanPartialResults.split(",")
     }
@@ -65,6 +65,7 @@ function Indicators() {
             <aside className="indicators-page-aside-section">
               <section className="show-Z-value-container">
                 <ShowZResult
+                    projectId = {project.id}
                     result={indicators?.Z}
                     indicators={indicators}
                     indicatorResults={indicatorResults}
@@ -83,6 +84,7 @@ function Indicators() {
             </aside>
           ) : null}
           <IndicatorsGrid
+            projectId = {project.id}
             resetIndicatorResults={resetIndicatorResults}
             indicators={indicators}
             updateIndicatorValue={updateIndicatorValue}
@@ -97,6 +99,7 @@ function Indicators() {
         <aside className="indicators-page-aside-section">
           <section className="show-Z-value-container">
             <ShowZResult
+              projectId = {project.id}
               result={indicators?.Z}
               indicators={indicators}
               indicatorResults={indicatorResults}
