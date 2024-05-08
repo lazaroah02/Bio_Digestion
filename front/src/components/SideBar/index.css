@@ -103,3 +103,9 @@
 .sidebar-active-path{
     color: #02C502!important;
 }
+
+@media (max-width:500px) {
+    .sidebar footer{
+        margin-top:50px
+    }
+}

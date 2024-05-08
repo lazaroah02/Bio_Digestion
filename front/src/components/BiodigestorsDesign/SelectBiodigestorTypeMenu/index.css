@@ -1,0 +1,7 @@
+.select-biodigestor-type-menu-page{
+    width: 100%;
+    height: 100%;
+    border-radius: 15px;
+    background: rgba(255, 255, 255, 0.80);
+    backdrop-filter: blur(5px);
+}    

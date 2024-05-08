@@ -6,6 +6,7 @@ import StackIcon from "../../icons/StackIcon";
 import DocIcon from "../../icons/DocIcon";
 import UserIcon from "../../icons/UserIcon";
 import GraphicIcon from "../../icons/GraphicIcon";
+import EditIcon from "../../icons/EditIcon";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useConfirmDialog } from "../../hooks/useConfirmDialog";
 
@@ -71,12 +72,33 @@ function SideBar({closeSideBar = () => {}}) {
               }
             >
               <GraphicIcon
-                key={1}
+                key={2}
                 width="20px"
                 height="20px"
                 color={!checkActivePath("graphics") ? "#565454" : "#02C502"}
               />
               Gráficos
+            </span>
+          </li>
+          <li>
+            <aside
+              className={
+                !checkActivePath("design") ? "sidebar-hidden-element" : null
+              }
+            ></aside>
+            <span
+            onClick={() => handleNavigate("/dashboard/design")}
+              className={
+                checkActivePath("graphics") ? "sidebar-active-path" : null
+              }
+            >
+              <EditIcon
+                key={3}
+                width="20px"
+                height="20px"
+                color={!checkActivePath("design") ? "#565454" : "#02C502"}
+              />
+              Diseño
             </span>
           </li>
           <li>
@@ -90,7 +112,7 @@ function SideBar({closeSideBar = () => {}}) {
               className={checkActivePath("info") ? "sidebar-active-path" : null}
             >
               <DocIcon
-                key={2}
+                key={4}
                 width="20px"
                 height="20px"
                 color={!checkActivePath("info") ? "#565454" : "#02C502"}
@@ -111,7 +133,7 @@ function SideBar({closeSideBar = () => {}}) {
               }
             >
               <UserIcon
-                key={2}
+                key={5}
                 width="23px"
                 height="23px"
                 color={!checkActivePath("users") ? "#565454" : "#02C502"}
