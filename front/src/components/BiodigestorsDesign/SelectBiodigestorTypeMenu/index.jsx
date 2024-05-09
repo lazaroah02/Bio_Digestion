@@ -6,12 +6,12 @@ function SelectBiodigestorTypeMenu() {
     return ( 
         <section className = "select-biodigestor-type-menu-page">
             <div className = "select-biodigestor-type-menu">
-                <div onClick = {() => navigate("trataiment-biodigestors")}>
+                <div onClick = {() => navigate("treatment-biodigestors")}>
                     <p>Biodigestores</p>
                     <p>de</p> 
                     <p>Tratamiento</p>
                 </div>
-                <div onClick = {() => navigate("post-trataiment-biodigestors")}>
+                <div onClick = {() => navigate("post-treatment-biodigestors")}>
                     <p>Biodigestores</p>
                     <p>de</p> 
                     <p>Postratamiento</p>

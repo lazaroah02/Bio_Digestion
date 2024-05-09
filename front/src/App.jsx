@@ -17,8 +17,8 @@ import Graphics from "./pages/Graphics";
 import UsersManagement from "./pages/UsersManagement";
 import ProjectsManagement from "./pages/Projects";
 import SelectBiodigestorTypeMenu from './components/BiodigestorsDesign/SelectBiodigestorTypeMenu'
-import PostTrataimentBiodigestorsDesign from './pages/PostTraitmentBiodigestorsDesign'
-import TrataimentBiodigestorsDesign from './pages/TraitmentBiodigestorsDesign'
+import PostTreatmentBiodigestorsDesign from './pages/PostTreatmentBiodigestorsDesign'
+import TreatmentBiodigestorsDesign from './pages/TreatmentBiodigestorsDesign'
 import { QueryFiltersContextProvider } from "./contexts/filtersContext";
 import "primereact/resources/themes/lara-light-cyan/theme.css";
 
@@ -71,21 +71,21 @@ function App() {
                 }
               />
               <Route
-                path="/dashboard/design/trataiment-biodigestors"
+                path="/dashboard/design/treatment-biodigestors"
                 element={
                   <ProtectedRoute>
                     <Dashboard>
-                      <TrataimentBiodigestorsDesign/>
+                      <TreatmentBiodigestorsDesign/>
                     </Dashboard>
                   </ProtectedRoute>
                 }
               />
               <Route
-                path="/dashboard/design/post-trataiment-biodigestors"
+                path="/dashboard/design/post-treatment-biodigestors"
                 element={
                   <ProtectedRoute>
                     <Dashboard>
-                      <PostTrataimentBiodigestorsDesign/>
+                      <PostTreatmentBiodigestorsDesign/>
                     </Dashboard>
                   </ProtectedRoute>
                 }
