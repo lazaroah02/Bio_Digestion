@@ -89,7 +89,7 @@ function SideBar({closeSideBar = () => {}}) {
             <span
             onClick={() => handleNavigate("/dashboard/design")}
               className={
-                checkActivePath("graphics") ? "sidebar-active-path" : null
+                checkActivePath("design") ? "sidebar-active-path" : null
               }
             >
               <EditIcon
