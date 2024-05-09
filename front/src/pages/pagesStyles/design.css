@@ -5,3 +5,12 @@
     padding: 10px;
     overflow: auto;
 }
+
+.biodigestor-design-title{
+    width: 100%;
+    text-align: center;
+    font-size:30px;   
+    color: #02C502;
+    font-family: Outfit-Regular;
+    font-weight: 400;
+}
