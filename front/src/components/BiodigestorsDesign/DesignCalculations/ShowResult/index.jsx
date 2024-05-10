@@ -1,8 +1,8 @@
 import './index.css'
-function ShowResult({result = null, updateIndicatorValue, indicatorName, showErrorMessage, showSuccessMessage, unit = "", mobileMode}) {
+function ShowResult({result = null, saveResult, indicatorName, showErrorMessage, showSuccessMessage, unit = "", mobileMode}) {
     function handleSaveResult(){
         if(result !== null && result !== "NaN"){
-            updateIndicatorValue({indicatorName:indicatorName, newValue:result});
+            saveResult({indicatorName:indicatorName, newValue:result});
             showSuccessMessage("Valor actualizado")
         }else{
             showErrorMessage("No has efectuado ningún cálculo")

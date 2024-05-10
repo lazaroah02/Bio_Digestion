@@ -4,7 +4,7 @@ import './index.css';
 import {calculateTotalVolume} from '../../../../utils/designCalculations'
 import IndicatorsFormActionButtons from '../../../IndicatorsComponents/CalculateIndicatorsModals/IndicatorFormsActionButtons'
 
-function CalculateTotalVolume({showErrorMessage}) {
+function CalculateTotalVolume({calculationName, showErrorMessage,  savePreCalculationResult}) {
     function handleCalculate(e){
         e.preventDefault()
         let Qinf = parseFloat(e.target["Qinf"].value)
@@ -14,6 +14,7 @@ function CalculateTotalVolume({showErrorMessage}) {
             showErrorMessage("COV no puede ser cero")
         }
         let result = calculateTotalVolume({Qinf: Qinf, DQOv: DQOv, COV: COV})
+        savePreCalculationResult({calculationName:calculationName, result:result})
     }
 
     return ( 
