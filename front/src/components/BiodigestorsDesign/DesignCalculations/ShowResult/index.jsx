@@ -10,10 +10,9 @@ function ShowResult({result = null, unit = "", mobileMode}) {
                 </section> 
             </>
                 :
-                result !== null && result != "NaN"?
-                    <div className = "show-result-design-calculation-on-mobile">
-                        <span>Resultado: {result + " " + unit}</span>
-                    </div>:null
+                <div className = "show-result-design-calculation-on-mobile">
+                    <span>Resultado: {result !== null && result != "NaN"? result + " " + unit :null}</span>
+                </div>
             }
         </>
     );

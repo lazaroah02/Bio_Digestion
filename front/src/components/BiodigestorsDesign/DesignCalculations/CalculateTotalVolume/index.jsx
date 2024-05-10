@@ -8,8 +8,8 @@ function CalculateTotalVolume({calculationName, showErrorMessage,  saveCalculati
     function handleCalculate(e){
         e.preventDefault()
         let Qinf = parseFloat(entranceData.Qinf)
-        let DQOv = parseFloat(e.target["DQOv"].value)
-        let COV = parseFloat(e.target["COV"].value)
+        let DQOv = parseFloat(entranceData.DQOv)
+        let COV = parseFloat(entranceData.COV)
         if(COV === 0){
             showErrorMessage("COV no puede ser cero")
         }
@@ -26,12 +26,12 @@ function CalculateTotalVolume({calculationName, showErrorMessage,  saveCalculati
             </div>
             <div className = "design-calculation-field-container">
                 <label htmlFor='DQOv'>DQOv:</label>
-                <input id = "DQOv" className = "design-calculation-input" type = "number" step="0.01" required/>
+                <input id = "DQOv" className = "design-calculation-input" value = {entranceData.DQOv?entranceData.DQOv:""} onChange = {(e) => saveEntranceData({name:"DQOv", value:e.target.value})} type = "number" step="0.01" required/>
                 <ShowPropertiesInfo title = "DQOv" description='DQOv, es el DQO de la mezcla, ((kg DQO)⁄m^3 ).'/>
             </div>
             <div className = "design-calculation-field-container">
                 <label htmlFor='COV'>COV:</label>
-                <input id = "COV" className = "design-calculation-input" type = "number" step="0.01" required/>
+                <input id = "COV" className = "design-calculation-input" value = {entranceData.COV?entranceData.COV:""} onChange = {(e) => saveEntranceData({name:"COV", value:e.target.value})} type = "number" step="0.01" required/>
                 <ShowPropertiesInfo title = "COV" description='COV, es la carga orgánica volumétrica de la mezcla, ((kg DQO)⁄(m^3*d)).'/>
             </div>
             <IndicatorsFormActionButtons handleCleanResult={() => {}}/>
