@@ -1,0 +1,54 @@
+.design-section{
+    width: 100%;
+    height: auto;
+    border: 1px solid black;
+    border-radius: 25px;
+    padding: 10px;
+    display: flex;
+    flex-direction: row;
+    gap:10px;
+}
+
+.design-section-form-container{
+    flex-grow: 1;
+}
+
+.design-section-title{
+    margin:0;
+    margin-left: 65px;
+    margin-top: 10px;
+    color: #707070;
+    font-size: 25px;
+    font-family: Outfit-Regular;
+    font-weight: 500;
+}   
+
+.design-section-advice{
+    color: #707070;
+    font-family: Outfit-Regular;
+    font-size: 18px;
+    font-weight: 500;
+    margin-left: 65px;
+}
+
+.design-section-content{
+    margin-top: 20px;
+} 
+
+.design-section-aside-content-container{
+    width: 30%;
+    position: relative;
+    border-radius: 15px;
+    background-color: #02C502;
+}
+
+@media (max-width:500px) {
+    .design-section-title{
+        font-size:20px;
+        margin-left: 20px;
+    }
+    .design-section-advice{
+        font-size:15px;
+        margin-left: 20px;
+    }
+}

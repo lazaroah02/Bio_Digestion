@@ -1,0 +1,45 @@
+.show-result-design-calculation{
+    position:absolute;
+    top:45%;
+    left: 50%;
+    transform: translate(-50%, -50%)
+}
+
+.show-result-design-calculation div{
+    color: #FFF;
+    font-family: Outfit-Regular;
+    font-size: 30px;
+    font-weight: 500;
+}
+
+.show-result-design-calculation span{
+    color: #FFF;
+    font-family: Outfit-Regular;
+    font-size: 30px;
+    font-weight: 500;
+    display: flex;
+    justify-content: center;
+    white-space: nowrap;
+}
+
+.save-result-design-calculation{
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    border: 2px solid #fff;
+    border-radius: 15px;
+    background-color: transparent;
+    padding: 10px;
+    color: #FFF;
+}
+
+.show-result-design-calculation-on-mobile{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    font-family: Outfit-Regular;
+    font-size: 20px;
+}

@@ -14,3 +14,15 @@
     font-family: Outfit-Regular;
     font-weight: 400;
 }
+
+.design-section-separator{
+    width: 100%;
+    height:30px
+}
+
+@media (max-width:500px) {
+    .biodigestor-design-title{
+        font-size: 25px;
+        margin-top:50px
+    }
+}

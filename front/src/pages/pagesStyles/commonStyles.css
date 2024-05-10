@@ -1,0 +1,10 @@
+@media (max-width:1300px) {
+    .top-page-white-bar{
+        width: 100%;
+        height: 50px;
+        position: fixed;
+        top: 0;
+        background-color:white;
+        z-index: 1;
+    }    
+}
