@@ -1,6 +1,6 @@
 .show-result-design-calculation{
     position:absolute;
-    top:45%;
+    top:50%;
     left: 50%;
     transform: translate(-50%, -50%)
 }
@@ -22,18 +22,6 @@
     white-space: nowrap;
 }
 
-.save-result-design-calculation{
-    position: absolute;
-    bottom: 30px;
-    left: 50%;
-    transform: translate(-50%,-50%);
-    border: 2px solid #fff;
-    border-radius: 15px;
-    background-color: transparent;
-    padding: 10px;
-    color: #FFF;
-}
-
 .show-result-design-calculation-on-mobile{
     display: flex;
     flex-direction: row;
@@ -42,4 +30,11 @@
     gap: 10px;
     font-family: Outfit-Regular;
     font-size: 20px;
+    background-color: green;
+    border-bottom-left-radius: 24px;
+    border-bottom-right-radius: 24px;
+    color: white;
+    margin-bottom:-10px;
+    margin-right: -10px;
+    margin-left: -10px;
 }

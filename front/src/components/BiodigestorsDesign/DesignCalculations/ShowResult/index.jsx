@@ -1,13 +1,5 @@
 import './index.css'
-function ShowResult({result = null, saveResult, indicatorName, showErrorMessage, showSuccessMessage, unit = "", mobileMode}) {
-    function handleSaveResult(){
-        if(result !== null && result !== "NaN"){
-            saveResult({indicatorName:indicatorName, newValue:result});
-            showSuccessMessage("Valor actualizado")
-        }else{
-            showErrorMessage("No has efectuado ningún cálculo")
-        }
-    }
+function ShowResult({result = null, unit = "", mobileMode}) {
     return (
         <>
             {!mobileMode?
@@ -16,14 +8,11 @@ function ShowResult({result = null, saveResult, indicatorName, showErrorMessage,
                     <div>Resultado:</div>
                     <span>{result !== null && result != "NaN"?result + ' ' + unit:null}</span>
                 </section> 
-                <button className = "save-result-design-calculation"
-                onClick={() => handleSaveResult()}>Usar Resultado</button>
             </>
                 :
                 result !== null && result != "NaN"?
                     <div className = "show-result-design-calculation-on-mobile">
-                        <span>Resultado: {result}</span>
-                        <button className = "small-green-button" onClick = {() => handleSaveValue()}>Usar</button>
+                        <span>Resultado: {result + " " + unit}</span>
                     </div>:null
             }
         </>

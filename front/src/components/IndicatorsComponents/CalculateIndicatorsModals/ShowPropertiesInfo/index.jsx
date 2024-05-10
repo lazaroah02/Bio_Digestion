@@ -8,7 +8,7 @@ function ShowPropertiesInfo({title = "", description = "", iconClassName = "", h
     const [show, setShow] = useState(false)
     return ( 
         <>
-            <span onClick = {() => setShow(true)}>
+            <span className = "show-properties-info-icon-container" onClick = {() => setShow(true)}>
                 <InfoIcon  className = {"info-icon " + iconClassName}/>
             </span>
             <Dialog

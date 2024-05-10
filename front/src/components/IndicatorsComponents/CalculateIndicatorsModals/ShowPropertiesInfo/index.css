@@ -1,3 +1,8 @@
 .info-icon{
     cursor: pointer;
 }
+.show-properties-info-icon-container{
+    display: flex;
+    align-items: center;
+    justify-content:center;
+}
