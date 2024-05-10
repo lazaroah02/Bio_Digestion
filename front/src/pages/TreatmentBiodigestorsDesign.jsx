@@ -99,7 +99,7 @@ function TreatmentBiodigestorsDesign() {
         asideContent={
           <ShowResult
             result={calculationResults.TRH}
-            unit="m^3"
+            unit="días"
             mobileMode={mobileMode}
           />
         }

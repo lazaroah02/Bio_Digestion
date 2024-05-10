@@ -3,6 +3,7 @@ import '../commonStyles.css'
 import './index.css';
 import {calculateTotalVolume} from '../../../../utils/designCalculations'
 import IndicatorsFormActionButtons from '../../../IndicatorsComponents/CalculateIndicatorsModals/IndicatorFormsActionButtons'
+import {calculateTotalVolumeValidations} from '../../../../utils/validateDesignCalculations'
 
 function CalculateTotalVolume({calculationName, showErrorMessage,  saveCalculationResult, entranceData, saveEntranceData}) {
     function handleCalculate(e){
@@ -10,11 +11,14 @@ function CalculateTotalVolume({calculationName, showErrorMessage,  saveCalculati
         let Qinf = parseFloat(entranceData.Qinf)
         let DQOv = parseFloat(entranceData.DQOv)
         let COV = parseFloat(entranceData.COV)
-        if(COV === 0){
-            showErrorMessage("COV no puede ser cero")
-        }
-        let result = calculateTotalVolume({Qinf: Qinf, DQOv: DQOv, COV: COV})
-        saveCalculationResult({calculationName:calculationName, result:result})
+        calculateTotalVolumeValidations({Qinf:Qinf, DQOv:DQOv, COV:COV})
+        .then(() => {
+            let result = calculateTotalVolume({Qinf: Qinf, DQOv: DQOv, COV: COV})
+            saveCalculationResult({calculationName:calculationName, result:result})
+        })
+        .catch((error) => {
+            showErrorMessage(error)
+        })
     }
 
     return ( 
