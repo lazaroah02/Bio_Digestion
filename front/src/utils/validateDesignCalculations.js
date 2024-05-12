@@ -36,3 +36,23 @@ export function calculateAreaValidations({Hr, volume, volumenCalculationId}){
         }
     })
 }
+
+export function calculateVascValidations({Hr, TRH, TRHCalculationId}){
+    return new Promise((resolve, reject) => {
+        if(Hr === 0){
+            reject("Hr no puede ser cero")
+        }
+        else if(TRH == null){
+            reject("Debes calcular el TRH")
+            //focus on volume calculation section to improve the UX
+            document.getElementById(TRHCalculationId).scrollIntoView({
+                top:0,
+                left:0,
+                behavior:"smooth"
+            })
+        }
+        else{
+            resolve()
+        }
+    })
+}

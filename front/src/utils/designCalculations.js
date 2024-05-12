@@ -17,3 +17,11 @@ export function calculateVolumeOfEachReactor({VT, n}){
 export function calculateArea({Hr, volume}){
     return ( parseFloat(volume) / parseFloat(Hr) ).toFixed(2)
 }
+
+export function calculateReactorSide({AR}){
+    return Math.sqrt(parseFloat(AR)).toFixed(2)
+}
+
+export function calculateVasc({Hr, TRH}){
+    return ( parseFloat(Hr) / parseFloat(TRH) ).toFixed(2)
+}

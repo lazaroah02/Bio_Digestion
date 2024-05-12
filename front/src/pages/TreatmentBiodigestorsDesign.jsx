@@ -3,6 +3,7 @@ import "./pagesStyles/commonStyles.css";
 import DesignSection from "../components/BiodigestorsDesign/DesignSection";
 import CalculateTotalVolume from "../components/BiodigestorsDesign/DesignCalculations/CalculateTotalVolume";
 import CalculateArea from "../components/BiodigestorsDesign/DesignCalculations/CalculateArea";
+import CalculateAscendSpeed from "../components/BiodigestorsDesign/DesignCalculations/CalculateAscendSpeed";
 import { useToast } from "../hooks/useToast";
 import ShowResult from "../components/BiodigestorsDesign/DesignCalculations/ShowResult";
 import { useIsMobileMode } from "../hooks/useIsMobileMode";
@@ -11,6 +12,7 @@ import {
   calculateHidraulicRetentionTime,
   getNumberOfReactorsNeeded,
   calculateVolumeOfEachReactor,
+  calculateReactorSide
 } from "../utils/designCalculations";
 import { useState, useEffect } from "react";
 
@@ -22,6 +24,8 @@ function TreatmentBiodigestorsDesign() {
     TRH: null,
     VR:null,
     AR: null,
+    LR:null,
+    Vasc:null
   });
   const [entranceData, setEntranceData] = useState({
     Qinf: null,
@@ -77,6 +81,23 @@ function TreatmentBiodigestorsDesign() {
     }
   }, [calculationResults.VT]);
 
+  //calculate automatically reactor side on Area(AR) change
+  useEffect(() => {
+    if (
+      calculationResults.AR != null &&
+      calculationResults.AR != ""
+    ) {
+      setCalculationResults((prev) => ({
+        ...prev,
+        LR: calculateReactorSide({
+          AR: calculationResults.AR,
+        }),
+      }));
+    } else {
+      setCalculationResults((prev) => ({ ...prev, LR: null }));
+    }
+  }, [calculationResults.AR]);
+
   //check if Total Volume(VT) result is updated when entrance data change
   useEffect(() => {
     setCalculationResults((prev) => ({ ...prev, VT: null }));
@@ -129,6 +150,7 @@ function TreatmentBiodigestorsDesign() {
       {/*Calculate Hidraulic Retention Time*/}
       <DesignSection
         title="Tiempo de Retención Hidráulico(TRH) en dias(d)"
+        id={"TRH-calculation"}
         asideContent={
           <ShowResult
             result={calculationResults.TRH}
@@ -223,6 +245,67 @@ function TreatmentBiodigestorsDesign() {
           saveCalculationResult={saveCalculationResult}
           volume={entranceData.Qinf > 500? calculationResults.VR:calculationResults.VT}
           volumeCalculationId={"volume-calculation"}
+        />
+      </DesignSection>
+
+      <div className="design-section-separator"></div>
+
+      {/*Calculate Reactor Side*/}
+      <DesignSection
+        title="Longitud de cada lado de reactor(LR) en (m)"
+        asideContent={
+          <ShowResult
+            result={calculationResults.LR}
+            unit="m"
+            mobileMode={mobileMode}
+          />
+        }
+        titleDescription={
+          <ShowPropertiesInfo
+            title="Longitud de cada lado de reactor(LR)"
+            description="LR, es la longitud de cada lado del reactor en (m)."
+          />
+        }
+        mobileMode={mobileMode}
+      >
+        <div className="design-calculation-explanation">
+          Se calcula automaticamente en base al Área de Reactor(AR). 
+          Se escoge una forma de reactor cuadrada par una mayor facilidad en los cálculos.
+        </div>
+      </DesignSection>
+
+      <div className="design-section-separator"></div>
+
+      {/*Calculate Ascend Speed*/}
+      <DesignSection
+        title="Velocidad ascensional(Vasc) en (m/h)"
+        advice={"Ingrese los siguientes datos"}
+        asideContent={
+          <ShowResult
+            result={calculationResults.Vasc}
+            unit="m/h"
+            mobileMode={mobileMode}
+          />
+        }
+        titleDescription={
+          <ShowPropertiesInfo
+            title="Velocidad ascensional(Vasc)"
+            description={"Vasc, es la velocidad ascensional del influente, (m/h)."}
+          />
+        }
+        mobileMode={mobileMode}
+      >
+        <div className="design-calculation-explanation">
+          Nota: Usando el valor de <strong className = "text-success">TRH</strong> para el cálculo
+        </div>
+        <CalculateAscendSpeed
+          entranceData={entranceData}
+          saveEntranceData={saveEntranceData}
+          calculationName={"Vasc"}
+          showErrorMessage={showErrorMessage}
+          saveCalculationResult={saveCalculationResult}
+          TRH={calculationResults.TRH}
+          TRHCalculationId={"TRH-calculation"}
         />
       </DesignSection>
     </section>
