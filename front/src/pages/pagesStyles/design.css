@@ -47,6 +47,25 @@
     color: green!important;
 }
 
+.my-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.design-page-generate-report-button{
+    border-radius: 10px;
+    background: rgba(136, 136, 136, 0.16);
+    border: 0;
+    width: 210px;
+    height: 50px;
+    flex-shrink: 0;
+    color: #585858;
+    font-family: Outfit-Regular;
+    font-size: 18px;
+    font-weight: 400;
+}
+
 @media (max-width:500px) {
     .biodigestor-design-title{
         font-size: 25px;

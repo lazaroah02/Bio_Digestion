@@ -308,6 +308,12 @@ function TreatmentBiodigestorsDesign() {
           TRHCalculationId={"TRH-calculation"}
         />
       </DesignSection>
+
+      <div className="design-section-separator"></div>
+
+      <div className = "my-container">
+        <button className = "design-page-generate-report-button">Generar Reporte</button>
+      </div>
     </section>
   );
 }
