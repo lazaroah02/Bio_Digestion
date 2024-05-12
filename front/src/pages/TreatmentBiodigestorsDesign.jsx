@@ -108,6 +108,11 @@ function TreatmentBiodigestorsDesign() {
     setCalculationResults((prev) => ({ ...prev, AR: null }));
   }, [entranceData.Hr, calculationResults.VT]);
 
+  //check if the Ascend Speed(Vasc) result is updated when Hr or TRH changes
+  useEffect(() => {
+    setCalculationResults((prev) => ({ ...prev, Vasc: null }));
+  }, [entranceData.Hr, calculationResults.TRH]);
+
   return (
     <section className="biodigestor-design-page">
       {toast()}
