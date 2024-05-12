@@ -2,6 +2,7 @@ import "./pagesStyles/design.css";
 import "./pagesStyles/commonStyles.css";
 import DesignSection from "../components/BiodigestorsDesign/DesignSection";
 import CalculateTotalVolume from "../components/BiodigestorsDesign/DesignCalculations/CalculateTotalVolume";
+import CalculateArea from "../components/BiodigestorsDesign/DesignCalculations/CalculateArea";
 import { useToast } from "../hooks/useToast";
 import ShowResult from "../components/BiodigestorsDesign/DesignCalculations/ShowResult";
 import { useIsMobileMode } from "../hooks/useIsMobileMode";
@@ -19,11 +20,14 @@ function TreatmentBiodigestorsDesign() {
   const [calculationResults, setCalculationResults] = useState({
     VT: null,
     TRH: null,
+    VR:null,
+    AR: null,
   });
   const [entranceData, setEntranceData] = useState({
     Qinf: null,
     DQOv: null,
     COV: null,
+    Hr: null
   });
 
   function saveCalculationResult({ calculationName, result }) {
@@ -54,10 +58,34 @@ function TreatmentBiodigestorsDesign() {
     }
   }, [calculationResults.VT, entranceData.Qinf]);
 
-  //check if VT result is updated when entrance data change
+  //calculate automatically Volume of each reactor(VR) on VT change
+  useEffect(() => {
+    if (
+      calculationResults.VT != null &&
+      calculationResults.VT != "" &&
+      entranceData.Qinf > 500 
+    ) {
+      setCalculationResults((prev) => ({
+        ...prev,
+        VR: calculateVolumeOfEachReactor({
+          VT: calculationResults.VT,
+          n: getNumberOfReactorsNeeded({ Qinf: entranceData.Qinf }),
+        }),
+      }));
+    } else {
+      setCalculationResults((prev) => ({ ...prev, VR: null }));
+    }
+  }, [calculationResults.VT]);
+
+  //check if Total Volume(VT) result is updated when entrance data change
   useEffect(() => {
     setCalculationResults((prev) => ({ ...prev, VT: null }));
   }, [entranceData.Qinf, entranceData.DQOv, entranceData.COV]);
+
+  //check if the area(AR) result is updated when Volume or Hr changes
+  useEffect(() => {
+    setCalculationResults((prev) => ({ ...prev, AR: null }));
+  }, [entranceData.Hr, calculationResults.VT]);
 
   return (
     <section className="biodigestor-design-page">
@@ -71,6 +99,7 @@ function TreatmentBiodigestorsDesign() {
       <DesignSection
         title="Volumen Total (VT) en (m^3)"
         advice={"Ingrese los siguientes datos"}
+        id = {"volume-calculation"}
         asideContent={
           <ShowResult
             result={calculationResults.VT}
@@ -132,12 +161,7 @@ function TreatmentBiodigestorsDesign() {
             adviceClassName="text-success"
             asideContent={
               <ShowResult
-                result={
-                  calculateVolumeOfEachReactor({
-                    VT: calculationResults.VT,
-                    n: getNumberOfReactorsNeeded({ Qinf: entranceData.Qinf }),
-                  })
-              }
+                result={calculationResults.VR}
                 unit="m^3"
                 mobileMode={mobileMode}
               />
@@ -166,6 +190,41 @@ function TreatmentBiodigestorsDesign() {
           </DesignSection>
         </>
       ) : null}
+
+      <div className="design-section-separator"></div>
+
+      {/*Calculate Area*/}
+      <DesignSection
+        title="Área de reactor(AR) en (m^2)"
+        advice={"Ingrese los siguientes datos"}
+        asideContent={
+          <ShowResult
+            result={calculationResults.AR}
+            unit="m^2"
+            mobileMode={mobileMode}
+          />
+        }
+        titleDescription={
+          <ShowPropertiesInfo
+            title="AR"
+            description={"AR, es el área de reactor en (m^2)."}
+          />
+        }
+        mobileMode={mobileMode}
+      >
+        <div className="design-calculation-explanation">
+          Nota: Usando el valor de <strong className = "text-success">{entranceData.Qinf > 500?"VR":"VT"}</strong> para el cálculo
+        </div>
+        <CalculateArea
+          entranceData={entranceData}
+          saveEntranceData={saveEntranceData}
+          calculationName={"AR"}
+          showErrorMessage={showErrorMessage}
+          saveCalculationResult={saveCalculationResult}
+          volume={entranceData.Qinf > 500? calculationResults.VR:calculationResults.VT}
+          volumeCalculationId={"volume-calculation"}
+        />
+      </DesignSection>
     </section>
   );
 }

@@ -16,3 +16,23 @@ export function calculateTotalVolumeValidations({Qinf, DQOv, COV}){
         }
     })
 }
+
+export function calculateAreaValidations({Hr, volume, volumenCalculationId}){
+    return new Promise((resolve, reject) => {
+        if(Hr === 0){
+            reject("Hr no puede ser cero")
+        }
+        else if(volume == null){
+            reject("Debes calcular el Volumen")
+            //focus on volume calculation section to improve the UX
+            document.getElementById(volumenCalculationId).scrollIntoView({
+                top:0,
+                left:0,
+                behavior:"smooth"
+            })
+        }
+        else{
+            resolve()
+        }
+    })
+}

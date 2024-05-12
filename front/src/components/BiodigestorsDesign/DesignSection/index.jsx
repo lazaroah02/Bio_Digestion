@@ -1,7 +1,7 @@
 import './index.css'
-function DesignSection({children, title, asideContent, mobileMode, advice = null, titleDescription, className = "", adviceClassName = ""}) {
+function DesignSection({id, children, title, asideContent, mobileMode, advice = null, titleDescription, className = "", adviceClassName = ""}) {
     return ( 
-        <section className = {"design-section " + className}>
+        <section id = {id} className = {"design-section " + className}>
             <article className = "design-section-form-container">
                 <header>
                     <h1 className = "design-section-title">

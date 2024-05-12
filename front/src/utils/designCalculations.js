@@ -13,3 +13,7 @@ export function getNumberOfReactorsNeeded({Qinf}){
 export function calculateVolumeOfEachReactor({VT, n}){
     return (parseFloat(VT) / parseFloat(n)).toFixed(2)
 }
+
+export function calculateArea({Hr, volume}){
+    return ( parseFloat(volume) / parseFloat(Hr) ).toFixed(2)
+}
