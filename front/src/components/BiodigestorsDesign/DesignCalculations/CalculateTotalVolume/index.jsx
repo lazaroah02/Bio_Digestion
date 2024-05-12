@@ -5,7 +5,7 @@ import {calculateTotalVolume} from '../../../../utils/designCalculations'
 import IndicatorsFormActionButtons from '../../../IndicatorsComponents/CalculateIndicatorsModals/IndicatorFormsActionButtons'
 import {calculateTotalVolumeValidations} from '../../../../utils/validateDesignCalculations'
 
-function CalculateTotalVolume({calculationName, showErrorMessage,  saveCalculationResult, entranceData, saveEntranceData}) {
+function CalculateTotalVolume({calculationName, showErrorMessage, saveCalculationResult, entranceData, saveEntranceData}) {
     function handleCalculate(e){
         e.preventDefault()
         let Qinf = parseFloat(entranceData.Qinf)
@@ -38,7 +38,11 @@ function CalculateTotalVolume({calculationName, showErrorMessage,  saveCalculati
                 <input id = "COV" className = "design-calculation-input" value = {entranceData.COV?entranceData.COV:""} onChange = {(e) => saveEntranceData({name:"COV", value:e.target.value})} type = "number" step="0.01" required/>
                 <ShowPropertiesInfo title = "COV" description='COV, es la carga orgánica volumétrica de la mezcla, ((kg DQO)⁄(m^3*d)).'/>
             </div>
-            <IndicatorsFormActionButtons handleCleanResult={() => {}}/>
+            <IndicatorsFormActionButtons handleCleanResult={() => {
+                saveEntranceData({name:"Qinf", value:null})
+                saveEntranceData({name:"DQOv", value:null})
+                saveEntranceData({name:"COV", value:null})
+            }}/>
         </form>
      );
 }

@@ -19,7 +19,6 @@ function TreatmentBiodigestorsDesign() {
   const [calculationResults, setCalculationResults] = useState({
     VT: null,
     TRH: null,
-    VR: null,
   });
   const [entranceData, setEntranceData] = useState({
     Qinf: null,
@@ -133,10 +132,12 @@ function TreatmentBiodigestorsDesign() {
             adviceClassName="text-success"
             asideContent={
               <ShowResult
-                result={calculateVolumeOfEachReactor({
-                  VT: calculationResults.VT,
-                  n: getNumberOfReactorsNeeded({ Qinf: entranceData.Qinf }),
-                })}
+                result={
+                  calculateVolumeOfEachReactor({
+                    VT: calculationResults.VT,
+                    n: getNumberOfReactorsNeeded({ Qinf: entranceData.Qinf }),
+                  })
+              }
                 unit="m^3"
                 mobileMode={mobileMode}
               />
