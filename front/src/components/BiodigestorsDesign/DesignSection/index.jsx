@@ -1,14 +1,14 @@
 import './index.css'
-function DesignSection({children, title, asideContent, mobileMode, showAdvice = true, titleDescription}) {
+function DesignSection({children, title, asideContent, mobileMode, advice = null, titleDescription, className = "", adviceClassName = ""}) {
     return ( 
-        <section className = "design-section">
+        <section className = {"design-section " + className}>
             <article className = "design-section-form-container">
                 <header>
                     <h1 className = "design-section-title">
                         {title}
                         {titleDescription}
                     </h1>
-                    {showAdvice?<span className = "design-section-advice">Ingrese los siguientes datos</span>:null}
+                    {advice?<span className = {"design-section-advice " + adviceClassName}>{advice}</span>:null}
                 </header>
                 <section className = "design-section-content">
                     {children}

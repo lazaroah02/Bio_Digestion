@@ -6,7 +6,11 @@ import { useToast } from "../hooks/useToast";
 import ShowResult from "../components/BiodigestorsDesign/DesignCalculations/ShowResult";
 import { useIsMobileMode } from "../hooks/useIsMobileMode";
 import ShowPropertiesInfo from "../components/IndicatorsComponents/CalculateIndicatorsModals/ShowPropertiesInfo";
-import { calculateHidraulicRetentionTime } from "../utils/designCalculations";
+import {
+  calculateHidraulicRetentionTime,
+  getNumberOfReactorsNeeded,
+  calculateVolumeOfEachReactor,
+} from "../utils/designCalculations";
 import { useState, useEffect } from "react";
 
 function TreatmentBiodigestorsDesign() {
@@ -15,6 +19,7 @@ function TreatmentBiodigestorsDesign() {
   const [calculationResults, setCalculationResults] = useState({
     VT: null,
     TRH: null,
+    VR: null,
   });
   const [entranceData, setEntranceData] = useState({
     Qinf: null,
@@ -66,6 +71,7 @@ function TreatmentBiodigestorsDesign() {
       {/*Calculate Total Volume*/}
       <DesignSection
         title="Volumen Total (VT) en (m^3)"
+        advice={"Ingrese los siguientes datos"}
         asideContent={
           <ShowResult
             result={calculationResults.VT}
@@ -95,7 +101,6 @@ function TreatmentBiodigestorsDesign() {
       {/*Calculate Hidraulic Retention Time*/}
       <DesignSection
         title="Tiempo de Retención Hidráulico(TRH) en dias(d)"
-        showAdvice={false}
         asideContent={
           <ShowResult
             result={calculationResults.TRH}
@@ -103,13 +108,63 @@ function TreatmentBiodigestorsDesign() {
             mobileMode={mobileMode}
           />
         }
+        titleDescription={
+          <ShowPropertiesInfo
+            title="Tiempo de Retención Hidráulico(TRH)"
+            description="TRH, indica la cantidad de tiempo en días que permanece el material dentro del digestor"
+          />
+        }
         mobileMode={mobileMode}
       >
-        <div className="TRH-explanation">
+        <div className="design-calculation-explanation">
           Se calcula automaticamente en base al Volumen Total(VT) y el volumen
           de mezcla (Qinf) de la sección anterior
         </div>
       </DesignSection>
+
+      {/*Volume of each reactor*/}
+      {entranceData.Qinf > 500 && calculationResults.VT != null ? (
+        <>
+          <div className="design-section-separator"></div>
+          <DesignSection
+            className = "design-section-border-green"
+            title="Volumen de cada Reactor(VR) en (m^3)"
+            advice={"Optimización"}
+            adviceClassName="text-success"
+            asideContent={
+              <ShowResult
+                result={calculateVolumeOfEachReactor({
+                  VT: calculationResults.VT,
+                  n: getNumberOfReactorsNeeded({ Qinf: entranceData.Qinf }),
+                })}
+                unit="m^3"
+                mobileMode={mobileMode}
+              />
+            }
+            mobileMode={mobileMode}
+          >
+            <div className="design-calculation-explanation VR-explanation">
+              <p>
+                Para lograr una puesta en marcha y un mantenimiento más fácil,
+                el caudal del influente(Qinf) no puede exceder de 500 m^3/d.
+              </p>
+              <p>
+                Debido a que el caudal actual es de
+                <strong className="text-danger">
+                  {" "}
+                  {entranceData.Qinf} m^3/d
+                </strong>
+                , se propone dividir el proceso en{" "}
+                <strong className="text-danger">
+                  {getNumberOfReactorsNeeded({ Qinf: entranceData.Qinf })}
+                </strong>{" "}
+                unidades de reactores.
+              </p>
+              <p>Por tanto el Volumen resultante de cada reactor es:</p>
+            </div>
+          </DesignSection>
+        </>
+      ) : null}
     </section>
   );
 }

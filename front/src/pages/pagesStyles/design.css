@@ -20,7 +20,7 @@
     height:30px
 }
 
-.TRH-explanation{
+.design-calculation-explanation{
     margin-left: 65px;
     margin-top: -10px;
     margin-bottom:10px;
@@ -30,12 +30,29 @@
     font-weight: 500;
 }
 
+.VR-explanation p{
+    margin: 0;
+}
+
+.VR-explanation .text-danger{
+    color: red;
+}
+
+.design-section-border-green{
+    outline:3px solid green!important;
+    border: 0!important;
+}
+
+.text-success{
+    color: green!important;
+}
+
 @media (max-width:500px) {
     .biodigestor-design-title{
         font-size: 25px;
         margin-top:50px
     }
-    .TRH-explanation{
+    .design-calculation-explanation{
         margin-left: 20px;
         font-size: 15px;
     }
