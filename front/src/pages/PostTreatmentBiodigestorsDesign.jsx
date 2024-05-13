@@ -10,6 +10,7 @@ import { useIsMobileMode } from "../hooks/useIsMobileMode";
 import ShowPropertiesInfo from "../components/IndicatorsComponents/CalculateIndicatorsModals/ShowPropertiesInfo";
 import {PDFDownloadLink} from '@react-pdf/renderer'
 import DesignReport from "../PdfTemplates/DesignReport";
+import { useLazyLoad } from "../hooks/useLazyLoad";
 import {
   calculateHidraulicRetentionTime,
   getNumberOfReactorsNeeded,
@@ -21,6 +22,7 @@ import { useState, useEffect } from "react";
 function PostreatmentBiodigestorsDesign() {
   const { toast, showErrorMessage } = useToast();
   const { mobileMode } = useIsMobileMode({ mobileWidth: 700 });
+  const {showLazyElement} = useLazyLoad({rootId: "design-page", lazyReferenceId: "design-lazy-button"}) 
   const [calculationResults, setCalculationResults] = useState({
     VT: null,
     TRH: null,
@@ -116,7 +118,7 @@ function PostreatmentBiodigestorsDesign() {
   }, [entranceData.Hr, calculationResults.TRH]);
 
   return (
-    <section className="biodigestor-design-page">
+    <section id = "design-page" className="biodigestor-design-page" >
       {toast()}
       <div className="top-page-white-bar"></div>
       <h1 className="biodigestor-design-title">
@@ -318,22 +320,27 @@ function PostreatmentBiodigestorsDesign() {
 
       <div className="design-section-separator"></div>
 
-      <div className = "my-container">
-        <button className = "design-page-generate-report-button">
-          <PDFDownloadLink 
-            document={
-              <DesignReport 
-                frontPageTitle = "Diseño de Reactor de Postratamiento"
-                entranceData={entranceData}
-                calculationResults={calculationResults}
-                />
+      <div id = "design-lazy-button" className = "my-container">
+        {showLazyElement?
+          <button className = "design-page-generate-report-button">
+            <PDFDownloadLink 
+              document={
+                <DesignReport 
+                  frontPageTitle = "Diseño de Reactor de Postratamiento"
+                  entranceData={entranceData}
+                  calculationResults={calculationResults}
+                  />
+                }
+                fileName="Diseño de Reactor de Postratamiento.pdf"
+                className="generate-pdf-link"
+              >
+              {({ loading }) =>
+                loading ? "Cargando documento..." : "Generar Reporte"
               }
-              fileName="Diseño de Reactor de Postratamiento.pdf"
-              className="generate-pdf-link"
-            >
-            Generar Reporte
-          </PDFDownloadLink>
-        </button>
+            </PDFDownloadLink>
+          </button>
+          :null
+        }
       </div>
     </section>
   );
