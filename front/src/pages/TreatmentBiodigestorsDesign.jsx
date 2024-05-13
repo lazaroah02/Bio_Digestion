@@ -8,6 +8,8 @@ import { useToast } from "../hooks/useToast";
 import ShowResult from "../components/BiodigestorsDesign/DesignCalculations/ShowResult";
 import { useIsMobileMode } from "../hooks/useIsMobileMode";
 import ShowPropertiesInfo from "../components/IndicatorsComponents/CalculateIndicatorsModals/ShowPropertiesInfo";
+import { PDFDownloadLink } from "@react-pdf/renderer";
+import DesignReport from "../PdfTemplates/DesignReport";
 import {
   calculateHidraulicRetentionTime,
   getNumberOfReactorsNeeded,
@@ -317,7 +319,22 @@ function TreatmentBiodigestorsDesign() {
       <div className="design-section-separator"></div>
 
       <div className = "my-container">
-        <button className = "design-page-generate-report-button">Generar Reporte</button>
+        
+        <button className = "design-page-generate-report-button">
+          <PDFDownloadLink 
+            document={
+              <DesignReport 
+                frontPageTitle = "Diseño de Reactor de Tratamiento"
+                entranceData={entranceData}
+                calculationResults={calculationResults}
+                />
+              }
+              fileName="Diseño de Reactor de Tratamiento.pdf"
+              className="generate-pdf-link"
+            >
+            Generar Reporte
+          </PDFDownloadLink>
+        </button>
       </div>
     </section>
   );
