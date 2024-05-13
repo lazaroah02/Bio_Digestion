@@ -3,7 +3,7 @@ export function calculateTotalVolume({Qinf, DQOv, COV}){
 }
 
 export function calculateHidraulicRetentionTime({VT, Qinf}){
-    return (parseFloat(VT) /parseFloat(Qinf) ).toFixed(1)
+    return ( ( parseFloat(VT) / parseFloat(Qinf) ) * 24 ).toFixed(1)
 }
 
 export function getNumberOfReactorsNeeded({Qinf}){

@@ -154,19 +154,19 @@ function TreatmentBiodigestorsDesign() {
 
       {/*Calculate Hidraulic Retention Time*/}
       <DesignSection
-        title="Tiempo de Retención Hidráulico(TRH) en dias(d)"
+        title="Tiempo de Retención Hidráulico(TRH) en horas(h)"
         id={"TRH-calculation"}
         asideContent={
           <ShowResult
             result={calculationResults.TRH}
-            unit="días"
+            unit="horas"
             mobileMode={mobileMode}
           />
         }
         titleDescription={
           <ShowPropertiesInfo
             title="Tiempo de Retención Hidráulico(TRH)"
-            description="TRH, indica la cantidad de tiempo en días que permanece el material dentro del digestor"
+            description="TRH, indica la cantidad de tiempo en horas que permanece el material dentro del digestor"
           />
         }
         mobileMode={mobileMode}
