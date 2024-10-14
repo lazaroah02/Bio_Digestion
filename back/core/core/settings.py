@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-!7z=z5m)3n_&=0gwj3=r08vowjcgx-i(054ab@o_d%yookitpj
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['biodigestion.pythonanywhere.com', '127.0.0.1', '192.168.137.1']
+ALLOWED_HOSTS = ['biodigestion.pythonanywhere.com', '127.0.0.1', '192.168.137.1', "localhost"]
 
 
 # Application definition
